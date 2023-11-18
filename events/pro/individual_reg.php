@@ -69,81 +69,43 @@ alert("We could not register you!.");
     }
 }
 ?>
-<div class="signup-page">
-    <div class="form">
-        <h2>Create Account </h2>
-        <br>
-        <p class="alert alert-info">
-            <marquee behavior="" scrollamount="2" direction="">You need to create an account to book/view Event!
-            </marquee>
-        </p>
-        <form class="login-form" method="post" role="form" enctype="multipart/form-data" id="signup-form"
-            autocomplete="off">
-            <!-- json response will be here -->
-            <div id="errorDiv"></div>
-            <!-- json response will be here -->
-            <div class="col-md-12">
-                <div class="form-group">
-                    <label>Full Name</label>
-                    <input type="text" required minlength="10" name="name">
-                </div>
-            </div>
+ <div class="login-page">
+        <center><h2>Sign Up below</h2></center>
+        <div class="form">
+          <form>
+            <input type="text" required minlength="10" name="name" placeholder="Full name" />
+            <input type="email" required name="email" placeholder="email address" />
+            <input type="text" minlength="11" pattern="[0-9]{10}" required name="phone" placeholder="Phone Number"/>
+            <input type="file" name='file' placeholder="Select Picture"/>
+            <input type="password" id="password" name="password" id="password" placeholder="set a password" />
+            <input type="password" name="cpassword" id="cpassword" placeholder="confirm password" />
+            <i class="fas fa-eye" onclick="show()"></i>
+            <br>
+            <br>
+          </form>
 
-            <div class="col-md-6">
-                <div class="form-group">
-                    <label>Contact Number</label>
-                    <input type="text" minlength="11" pattern="[0-9]{10}" required name="phone">
-                </div>
-            </div>
-            <div class="col-md-6">
-                <div class="form-group">
-                    <label>Email Address</label>
-                    <input type="email" required name="email">
-                </div>
-            </div>
-
-            <div class="col-md-6">
-                <div class="form-group">
-                    <label>Select Picture</label>
-                    <input type="file" name='file' required>
-                </div>
-            </div>
-            <div class="col-md-6">
-                <div class="form-group">
-                    <label>Address</label>
-                    <input type='text' name="address" class="form-group" required>
-                    </select>
-                    <span class="help-block" id="error"></span>
-                </div>
-            </div>
-            <div class="col-md-6">
-                <div class="form-group">
-                    <label>Password</label>
-                    <input type="password" name="password" id="password">
-                    <span class="help-block" id="error"></span>
-                </div>
-            </div>
-            <div class="col-md-6">
-                <div class="form-group">
-                    <label>Confirm Password</label>
-                    <input type="password" name="cpassword" id="cpassword">
-                    <span class="help-block" id="error"></span>
-                </div>
-            </div>
-            <div class="col-md-12">
-                <div class="form-group">
-                    <button type="submit" id="btn-signup">
-                        CREATE ACCOUNT
-                    </button>
-                </div>
-            </div>
+          <form class="login-form">
+            <button type="button" id="btn-signup">
+              SIGN UP
+            </button>
             <p class="message">
                 <a href="#">.</a><br>
             </p>
-        </form>
+          </form>
+        </div>
     </div>
-</div>
-</div>
+</body>
+<script>
+    function show() {
+      var password = document.getElementById("password");
+      var icon = document.querySelector(".fas");
+      if (password.type === "password") {
+        password.type = "text";
+      } else {
+        password.type = "password";
+      }
+    }
+  </script>
 <!-- <script src="assets/js/jquery-1.12.4-jquery.min.js"></script> -->
 
 </body>
