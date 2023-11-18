@@ -69,10 +69,15 @@ alert("We could not register you!.");
     }
 }
 ?>
- <div class="login-page">
+<div class="signup-page">
+<div class="login-page">
         <center><h2>Sign Up below</h2></center>
         <div class="form">
-          <form>
+          <form class="login-form" method="post" role="form" enctype="multipart/form-data" id="signup-form"
+            autocomplete="off">
+            <!-- json response will be here -->
+            <div id="errorDiv"></div>
+            <!-- json response will be here -->
             <input type="text" required minlength="10" name="name" placeholder="Full name" />
             <input type="email" required name="email" placeholder="email address" />
             <input type="text" minlength="11" pattern="[0-9]{10}" required name="phone" placeholder="Phone Number"/>
@@ -94,7 +99,8 @@ alert("We could not register you!.");
           </form>
         </div>
     </div>
-</body>
+</div>
+</div>
 <script>
     function show() {
       var password = document.getElementById("password");
