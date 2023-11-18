@@ -59,17 +59,20 @@ alert("Access Denied.");
     }
 }
 ?>
+<div class="signup-page">
 <div class="login-page">
-    <center><h2>Customer Panel</h2></center>
+      <h2>Customer Panel</h2>
+        <br>
         <div class="form">
     
-        <form>
-            <input type="email"name ="email" placeholder="&#xf003;  Email Address"/>
+        <form class="login-form" method="post" role="form" id="signup-form" autocomplete="off">
+          <div id="errorDiv"></div>
+            <input type="email" required name ="email" placeholder="&#xf007;  Email Address"/>
             <input type="password" name="password" id="password" placeholder="&#xf023;  password"/>
             <i class="fas fa-eye" onclick="show()"></i> 
             <br>
             <br>
-            <button>LOGIN</button>
+            <button type="submit" id="btn-signup">LOGIN</button>
             <p class="message">
               <a href="#">.</a><br>
             </p>
@@ -79,8 +82,24 @@ alert("Access Denied.");
             <button type="button" onclick="window.location.href='individual_reg.php'">SIGN UP</button>
         </form>
         </div>
+  </div>
+  
 </div>
 </div>
+<script>
+      function show(){
+        var password = document.getElementById("password");
+        var icon = document.querySelector(".fas")
+  
+        // ========== Checking type of password ===========
+        if(password.type === "password"){
+          password.type = "text";
+        }
+        else {
+          password.type = "password";
+        }
+      };
+    </script>
 <script src="assets/js/jquery-1.12.4-jquery.min.js"></script>
 <script src="assets/js/sweetalert2.js"></script>
 </body>
