@@ -20,7 +20,7 @@ if (isset($_GET['error'])) {
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
 
-    <title><?php echo SITE_NAME, ' - Passenger\'s Account' ?> </title>
+    <title><?php echo SITE_NAME, ' - Customer\'s Account' ?> </title>
     <link rel="stylesheet" href="plugins/datatables-bs4/css/dataTables.bootstrap4.css">
     <script src="../js/alpine.js"></script>
     <!-- Font Awesome Icons -->
