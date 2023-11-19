@@ -47,12 +47,11 @@ CREATE TABLE `availability` (
 --
 
 INSERT INTO `availability` (`id`, `bus`, `route`, `date`, `time`, `amount`, `status`) VALUES
-(1, 1, 1, '2018-05-20', '13:00:00', '1', 'available'),
-(2, 1, 2, '2018-05-22', '20:00:00', '2', 'not available'),
-(3, 2, 1, '2018-06-05', '13:00:00', '1', 'available');
+(1, 1, 1, '2023-10-20', '13:00:00', '1', 'available'),
+(2, 1, 2, '2023-10-22', '20:00:00', '2', 'not available'),
+(3, 2, 1, '2023-11-05', '13:00:00', '1', 'available');
 
--- --------------------------------------------------------
-
+-- -------------------------------------------------------
 --
 -- Table structure for table `bookings`
 --
@@ -133,25 +132,25 @@ CREATE TABLE `booked` (
 --
 
 INSERT INTO `booked` (`id`, `schedule_id`, `payment_id`, `user_id`, `code`, `class`, `no`, `seat`, `date`) VALUES
-(15, 5, 12, 4, '2020/005/1324', 'first', 1, 'F1', 'Tue, 11-Aug-2020 11:52:19 AM'),
+(15, 5, 12, 4, '2022/005/1324', 'first', 1, 'F1', 'Tue, 11-Aug-2022 11:52:19 AM'),
 (17, 5, 15, 3, '2020/005/2645', 'first', 5, 'F02', 'Tue, 11-Aug-2020 12:48:38 PM'),
-(18, 6, 16, 3, '2020/006/1655', 'first', 8, 'F1 -F8', 'Tue, 11-Aug-2020 01:08:20 PM'),
-(19, 6, 1, 4, '2020/006/9146', 'second', 1, 'S1', 'Tue, 11-Aug-2020 01:09:22 PM'),
-(20, 8, 18, 4, '2020/008/1144', 'second', 8, 'S1 -S8', 'Tue, 11-Aug-2020 01:12:58 PM'),
-(21, 18, 19, 1, '2020/018/1671', 'first', 8, 'F1 -F8', 'Tue, 11-Aug-2020 04:10:29 PM'),
-(22, 20, 20, 5, '2020/020/126', 'first', 30, 'F1 - F30', 'Mon, 31-Aug-2020 11:36:57 PM'),
-(23, 20, 21, 6, '2020/020/31816', 'first', 2, 'F31 - F32', 'Fri, 06-Nov-2020 10:10:44 PM'),
-(24, 22, 22, 6, '2020/022/1176', 'second', 1, 'S1', 'Sun, 08-Nov-2020 02:08:07 PM'),
-(25, 24, 23, 2, '2020/024/197', 'second', 2, 'S1 - S2', 'Sun, 15-Nov-2020 02:25:27 PM'),
-(26, 26, 24, 8, '2021/026/1183', 'first', 4, 'F01 - F04', 'Fri, 17-Sep-2021 04:25:09 PM'),
-(27, 98, 25, 7, '2021/098/198', 'first', 2, 'F1 - F2', 'Wed, 13-Oct-2021 05:17:54 AM'),
-(28, 99, 26, 7, '2021/099/157', 'second', 1, 'S1', 'Wed, 13-Oct-2021 05:28:54 AM'),
-(29, 100, 27, 7, '2021/0100/1134', 'second', 1, 'S1', 'Wed, 13-Oct-2021 05:39:18 AM'),
-(30, 101, 39, 7, '2021/0101/1116', 'second', 1, 'S1', 'Wed, 13-Oct-2021 06:15:30 AM'),
-(31, 102, 40, 7, '2021/0102/1502', 'first', 1, 'F1', 'Wed, 13-Oct-2021 06:18:10 AM'),
-(32, 103, 43, 7, '2021/0103/1792', 'second', 2, 'S1 - S002', 'Wed, 13-Oct-2021 11:02:56 AM'),
-(33, 103, 44, 8, '2021/0103/3809', 'second', 1, 'S3', 'Wed, 13-Oct-2021 02:21:40 PM'),
-(34, 104, 45, 8, '2021/0104/1526', 'first', 2, 'F1 - F2', 'Wed, 13-Oct-2021 05:22:15 PM');
+(18, 6, 16, 3, '2022/006/1655', 'first', 8, 'F1 -F8', 'Tue, 11-Aug-2022 01:08:20 PM'),
+(19, 6, 1, 4, '2022/006/9146', 'second', 1, 'S1', 'Tue, 11-Aug-2022 01:09:22 PM'),
+(20, 8, 18, 4, '2022/008/1144', 'second', 8, 'S1 -S8', 'Tue, 11-Aug-2022 01:12:58 PM'),
+(21, 18, 19, 1, '2022/018/1671', 'first', 8, 'F1 -F8', 'Tue, 11-Aug-2022 04:10:29 PM'),
+(22, 20, 20, 5, '2022/020/126', 'first', 30, 'F1 - F30', 'Mon, 31-Aug-2022 11:36:57 PM'),
+(23, 20, 21, 6, '2022/020/31816', 'first', 2, 'F31 - F32', 'Fri, 06-Nov-2022 10:10:44 PM'),
+(24, 22, 22, 6, '2022/022/1176', 'second', 1, 'S1', 'Sun, 08-Nov-2022 02:08:07 PM'),
+(25, 24, 23, 2, '2022/024/197', 'second', 2, 'S1 - S2', 'Sun, 15-Nov-2022 02:25:27 PM'),
+(26, 26, 24, 8, '2023/026/1183', 'first', 4, 'F01 - F04', 'Fri, 17-Sep-2023 04:25:09 PM'),
+(27, 98, 25, 7, '2023/098/198', 'first', 2, 'F1 - F2', 'Wed, 13-Oct-2023 05:17:54 AM'),
+(28, 99, 26, 7, '2023/099/157', 'second', 1, 'S1', 'Wed, 13-Oct-2023 05:28:54 AM'),
+(29, 100, 27, 7, '2023/0100/1134', 'second', 1, 'S1', 'Wed, 13-Oct-2023 05:39:18 AM'),
+(30, 101, 39, 7, '2023/0101/1116', 'second', 1, 'S1', 'Wed, 13-Oct-2023 06:15:30 AM'),
+(31, 102, 40, 7, '2023/0102/1502', 'first', 1, 'F1', 'Wed, 13-Oct-2023 06:18:10 AM'),
+(32, 103, 43, 7, '2023/0103/1792', 'second', 2, 'S1 - S002', 'Wed, 13-Oct-2023 11:02:56 AM'),
+(33, 103, 44, 8, '2023/0103/3809', 'second', 1, 'S3', 'Wed, 13-Oct-2023 02:21:40 PM'),
+(34, 104, 45, 8, '2023/0104/1526', 'first', 2, 'F1 - F2', 'Wed, 13-Oct-2023 05:22:15 PM');
 
 -- --------------------------------------------------------
 
@@ -180,10 +179,10 @@ INSERT INTO `feedback` (`id`, `user_id`, `message`, `response`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `passenger`
+-- Table structure for table `customer`
 --
 
-CREATE TABLE `passenger` (
+CREATE TABLE `customer` (
   `id` int(11) NOT NULL,
   `name` varchar(100) NOT NULL,
   `email` varchar(70) NOT NULL,
@@ -195,19 +194,51 @@ CREATE TABLE `passenger` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data for table `passenger`
+-- Dumping data for table `customer`
 --
 
-INSERT INTO `passenger` (`id`, `name`, `email`, `password`, `phone`, `address`, `loc`, `status`) VALUES
-(1, 'Passenger One', 'pas1o@mail.com', '1f87051e29a6927b2e6651dfb9b66387', '0780100000', 'No. 20 Aiyeteju Street', 'f3fc8566140434f0a3f47303c62d5146.jpg', 1),
+INSERT INTO `customer` (`id`, `name`, `email`, `password`, `phone`, `address`, `loc`, `status`) VALUES
+(1, 'Customer One', 'pas1o@mail.com', '1f87051e29a6927b2e6651dfb9b66387', '0780100000', 'No. 20 Aiyeteju Street', 'f3fc8566140434f0a3f47303c62d5146.jpg', 1),
 (2, 'Adelabu Simbiat', 'jobowonubi@otrs.com', '1526755d438e395e551f229a484f8a1d', '3000002000', 'No. 30 Tanke Ilorin', 'f3fc8566140434f0a3f47303c62d5146.jpg', 1),
-(3, 'Passenger Two', 'pass2@mail.com', 'c3a19571f1271af5f27a9582377b7d4a', '1400000020', 'abrahamjasmine', 'f3fc8566140434f0a3f47303c62d5146.jpg', 0),
-(4, 'Passenger Three', 'pass3@mail.com', '1dd76b458af8df200a097c5b061df9b1', '9000001000', 'No. 589 Ilorin', 'f3fc8566140434f0a3f47303c62d5146.jpg', 1),
-(5, 'Passenger Four', 'pass4@mail.com', 'd780455a563c7c5dbfb74a51785ad949', '0000010020', 'Shagamu', 'f3fc8566140434f0a3f47303c62d5146.jpg', 1),
-(6, 'Test Passenger', 'testpass@mail.com', 'abe1bcf64eb68c39847b962e8caadadf', '0000002000', 'Ilorin', 'f3fc8566140434f0a3f47303c62d5146.jpg', 1),
+(3, 'Customer Two', 'pass2@mail.com', 'c3a19571f1271af5f27a9582377b7d4a', '1400000020', 'abrahamjasmine', 'f3fc8566140434f0a3f47303c62d5146.jpg', 0),
+(4, 'Customer Three', 'pass3@mail.com', '1dd76b458af8df200a097c5b061df9b1', '9000001000', 'No. 589 Ilorin', 'f3fc8566140434f0a3f47303c62d5146.jpg', 1),
+(5, 'Customer Four', 'pass4@mail.com', 'd780455a563c7c5dbfb74a51785ad949', '0000010020', 'Shagamu', 'f3fc8566140434f0a3f47303c62d5146.jpg', 1),
+(6, 'Test Customer', 'testpass@mail.com', 'abe1bcf64eb68c39847b962e8caadadf', '0000002000', 'Ilorin', 'f3fc8566140434f0a3f47303c62d5146.jpg', 1),
 (7, 'Liam Moore', 'liamoore@gmail.com', '5f4dcc3b5aa765d61d8327deb882cf99', '7000000000', '7014 Allace Road', 'f3fc8566140434f0a3f47303c62d5146.jpg', 1),
 (8, 'Demo Account', 'demoaccount@mail.com', '5f4dcc3b5aa765d61d8327deb882cf99', '7800000000', '100 Demo Address', '404a6378027a553d980b99162a5b4ce8.png', 1);
-(9, 'Peter Karaya', 'karayapeter2@gmail.com', '1234', '0111823379', '00232 ruiru', '404a6378027a553d980b99162a5b4ce8.png', 1);
+(9, 'Kipkosgei Kelvin', 'kelvinkipkosgeisanga@gmail.com', '1234', '0111823379', '00232 ruiru', '404a6378027a553d980b99162a5b4ce8.png', 1);
+
+-- --------------------------------------------------------
+
+
+--
+-- Table structure for table `organizer`
+--
+CREATE TABLE `organizer` (
+  `id` int(11) NOT NULL,
+  `name` varchar(100) NOT NULL,
+  `email` varchar(70) NOT NULL,
+  `password` varchar(40) NOT NULL,
+  `phone` varchar(11) NOT NULL,
+  `address` varchar(200) NOT NULL,
+  `loc` varchar(40) NOT NULL,
+  `status` int(11) NOT NULL DEFAULT '1'
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `organizer`
+--
+
+INSERT INTO `organizer` (`id`, `name`, `email`, `password`, `phone`, `address`, `loc`, `status`) VALUES
+(1, 'organizer One', 'pas1o@mail.com', '1f87051e29a6927b2e6651dfb9b66387', '0780100000', 'No. 20 Aiyeteju Street', 'f3fc8566140434f0a3f47303c62d5146.jpg', 1),
+(2, 'Adelabu Simbiat', 'jobowonubi@otrs.com', '1526755d438e395e551f229a484f8a1d', '3000002000', 'No. 30 Tanke Ilorin', 'f3fc8566140434f0a3f47303c62d5146.jpg', 1),
+(3, 'Customer Two', 'pass2@mail.com', 'c3a19571f1271af5f27a9582377b7d4a', '1400000020', 'abrahamjasmine', 'f3fc8566140434f0a3f47303c62d5146.jpg', 0),
+(4, 'organizer Three', 'pass3@mail.com', '1dd76b458af8df200a097c5b061df9b1', '9000001000', 'No. 589 Ilorin', 'f3fc8566140434f0a3f47303c62d5146.jpg', 1),
+(5, 'organizer Four', 'pass4@mail.com', 'd780455a563c7c5dbfb74a51785ad949', '0000010020', 'Shagamu', 'f3fc8566140434f0a3f47303c62d5146.jpg', 1),
+(6, 'Test organizer', 'testpass@mail.com', 'abe1bcf64eb68c39847b962e8caadadf', '0000002000', 'Ilorin', 'f3fc8566140434f0a3f47303c62d5146.jpg', 1),
+(7, 'Liam Moore', 'liamoore@gmail.com', '5f4dcc3b5aa765d61d8327deb882cf99', '7000000000', '7014 Allace Road', 'f3fc8566140434f0a3f47303c62d5146.jpg', 1),
+(8, 'Demo Account', 'demoaccount@mail.com', '5f4dcc3b5aa765d61d8327deb882cf99', '7800000000', '100 Demo Address', '404a6378027a553d980b99162a5b4ce8.png', 1);
+(9, 'Kipkosgei Kelvin', 'kelvinkipkosgeisanga@gmail.com', '1234', '0111823379', '00232 ruiru', '404a6378027a553d980b99162a5b4ce8.png', 1);
 
 -- --------------------------------------------------------
 
@@ -217,7 +248,7 @@ INSERT INTO `passenger` (`id`, `name`, `email`, `password`, `phone`, `address`, 
 
 CREATE TABLE `payment` (
   `id` int(11) NOT NULL,
-  `passenger_id` int(11) NOT NULL,
+  `customer_id` int(11) NOT NULL,
   `schedule_id` int(11) NOT NULL,
   `amount` varchar(255) NOT NULL,
   `ref` varchar(100) NOT NULL,
@@ -228,7 +259,7 @@ CREATE TABLE `payment` (
 -- Dumping data for table `payment`
 --
 
-INSERT INTO `payment` (`id`, `passenger_id`, `schedule_id`, `amount`, `ref`, `date`) VALUES
+INSERT INTO `payment` (`id`, `customer_id`, `schedule_id`, `amount`, `ref`, `date`) VALUES
 (12, 4, 5, '500', 'oyki20masb', 'Tue, 11-Aug-2020 11:52:19 AM'),
 (14, 4, 6, '1000', 'oyki20masb', 'Tue, 11-Aug-2020 11:52:19 AM'),
 (15, 3, 5, '300', '5gtnjnzclw', 'Tue, 11-Aug-2020 12:48:38 PM'),
@@ -393,9 +424,9 @@ ALTER TABLE `feedback`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `passenger`
+-- Indexes for table `customer`
 --
-ALTER TABLE `passenger`
+ALTER TABLE `customer`
   ADD PRIMARY KEY (`id`);
 
 --
@@ -403,8 +434,8 @@ ALTER TABLE `passenger`
 --
 ALTER TABLE `payment`
   ADD PRIMARY KEY (`id`),
-  ADD UNIQUE KEY `passenger_id` (`passenger_id`,`schedule_id`),
-  ADD KEY `passenger_id_2` (`passenger_id`) USING BTREE,
+  ADD UNIQUE KEY `customer_id` (`customer_id`,`schedule_id`),
+  ADD KEY `customer_id_2` (`customer_id`) USING BTREE,
   ADD KEY `schedule_id` (`schedule_id`);
 
 --
@@ -443,9 +474,9 @@ ALTER TABLE `booked`
 ALTER TABLE `feedback`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 --
--- AUTO_INCREMENT for table `passenger`
+-- AUTO_INCREMENT for table `customer`
 --
-ALTER TABLE `passenger`
+ALTER TABLE `customer`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 --
 -- AUTO_INCREMENT for table `payment`
@@ -481,13 +512,13 @@ ALTER TABLE `users`
 --
 ALTER TABLE `booked`
   ADD CONSTRAINT `booked_ibfk_1` FOREIGN KEY (`schedule_id`) REFERENCES `schedule` (`id`),
-  ADD CONSTRAINT `booked_ibfk_2` FOREIGN KEY (`user_id`) REFERENCES `passenger` (`id`);
+  ADD CONSTRAINT `booked_ibfk_2` FOREIGN KEY (`user_id`) REFERENCES `customer` (`id`);
 
 --
 -- Constraints for table `payment`
 --
 ALTER TABLE `payment`
-  ADD CONSTRAINT `payment_ibfk_1` FOREIGN KEY (`passenger_id`) REFERENCES `passenger` (`id`),
+  ADD CONSTRAINT `payment_ibfk_1` FOREIGN KEY (`customer_id`) REFERENCES `customer` (`id`),
   ADD CONSTRAINT `payment_ibfk_2` FOREIGN KEY (`schedule_id`) REFERENCES `schedule` (`id`);
 
 --
