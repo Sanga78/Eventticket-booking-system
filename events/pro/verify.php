@@ -50,7 +50,7 @@ if (isset($_GET['reference'])) {
       //confirm access to payment success page
       $paid = substr($paid, 0, -2);
       $reference = strtoupper($reference);
-      $ins = $conn->query("INSERT INTO payment (passenger_id, schedule_id, amount, ref, date) VALUES ('$user_id','$schedule_id', '$paid', '$reference', '$date')");
+      $ins = $conn->query("INSERT INTO payment (customer_id, schedule_id, amount, ref, date) VALUES ('$user_id','$schedule_id', '$paid', '$reference', '$date')");
       $code = genCode($schedule_id, $user_id, $class);
       $seat = genSeat($schedule_id, $class, $number);
       $payment_id = $conn->insert_id;
