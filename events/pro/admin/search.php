@@ -33,7 +33,7 @@ $me = "?page=$source";
                                     alert("Invalid Ticket Number Provided");
                                 } else {
                                     $id = $check->fetch_assoc()['id'];
-                                    $row = $conn->query("SELECT schedule.id as schedule_id, passenger.name as fullname, passenger.email as email, passenger.phone as phone, passenger.loc as loc, payment.amount as amount, payment.ref as ref, payment.date as payment_date, schedule.train_id as train_id, booked.code as code, booked.no as no, booked.class as class, booked.seat as seat, schedule.date as date, schedule.time as time FROM booked INNER JOIN schedule on booked.schedule_id = schedule.id INNER JOIN payment ON payment.id = booked.payment_id INNER JOIN passenger ON passenger.id = booked.user_id WHERE booked.id = '$id'")->fetch_assoc();
+                                    $row = $conn->query("SELECT schedule.id as schedule_id, customer.name as fullname, customer.email as email, customer.phone as phone, customer.loc as loc, payment.amount as amount, payment.ref as ref, payment.date as payment_date, schedule.train_id as train_id, booked.code as code, booked.no as no, booked.class as class, booked.seat as seat, schedule.date as date, schedule.time as time FROM booked INNER JOIN schedule on booked.schedule_id = schedule.id INNER JOIN payment ON payment.id = booked.payment_id INNER JOIN customer ON customer.id = booked.user_id WHERE booked.id = '$id'")->fetch_assoc();
                                     echo '<table id="example1" style="align-items: stretch;" class="table table-hover w-100 table-bordered table-striped">';
                                     echo "
                                     <tr><td colspan='2' class='text-center'><img src='uploads/$row[loc]' class='img img-thumbnail' width='200' height='200'></td></tr>
@@ -70,7 +70,7 @@ $me = "?page=$source";
     <div class="modal-dialog modal-lg">
         <div class="modal-content" align="center">
             <div class="modal-header">
-                <h4 class="modal-title">Search Commuter With Ticket ID
+                <h4 class="modal-title">Search Costomer With Ticket ID
                 </h4>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
