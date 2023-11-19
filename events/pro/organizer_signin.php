@@ -21,7 +21,7 @@ alert("Ensure you fill the form properly.");
 
         //Check for login
         $password = md5($password);
-        $check = $conn->prepare("SELECT * FROM passenger WHERE email = ? AND password = ?");
+        $check = $conn->prepare("SELECT * FROM organizer WHERE email = ? AND password = ?");
         $check->bind_param("ss", $email, $password);
         if (!$check->execute()) die("Form Filled With Error");
         $res = $check->get_result();
@@ -34,7 +34,7 @@ alert("Ensure you fill the form properly.");
         ?>
 <script>
 alert("Account Deactivated!\nContact The System Administrator!");
-window.location = "signin.php";
+window.location = "orgainizer_signin.php";
 </script>
 <?php
                 exit;
@@ -46,7 +46,7 @@ window.location = "signin.php";
             ?>
 <script>
 alert("Access Granted!");
-window.location = "individual.php";
+window.location = "organizer.php";
 </script>
 <?php
             exit;
