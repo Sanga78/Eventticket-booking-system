@@ -21,7 +21,7 @@ alert("Ensure you fill the form properly.");
 
         //Check for login
         $password = md5($password);
-        $check = $conn->prepare("SELECT * FROM passenger WHERE email = ? AND password = ?");
+        $check = $conn->prepare("SELECT * FROM customer WHERE email = ? AND password = ?");
         $check->bind_param("ss", $email, $password);
         if (!$check->execute()) die("Form Filled With Error");
         $res = $check->get_result();
