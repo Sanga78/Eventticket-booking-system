@@ -40,7 +40,7 @@ if (isset($_GET['now'])) {
                             </thead>
                             <tbody>
                                 <?php
-                                $conn = connect()->query("SELECT *, booked.id as id, payment.date as pd FROM `booked` INNER JOIN payment ON booked.payment_id = payment.id INNER JOIN schedule ON schedule.id = booked.schedule_id  WHERE payment.passenger_id = '$user_id' ORDER BY booked.id DESC");
+                                $conn = connect()->query("SELECT *, booked.id as id, payment.date as pd FROM `booked` INNER JOIN payment ON booked.payment_id = payment.id INNER JOIN schedule ON schedule.id = booked.schedule_id  WHERE payment.customer_id = '$user_id' ORDER BY booked.id DESC");
                                 $sn = 0;
                                 while ($row = $conn->fetch_assoc()) {
                                     $fullname = getRouteFromSchedule($row['schedule_id']);
