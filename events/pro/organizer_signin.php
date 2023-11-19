@@ -7,7 +7,7 @@ $class = "signin";
 <?php
 $cur_page = 'signup';
 include 'includes/inc-header.php';
-include 'includes/org-nav.php';
+include 'includes/inc-nav.php';
 if (isset($_POST['email'])) {
     $email = $_POST['email'];
     $password = $_POST['password'];
@@ -21,7 +21,7 @@ alert("Ensure you fill the form properly.");
 
         //Check for login
         $password = md5($password);
-        $check = $conn->prepare("SELECT * FROM organizer WHERE email = ? AND password = ?");
+        $check = $conn->prepare("SELECT * FROM passenger WHERE email = ? AND password = ?");
         $check->bind_param("ss", $email, $password);
         if (!$check->execute()) die("Form Filled With Error");
         $res = $check->get_result();
@@ -34,19 +34,19 @@ alert("Ensure you fill the form properly.");
         ?>
 <script>
 alert("Account Deactivated!\nContact The System Administrator!");
-window.location = "organizer_signin.php";
+window.location = "signin.php";
 </script>
 <?php
                 exit;
             }
             session_regenerate_id(true);
-            $_SESSION['organizer_id'] = $id;
+            $_SESSION['user_id'] = $id;
             $_SESSION['email'] = $email;
 
             ?>
 <script>
 alert("Access Granted!");
-window.location = "organizer.php";
+window.location = "individual.php";
 </script>
 <?php
             exit;
@@ -60,45 +60,46 @@ alert("Access Denied.");
 }
 ?>
 <div class="signup-page">
-    <div class="form">
-        <h2>Organizer Panel</h2>
+<div class="login-page">
+      <h2>Organizer Panel</h2>
         <br>
+        <div class="form">
+    
         <form class="login-form" method="post" role="form" id="signup-form" autocomplete="off">
-            <!-- json response will be here -->
-            <div id="errorDiv"></div>
-            <!-- json response will be here -->
-
-            <div class="col-md-12">
-                <div class="form-group">
-                    <label>Email Address</label>
-                    <input type="email" required name="email">
-                </div>
-            </div>
-
-            <div class="col-md-12">
-                <div class="form-group">
-                    <label>Password</label>
-                    <input type="password" name="password" id="password">
-                    <span class="help-block" id="error"></span>
-                </div>
-            </div>
-
-
-
-            <div class="col-md-12">
-                <div class="form-group">
-                    <button type="submit" id="btn-signup">
-                        SIGN IN
-                    </button>
-                </div>
-            </div>
+          <div id="errorDiv"></div>
+            <input type="email" required name ="email" placeholder="&#xf007;  Email Address"/>
+            <input type="password" name="password" id="password" placeholder="&#xf023;  password"/>
+            <i class="fas fa-eye" onclick="show()"></i> 
+            <br>
+            <br>
+            <button type="submit" id="btn-signup">LOGIN</button>
             <p class="message">
-                <a href="#">.</a><br>
+              <a href="#">.</a><br>
             </p>
         </form>
-    </div>
+    
+        <form class="login-form">
+            <button type="button" onclick="window.location.href='organizer_reg.php'">SIGN UP</button>
+        </form>
+        </div>
+  </div>
+  
 </div>
 </div>
+<script>
+      function show(){
+        var password = document.getElementById("password");
+        var icon = document.querySelector(".fas")
+  
+        // ========== Checking type of password ===========
+        if(password.type === "password"){
+          password.type = "text";
+        }
+        else {
+          password.type = "password";
+        }
+      };
+    </script>
 <script src="assets/js/jquery-1.12.4-jquery.min.js"></script>
 <script src="assets/js/sweetalert2.js"></script>
 </body>
