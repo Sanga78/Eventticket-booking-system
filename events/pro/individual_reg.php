@@ -23,7 +23,7 @@ alert("Ensure you fill the form properly.");
 <?php
     } else {
         //Check if email exists
-        $check_email = $conn->prepare("SELECT * FROM passenger WHERE email = ? OR phone = ?");
+        $check_email = $conn->prepare("SELECT * FROM customer WHERE email = ? OR phone = ?");
         $check_email->bind_param("ss", $email, $phone);
         $check_email->execute();
         $res = $check_email->store_result();
@@ -49,7 +49,7 @@ alert("Password does not match.");
                 echo "<script>alert('We could not complete your registration, try again later!')</script>";
                 exit;
             }
-            $stmt = $conn->prepare("INSERT INTO passenger (name, email, password, phone, address, loc) VALUES (?,?,?,?,?,?)");
+            $stmt = $conn->prepare("INSERT INTO customer (name, email, password, phone, address, loc) VALUES (?,?,?,?,?,?)");
             $stmt->bind_param("ssssss", $name, $email, $password, $phone, $address, $loc);
             if ($stmt->execute()) {
             ?>
