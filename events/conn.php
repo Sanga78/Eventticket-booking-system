@@ -2,7 +2,7 @@
 
 function connect()
 {
-    $conn = new mysqli("localhost", "root", "", "otrsphp");
+    $conn = new mysqli("localhost", "root", "", "eventbook");
     if (!$conn) die("Database is being upgrade!");
     return $conn;
 }
