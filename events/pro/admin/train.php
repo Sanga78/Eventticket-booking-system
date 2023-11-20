@@ -13,11 +13,11 @@ $me = "?page=$source";
                     <div class="card card-success">
                         <div class="card-header">
                             <h3 class="card-title">
-                                All Buses</h3>
+                                All Events</h3>
                             <div class='float-right'>
                                 <button type="button" class="btn btn-info btn-sm" data-toggle="modal"
                                     data-target="#add">
-                                    Add New Bus &#128645;
+                                    Add New Event &#128645;
                                 </button></div>
                         </div>
 
@@ -29,7 +29,7 @@ $me = "?page=$source";
                                 <thead>
                                     <tr>
                                         <th>#</th>
-                                        <th>Bus Name</th>
+                                        <th>Event Name</th>
                                         <th>First Class Seat</th>
                                         <th>Second Class Seat</th>
                                         <th style="width: 30%;">Action</th>
