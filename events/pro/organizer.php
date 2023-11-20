@@ -6,11 +6,11 @@ include 'organizer_session.php';
 include '../constants.php';
 if (@$_GET['page'] == 'print' && isset($_GET['code'])) {
     printClearance($_GET['code']);
-    // echo "<script>window.location='admin.php'</script>";
+    // echo "<script>window.location='organizer.php'</script>";
 }
 if (@$_GET['page'] == 'report' && isset($_GET['id'])) {
     printReport($_GET['id']);
-    // echo "<script>window.location='admin.php'</script>";
+    // echo "<script>window.location='organizer.php'</script>";
 }
 
 $fullname =  getOrganizerName($_SESSION['organizer_id'], $conn);
@@ -92,7 +92,7 @@ $fullname =  getOrganizerName($_SESSION['organizer_id'], $conn);
                         </li>
 
                         <li class="nav-item">
-                            <a href="admin.php?page=users" class="nav-link 
+                            <a href="organizer.php?page=users" class="nav-link 
                             <?php
                             echo (@$_GET['page'] == 'users') ? 'active' : '';
                             ?>
@@ -105,7 +105,7 @@ $fullname =  getOrganizerName($_SESSION['organizer_id'], $conn);
                         </li>
 
                         <li class="nav-item">
-                            <a href="admin.php?page=dynamic" class="nav-link 
+                            <a href="organizer.php?page=dynamic" class="nav-link 
                             <?php
                             echo (@$_GET['page'] == 'dynamic') ? 'active' : '';
                             ?>
@@ -118,7 +118,7 @@ $fullname =  getOrganizerName($_SESSION['organizer_id'], $conn);
                         </li>
                         </li>
                         <li class="nav-item">
-                            <a href="admin.php?page=bus" class="nav-link      <?php
+                            <a href="organizer.php?page=bus" class="nav-link      <?php
                                                                                 echo (@$_GET['page'] == 'bus') ? 'active' : '';
                                                                                 ?>">
                                 <i class="nav-icon fas fa-bus"></i>
@@ -129,7 +129,7 @@ $fullname =  getOrganizerName($_SESSION['organizer_id'], $conn);
                         </li>
 
                         <li class="nav-item">
-                            <a href="admin.php?page=report" class="nav-link      <?php
+                            <a href="organizer.php?page=report" class="nav-link      <?php
                                                                                     echo (@$_GET['page'] == 'report') ? 'active' : '';
                                                                                     ?>">
                                 <i class="nav-icon fas fa-file-pdf"></i>
@@ -140,7 +140,7 @@ $fullname =  getOrganizerName($_SESSION['organizer_id'], $conn);
 
                         </li>
                           <li class="nav-item">
-                            <a href="admin.php?page=payment" class="nav-link      <?php
+                            <a href="organizer.php?page=payment" class="nav-link      <?php
                                                                                     echo (@$_GET['page'] == 'payment') ? 'active' : '';
                                                                                     ?>">
                                 <i class="nav-icon fas fa-dollar-sign"></i>
@@ -150,7 +150,7 @@ $fullname =  getOrganizerName($_SESSION['organizer_id'], $conn);
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a href="admin.php?page=feedback" class="nav-link      <?php
+                            <a href="organizer.php?page=feedback" class="nav-link      <?php
                                                                                     echo (@$_GET['page'] == 'feedback') ? 'active' : '';
                                                                                     ?>">
                                 <i class="nav-icon fas fa-mail-bulk"></i>
@@ -173,7 +173,7 @@ $fullname =  getOrganizerName($_SESSION['organizer_id'], $conn);
 
 
                         <li class="nav-item">
-                            <a href="admin.php?page=logout" class="nav-link">
+                            <a href="organizer.php?page=logout" class="nav-link">
                                 <i class="nav-icon fas fa-power-off"></i>
                                 <p>
                                     Logout
@@ -193,7 +193,7 @@ $fullname =  getOrganizerName($_SESSION['organizer_id'], $conn);
                 <div class="container-fluid">
                     <div class="row mb-2">
                         <div class="col-sm-6">
-                            <h1 class="m-0 text-dark"> Administrator Dashboard</h1>
+                            <h1 class="m-0 text-dark"> Organizer's Dashboard</h1>
                         </div><!-- /.col -->
                     </div><!-- /.row -->
                 </div><!-- /.container-fluid -->
@@ -203,32 +203,32 @@ $fullname =  getOrganizerName($_SESSION['organizer_id'], $conn);
             <!-- Main content -->
             <?php
             if (!isset($_GET['page']))
-                include 'admin/index.php';
+                include 'organizer/index.php';
             elseif ($_GET['page'] == 'dynamic')
-                include 'admin/dynamic_schedule.php';
+                include 'organizer/dynamic_schedule.php';
             elseif ($_GET['page'] == 'report')
-                include 'admin/report.php';
+                include 'organizer/report.php';
             elseif ($_GET['page'] == 'bus')
-                include 'admin/bus.php';
+                include 'organizer/bus.php';
             elseif ($_GET['page'] == 'users')
-                include 'admin/users.php';
+                include 'organizer/users.php';
             elseif ($_GET['page'] == 'route')
-                include 'admin/route.php';
+                include 'organizer/route.php';
             elseif ($_GET['page'] == 'logout') {
                 @session_destroy();
                 echo "<script>alert('You are being logged out'); window.location='../';</script>";
                 exit;
             } elseif ($_GET['page'] == 'payment')
-                include 'admin/sales.php';
+                include 'organizer/sales.php';
 
             elseif ($_GET['page'] == 'feedback')
-                include 'admin/feedback.php';
+                include 'organizer/feedback.php';
 
             elseif ($_GET['page'] == 'search')
-                include 'admin/search.php';
+                include 'organizer/search.php';
 
             else {
-                include 'admin/index.php';
+                include 'organizer/index.php';
             }
             //TODO:
             ?>
