@@ -5,7 +5,7 @@ require_once '../constants.php';
 $class = "reg";
 ?>
 <?php
-$cur_page = 'signup';
+$cur_page = 'organizer_signup';
 include 'includes/inc-header.php';
 include 'includes/inc-nav.php';
 if (isset($_POST['name'])) {
