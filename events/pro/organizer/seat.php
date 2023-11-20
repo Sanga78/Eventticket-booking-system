@@ -27,12 +27,12 @@
     <!-- Requiring the admin header files -->
     <?php require '../assets/partials/_admin-header.php';?>
     <?php
-                $busSql = "Select * from bus";
-                $resultBusSql = mysqli_query($conn, $busSql);
+                $eventSql = "Select * from event";
+                $resultEventSql = mysqli_query($conn, $eventSql);
                 $arr = array();
-                while($row = mysqli_fetch_assoc($resultBusSql))
+                while($row = mysqli_fetch_assoc($resultEventSql))
                     $arr[] = $row;
-                $busJson = json_encode($arr);
+                $eventJson = json_encode($arr);
             ?>
 
             <section id="seat">
@@ -41,23 +41,23 @@
                 </div>
                 <div id="main">
                     <form action="<?php echo $_SERVER['PHP_SELF']; ?>" method="GET">
-                        <div class="searchBus">
-                            <input type="text" id="bus-no" name="bus-no" placeholder="Bus Number"
-                            class="busnoInput">
+                        <div class="searchEvent">
+                            <input type="text" id="event-no" name="event-no" placeholder="Event Number"
+                            class="eventnoInput">
                             <div class="sugg">
                             </div>
                         </div>
 
-                        <!-- Sending busJson -->
-                        <input type="hidden" id="busJson" name="busJson" value='<?php echo $busJson; ?>'>
+                        <!-- Sending eventJson -->
+                        <input type="hidden" id="eventJson" name="eventJson" value='<?php echo $eventJson; ?>'>
                         <button type="submit" name="submit">Search</button>
                     </form>
                     <div id="seat-results">
                         <?php
                             if(isset($_GET["submit"]))
                             {
-                                $busid = $_GET["bus-1d"];
-                                $sql = "SELECT * FROM seats WHERE bus_id='$busid'";
+                                $eventid = $_GET["event_id"];
+                                $sql = "SELECT * FROM seats WHERE event_id='$eventid'";
                                 $result = mysqli_query($conn, $sql);
 
                                 $booked_seats = false;
@@ -139,7 +139,7 @@
                             </table>
                             <div style="text-align: center; color: #9a031e; font-weight: bold;">
                                 <?php 
-                                    echo $busno;
+                                    echo $eventno;
                                 ?>
                             </div>
                             <?php }

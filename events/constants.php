@@ -466,7 +466,7 @@ function getTotalBookByType($id)
     $no2 = $con2['no'];
     $num = $no == null ? 0 :  $con['no'];
     $num2 = $no2 == null ? 0 :  $con2['no'];
-    $qu = connect()->query("SELECT event.first_seat as first, event.second_seat as second FROM schedule INNER JOIN event ON event.id = schedule.bus_id WHERE schedule.id = '$id'")->fetch_assoc();
+    $qu = connect()->query("SELECT event.first_seat as first, event.second_seat as second FROM schedule INNER JOIN event ON event.id = schedule.event_id WHERE schedule.id = '$id'")->fetch_assoc();
     $first = $qu['first'];
     $second = $qu['second'];
     $first = intval($first);

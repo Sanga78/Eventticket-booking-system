@@ -118,8 +118,8 @@ $fullname =  getOrganizerName($_SESSION['organizer_id'], $conn);
                         </li>
                         </li>
                         <li class="nav-item">
-                            <a href="organizer.php?page=bus" class="nav-link      <?php
-                                                                                echo (@$_GET['page'] == 'bus') ? 'active' : '';
+                            <a href="organizer.php?page=event" class="nav-link      <?php
+                                                                                echo (@$_GET['page'] == 'event') ? 'active' : '';
                                                                                 ?>">
                                 <i class="nav-icon fas fa-bus"></i>
                                 <p>
@@ -208,8 +208,8 @@ $fullname =  getOrganizerName($_SESSION['organizer_id'], $conn);
                 include 'organizer/dynamic_schedule.php';
             elseif ($_GET['page'] == 'report')
                 include 'organizer/report.php';
-            elseif ($_GET['page'] == 'bus')
-                include 'organizer/bus.php';
+            elseif ($_GET['page'] == 'event')
+                include 'organizer/event.php';
             elseif ($_GET['page'] == 'users')
                 include 'organizer/users.php';
             elseif ($_GET['page'] == 'route')

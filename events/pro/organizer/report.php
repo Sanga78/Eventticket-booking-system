@@ -40,7 +40,7 @@ $me = "?page=$source"
                                         while ($fetch = $row->fetch_assoc()) {
                                             $id = $fetch['id']; ?><tr>
                                             <td><?php echo ++$sn; ?></td>
-                                            <td><?php echo getBusName($fetch['bus_id']); ?></td>
+                                            <td><?php echo getEventName($fetch['event_id']); ?></td>
                                             <td><?php echo getRoutePath($fetch['route_id']);
                                                     $fullname = " Schedule" ?></td>
 

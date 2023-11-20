@@ -1,6 +1,6 @@
 <?php
 if (!isset($file_access)) die("Direct File Access Denied");
-$source = 'bus';
+$source = 'event';
 $me = "?page=$source";
 ?>
 
@@ -30,6 +30,7 @@ $me = "?page=$source";
                                     <tr>
                                         <th>#</th>
                                         <th>Event</th>
+                                        <th>Organizer</th>
                                         <th>First Class Seat</th>
                                         <th>Second Class Seat</th>
                                         <th style="width: 30%;">Action</th>
@@ -37,7 +38,7 @@ $me = "?page=$source";
                                 </thead>
                                 <tbody>
                                     <?php
-                                    $row = $conn->query("SELECT * FROM bus");
+                                    $row = $conn->query("SELECT * FROM event");
                                     if ($row->num_rows < 1) echo "No Records Yet";
                                     $sn = 0;
                                     while ($fetch = $row->fetch_assoc()) {
@@ -47,6 +48,7 @@ $me = "?page=$source";
                                     <tr>
                                         <td><?php echo ++$sn; ?></td>
                                         <td><?php echo $fullname = $fetch['name']; ?></td>
+                                        <td><?php echo getOrganizerName($fetch['organizer_id']); ?></td>
                                         <td><?php echo $fetch['first_seat']; ?></td>
                                         <td><?php echo $fetch['second_seat']; ?></td>
                                         <td>
@@ -56,7 +58,7 @@ $me = "?page=$source";
                                                     Edit
                                                 </button> -
 
-                                                <input type="hidden" class="form-control" name="del_bus"
+                                                <input type="hidden" class="form-control" name="del_event"
                                                     value="<?php echo $id ?>" required id="">
                                                 <button type="submit"
                                                     onclick="return confirm('Are you sure about this?')"
@@ -87,6 +89,17 @@ $me = "?page=$source";
                                                         <p>	Event : <input type="strings" class="form-control"
                                                                 name="name" value="<?php echo $fetch['name'] ?>"
                                                                 required minlength="3" id=""></p>
+                                                        <p>Organizer : <select class="form-control" name="organizer_id" required
+                                                                id="">
+                                                                <option value="">Select Organizer</option>
+                                                                <?php
+                                                                    $cons = connect()->query("SELECT * FROM organizer");
+                                                                    while ($t = $cons->fetch_assoc()) {
+                                                                        echo "<option " . ($fetch['organizer_id'] == $t['id'] ? 'selected="selected"' : '') . " value='" . $t['id'] . "'>" . $t['name'] . "</option>";
+                                                                    }
+                                                                    ?>
+                                                            </select>
+                                                        </p>
                                                         <p>First Class Capacity : <input type="number" min='0'
                                                                 class="form-control"
                                                                 value="<?php echo $fetch['first_seat'] ?>"
@@ -99,7 +112,7 @@ $me = "?page=$source";
                                                         </p>
                                                         <p>
 
-                                                            <input class="btn btn-info" type="submit" value="Edit Bus"
+                                                            <input class="btn btn-info" type="submit" value="Edit Event"
                                                                 name='edit'>
                                                         </p>
                                                     </form>
@@ -151,6 +164,18 @@ $me = "?page=$source";
                             <td><input type="text" class="form-control" name="name" required minlength="3" id=""></td>
                         </tr>
                         <tr>
+                            <th>Organizer</th>
+                            <td><select class="form-control" name="organizer_id" required id="">
+                                <option value="">Select Organizer</option>
+                                <?php
+                                $con = connect()->query("SELECT * FROM organizer");
+                                while ($row = $con->fetch_assoc()) {
+                                    echo "<option value='" . $row['id'] . "'>" . $row['name'] . "</option>";
+                                }
+                                ?>
+                            </select>
+                        </tr>
+                        <tr>
                             <th>First Class Capacity</th>
                             <td><input type="number" min='0' class="form-control" name="first_seat" required id=""></td>
                         </tr>
@@ -162,7 +187,7 @@ $me = "?page=$source";
                         <tr>
                             <td colspan="2">
 
-                                <input class="btn btn-info" type="submit" value="Add Bus" name='submit'>
+                                <input class="btn btn-info" type="submit" value="Add Event" name='submit'>
                             </td>
                         </tr>
                     </table>
@@ -182,19 +207,20 @@ $me = "?page=$source";
 
 if (isset($_POST['submit'])) {
     $name = $_POST['name'];
+    $organizer_id = $_POST['organizer_id'];
     $first_seat = $_POST['first_seat'];
     $second_seat = $_POST['second_seat'];
-    if (!isset($name, $first_seat, $second_seat)) {
+    if (!isset($name, $organizer_id, $first_seat, $second_seat)) {
         alert("Fill Form Properly!");
     } else {
         $conn = connect();
-        //Check if bus exists
-        $check = $conn->query("SELECT * FROM bus WHERE name = '$name' ")->num_rows;
+        //Check if event exists
+        $check = $conn->query("SELECT * FROM event WHERE name = '$name' ")->num_rows;
         if ($check) {
             alert("Event already exists");
         } else {
-            $ins = $conn->prepare("INSERT INTO bus (name, first_seat, second_seat) VALUES (?,?,?)");
-            $ins->bind_param("sss", $name, $first_seat, $second_seat);
+            $ins = $conn->prepare("INSERT INTO event (name,organizer_id, first_seat, second_seat) VALUES (?,?,?)");
+            $ins->bind_param("ssss", $name, $organizer_id, $first_seat, $second_seat);
             $ins->execute();
             alert("Event Added Successfully");
             load($_SERVER['PHP_SELF'] . "$me");
@@ -204,20 +230,21 @@ if (isset($_POST['submit'])) {
 
 if (isset($_POST['edit'])) {
     $name = $_POST['name'];
+    $organizer_id = $_POST['organizer_id'];
     $first_seat = $_POST['first_seat'];
     $second_seat = $_POST['second_seat'];
     $id = $_POST['id'];
-    if (!isset($name, $first_seat, $second_seat)) {
+    if (!isset($name, $organizer_id, $first_seat, $second_seat)) {
         alert("Fill Form Properly!");
     } else {
         $conn = connect();
-        //Check if bus exists
-        $check = $conn->query("SELECT * FROM bus WHERE name = '$name' ")->num_rows;
+        //Check if event exists
+        $check = $conn->query("SELECT * FROM event WHERE name = '$name' ")->num_rows;
         if ($check == 2) {
             alert("Event exists");
         } else {
-            $ins = $conn->prepare("UPDATE bus SET name = ?, first_seat = ?, second_seat = ? WHERE id = ?");
-            $ins->bind_param("sssi", $name, $first_seat, $second_seat, $id);
+            $ins = $conn->prepare("UPDATE event SET name = ?, organizer_id = ?, first_seat = ?, second_seat = ? WHERE id = ?");
+            $ins->bind_param("ssssi", $name, $organizer_id, $first_seat, $second_seat, $id);
             $ins->execute();
             alert("Event Modified!");
             load($_SERVER['PHP_SELF'] . "$me");
@@ -225,9 +252,9 @@ if (isset($_POST['edit'])) {
     }
 }
 
-if (isset($_POST['del_bus'])) {
+if (isset($_POST['del_event'])) {
     $con = connect();
-    $conn = $con->query("DELETE FROM bus WHERE id = '" . $_POST['del_bus'] . "'");
+    $conn = $con->query("DELETE FROM event WHERE id = '" . $_POST['del_event'] . "'");
     if ($con->affected_rows < 1) {
         alert("Event Could Not Be Deleted. This Event Been Tied To Another Data!");
         load($_SERVER['PHP_SELF'] . "$me");
