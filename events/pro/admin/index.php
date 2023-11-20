@@ -25,6 +25,29 @@ if (!isset($file_access)) die("Direct File Access Denied");
             <!-- /.info-box -->
         </div>
         <!-- /.col -->
+
+        <div class="col-md-3 col-sm-6 col-12">
+            <div class="info-box bg-danger">
+                <span class="info-box-icon"><i class="fa fa-users"></i></span>
+
+                <div class="info-box-content">
+                    <span class="info-box-text">Orgs</span>
+                    <span class="info-box-number"><?php
+                                                    echo $reg =  $conn->query("SELECT * FROM organizer")->num_rows;
+                                                    ?></span>
+
+                    <div class="progress">
+                        <div class="progress-bar" style="width: 70%"></div>
+                    </div>
+                    <?php //readonly  
+                    ?>
+                </div>
+                <!-- /.info-box-content -->
+            </div>
+            <!-- /.info-box -->
+        </div>
+        <!-- /.col -->
+
         <div class="col-md-3 col-sm-6 col-12">
             <div class="info-box bg-info">
                 <span class="info-box-icon"><i class="fa fa-bus"></i></span>
