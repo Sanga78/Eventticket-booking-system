@@ -275,7 +275,7 @@ function sendMail($to, $subject, $msg)
 function genSeat($id, $type, $number)
 {
     $conn = connect();
-    $type_seat = $conn->query("SELECT bus.first_seat as first, bus.second_seat as second FROM schedule INNER JOIN bus ON bus.id = schedule.bus_id WHERE schedule.id = '$id'")->fetch_assoc();
+    $type_seat = $conn->query("SELECT event.first_seat as first, event.second_seat as second FROM schedule INNER JOIN event ON event.id = schedule.event_id WHERE schedule.id = '$id'")->fetch_assoc();
     $me = $type_seat[$type];
     $query = $conn->query("SELECT SUM(no) AS no FROM booked WHERE schedule_id = '$id' AND class = '$type'")->fetch_assoc();
     $no = $query['no'];
@@ -466,7 +466,7 @@ function getTotalBookByType($id)
     $no2 = $con2['no'];
     $num = $no == null ? 0 :  $con['no'];
     $num2 = $no2 == null ? 0 :  $con2['no'];
-    $qu = connect()->query("SELECT bus.first_seat as first, bus.second_seat as second FROM schedule INNER JOIN bus ON bus.id = schedule.bus_id WHERE schedule.id = '$id'")->fetch_assoc();
+    $qu = connect()->query("SELECT event.first_seat as first, event.second_seat as second FROM schedule INNER JOIN event ON event.id = schedule.bus_id WHERE schedule.id = '$id'")->fetch_assoc();
     $first = $qu['first'];
     $second = $qu['second'];
     $first = intval($first);
@@ -494,11 +494,13 @@ function isScheduleActive($id)
     return false;
 }
 
-function getBusName($id)
+function getEventName($id)
 {
-    $val = connect()->query("SELECT name FROM bus WHERE id = '$id'")->fetch_assoc();
+    $val = connect()->query("SELECT name FROM event WHERE id = '$id'")->fetch_assoc();
     return $val['name'];
 }
+
+
 function alert($msg)
 {
     echo "<script>alert('$msg')</script>";
@@ -515,7 +517,7 @@ function printClearance($id)
     ob_start();
     $con = connect();
     $me = $_SESSION['user_id'];
-    $getCount = (connect()->query("SELECT schedule.id as schedule_id, customer.name as fullname, customer.email as email, customer.phone as phone, customer.loc as loc, payment.amount as amount, payment.ref as ref, payment.date as payment_date, schedule.bus_id as bus_id, booked.code as code, booked.no as no, booked.class as class, booked.seat as seat, schedule.date as date, schedule.time as time FROM booked INNER JOIN schedule on booked.schedule_id = schedule.id INNER JOIN payment ON payment.id = booked.payment_id INNER JOIN customer ON customer.id = booked.user_id WHERE booked.id = '$id'"));
+    $getCount = (connect()->query("SELECT schedule.id as schedule_id, customer.name as fullname, customer.email as email, customer.phone as phone, customer.loc as loc, payment.amount as amount, payment.ref as ref, payment.date as payment_date, schedule.event_id as event_id, booked.code as code, booked.no as no, booked.class as class, booked.seat as seat, schedule.date as date, schedule.time as time FROM booked INNER JOIN schedule on booked.schedule_id = schedule.id INNER JOIN payment ON payment.id = booked.payment_id INNER JOIN customer ON customer.id = booked.user_id WHERE booked.id = '$id'"));
     if ($getCount->num_rows != 1) die("Denied");
     $row = $getCount->fetch_assoc();
     $customer_name = substr($fullname = ($row['fullname']), 0, 15);
@@ -533,7 +535,7 @@ function printClearance($id)
     $barcodeOutput = generateQR($id, $barcode);
     $loc = $row['loc'];
     $seat = $row['seat'];
-    $bus = getBusName($row['bus_id']);
+    $event = getEventName($row['event_id']);
     $class = $row['class'];
     $payment_date = $row['payment_date'];
     $amount = $row['amount'];
@@ -587,7 +589,7 @@ function printClearance($id)
     $pdf->SetAuthor($fullname);
     $pdf->SetTitle($fullname . " Ticket");
     $pdf->SetSubject(SITE_NAME);
-    $pdf->SetKeywords("Bus Booking System, Rail, Rails, Railway, Booking, Project, System, Website, Portal ");
+    $pdf->SetKeywords("Event Booking System, Events, Booking, Project, System, Website, Portal ");
 
 
     // set default monospaced font
@@ -640,7 +642,7 @@ table th{font-weight:italic}
 <tr><th><b>Contact:</b></th><td>$phone</td></tr>
 <tr><td colspan="2" style="text-align:center"><b>Trip Detail</b></td></tr>
 <tr><th><b>Route:</b></th><td>$route</td></tr>
-<tr><th><b>Bus:</b></th><td>$Bus</td></tr>
+<tr><th><b>Event:</b></th><td>$event</td></tr>
 <tr><th><b>Class:</b></th><td>$class Class</td></tr>
 <tr><th><b>Seat Number:</b></th><td>$seat</td></tr>
 <tr><th><b>Date:</b></th><td>$date</td></tr>
@@ -748,7 +750,7 @@ function printReport($id)
 {
     ob_start();
     $con = connect();
-    $getCount = (connect()->query("SELECT schedule.date as date, schedule.time as time, schedule.bus_id as bus, schedule.route_id as route, booked.seat as seat, customer.name as fullname, booked.code as code, booked.class as class FROM booked INNER JOIN schedule ON schedule.id = booked.schedule_id INNER JOIN customer ON customer.id = booked.user_id WHERE booked.schedule_id = '$id' ORDER BY class "));
+    $getCount = (connect()->query("SELECT schedule.date as date, schedule.time as time, schedule.event_id as event, schedule.route_id as route, booked.seat as seat, customer.name as fullname, booked.code as code, booked.class as class FROM booked INNER JOIN schedule ON schedule.id = booked.schedule_id INNER JOIN customer ON customer.id = booked.user_id WHERE booked.schedule_id = '$id' ORDER BY class "));
 
     $output = "<style>
     .a {
@@ -795,7 +797,7 @@ function printReport($id)
     while ($row = $getCount->fetch_assoc()) {
         $date = $row['date'];
         $time = $row['time'];
-        $bus = getBusName($row['bus']);
+        $event = getEventName($row['event']);
         $route = getRouteFromSchedule($id);
         $time = formatTime($time);
         $sn++;
