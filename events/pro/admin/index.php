@@ -55,7 +55,7 @@ if (!isset($file_access)) die("Direct File Access Denied");
                 <div class="info-box-content">
                     <span class="info-box-text">Events</span>
                     <span class="info-box-number"><?php
-                                                    echo $comp = $conn->query("SELECT * FROM bus")->num_rows;
+                                                    echo $comp = $conn->query("SELECT * FROM event")->num_rows;
                                                     ?></span>
 
                     <div class="progress">
