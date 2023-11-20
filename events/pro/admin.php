@@ -104,6 +104,21 @@ $fullname =  "System Administrator";
                             </a>
                         </li>
 
+
+                        <li class="nav-item">
+                            <a href="admin.php?page=organizers" class="nav-link 
+                            <?php
+                            echo (@$_GET['page'] == 'organizers') ? 'active' : '';
+                            ?>
+                            ">
+                                <i class="nav-icon fas fa-users"></i>
+                                <p>
+                                    Organizers
+                                </p>
+                            </a>
+                        </li>
+
+
                         <li class="nav-item">
                             <a href="admin.php?page=dynamic" class="nav-link 
                             <?php
@@ -222,6 +237,8 @@ $fullname =  "System Administrator";
                 include 'admin/bus.php';
             elseif ($_GET['page'] == 'users')
                 include 'admin/users.php';
+            elseif ($_GET['page'] == 'organizers')
+                include 'admin/organizers.php';
             elseif ($_GET['page'] == 'route')
                 include 'admin/route.php';
             elseif ($_GET['page'] == 'logout') {
