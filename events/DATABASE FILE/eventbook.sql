@@ -34,7 +34,7 @@ SET time_zone = "+00:00";
 
 CREATE TABLE `availability` (
   `id` int(10) UNSIGNED NOT NULL,
-  `bus` int(10) UNSIGNED DEFAULT NULL,
+  `event` int(10) UNSIGNED DEFAULT NULL,
   `route` int(10) UNSIGNED DEFAULT NULL,
   `date` date DEFAULT NULL,
   `time` time DEFAULT NULL,
@@ -46,7 +46,7 @@ CREATE TABLE `availability` (
 -- Dumping data for table `availability`
 --
 
-INSERT INTO `availability` (`id`, `bus`, `route`, `date`, `time`, `amount`, `status`) VALUES
+INSERT INTO `availability` (`id`, `event`, `route`, `date`, `time`, `amount`, `status`) VALUES
 (1, 1, 1, '2023-10-20', '13:00:00', '1', 'available'),
 (2, 1, 2, '2023-10-22', '20:00:00', '2', 'not available'),
 (3, 2, 1, '2023-11-05', '13:00:00', '1', 'available');
@@ -57,7 +57,7 @@ INSERT INTO `availability` (`id`, `bus`, `route`, `date`, `time`, `amount`, `sta
 --
 
 --
--- Table structure for table `buses`
+-- Table structure for table `events`
 --
 
 -- --------------------------------------------------------
@@ -66,7 +66,7 @@ INSERT INTO `availability` (`id`, `bus`, `route`, `date`, `time`, `amount`, `sta
 --
 
 CREATE TABLE `seats` (
-  `bus_id` varchar(155) NOT NULL,
+  `event_id` varchar(155) NOT NULL,
   `seat_booked` varchar(255) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
@@ -74,7 +74,7 @@ CREATE TABLE `seats` (
 -- Dumping data for table `seats`
 --
 
-INSERT INTO `seats` (`bus_id`, `seat_booked`) VALUES
+INSERT INTO `seats` (`event_id`, `seat_booked`) VALUES
 ('ABC0010', NULL),
 ('BCC9999', NULL),
 ('CAS3300', '16'),
@@ -90,28 +90,29 @@ INSERT INTO `seats` (`bus_id`, `seat_booked`) VALUES
 -- --------------------------------------------------------
 
 
-CREATE TABLE `bus` (
+CREATE TABLE `event` (
   `id` int(11) NOT NULL,
   `name` varchar(80) NOT NULL,
+  `organizer_id` int(11) NOT NULL,
   `first_seat` int(11) NOT NULL,
   `second_seat` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data for table `bus`
+-- Dumping data for table `event`
 --
 
-INSERT INTO `bus` (`id`, `name`, `first_seat`, `second_seat`) VALUES
-(1, 'EGERTON BEBA', 30, 45),
-(2, 'EGERTON CLASSIC', 30, 45),
-(3, 'EGERTON SUPER', 30, 45),
-(7, 'EGERTON OKOA', 30, 45),
-(8, 'EGERTON SHUFFLE', 30, 40),
-(9, 'BEBA COACH', 20, 50),
-(10, 'SUPER COACH', 30, 45),
-(11, 'CLASSIC COACH', 30, 40),
-(12, 'SHUFFLE COACH', 25, 60),
-(13, 'OKOA COACH', 30, 50);
+INSERT INTO `event` (`id`, `name`,`organizer_id`, `first_seat`, `second_seat`) VALUES
+(1, 'EGERTON DERA FEST',1, 30, 45),
+(2, 'EUSDA', 2, 30, 45),
+(3, 'EUNCCU', 4, 30, 45),
+(7, 'WORSHIP FEST', 3, 30, 45),
+(8, 'X-RAY PARTY', 1, 30, 40),
+(9, 'HUAWEI BOOTCAMP', 2, 20, 50),
+(10, 'TECH FEST', 1, 30, 45),
+(11, 'CHURCHIL SHOW', 4, 30, 40),
+(12, 'LEGACY DRAMA', 2, 25, 60),
+(13, 'COMRADES PARTY', 1, 30, 50);
 
 -- --------------------------------------------------------
 
@@ -323,7 +324,7 @@ INSERT INTO `route` (`id`, `start`, `stop`) VALUES
 
 CREATE TABLE `schedule` (
   `id` int(11) NOT NULL,
-  `bus_id` int(11) NOT NULL,
+  `event_id` int(11) NOT NULL,
   `route_id` int(11) NOT NULL,
   `date` varchar(30) NOT NULL,
   `time` varchar(10) NOT NULL,
@@ -335,32 +336,32 @@ CREATE TABLE `schedule` (
 -- Dumping data for table `schedule`
 --
 
-INSERT INTO `schedule` (`id`, `bus_id`, `route_id`, `date`, `time`, `first_fee`, `second_fee`) VALUES
-(5, 7, 7, '11-08-2020', '18:30', 500, 300),
-(6, 11, 6, '11-08-2020', '18:30', 1500, 1000),
-(7, 11, 5, '12-08-2020', '18:30', 1000, 800),
-(8, 11, 4, '13-08-2020', '18:30', 150, 100),
-(9, 11, 3, '14-08-2020', '18:30', 70, 50),
-(10, 7, 5, '15-08-2020', '18:30', 1000, 800),
-(11, 9, 7, '16-08-2020', '18:30', 500, 300),
-(12, 10, 5, '17-08-2020', '18:30', 1000, 800),
-(16, 2, 7, '16-08-2020', '11:00', 500,300),
-(17, 9, 3, '23-08-2020', '11:00', 70, 50),
-(18, 10, 4, '30-08-2020', '11:00', 150, 100),
-(20, 8, 4, '07-11-2020', '22:24', 150, 100),
-(22, 8, 3, '08-11-2020', '15:13', 70, 50),
-(23, 3, 3, '07-11-2020', '15:10', 70, 50),
-(24, 2, 3, '15-11-2020', '15:22', 70, 50),
-(25, 1, 3, '11-06-2021', '05:37', 70, 50),
-(26, 2, 3, '18-09-2021', '09:00', 70, 50),
-(97, 11, 8, '11-10-2021', '11:05', 550, 350),
-(98, 10, 14, '12-10-2021', '09:00', 400, 300),
-(99, 8, 11, '12-10-2021', '11:10', 800, 600),
-(100, 9, 12, '12-10-2021', '12:20', 70, 50),
-(101, 2, 10, '12-10-2021', '22:59', 450, 350),
-(102, 7, 4, '12-10-2021', '11:02', 150, 100),
-(103, 9, 11, '12-10-2021', '04:45', 800, 600),
-(104, 12, 15, '14-10-2021', '10:00', 800, 600);
+INSERT INTO `schedule` (`id`, `event_id`, `route_id`, `date`, `time`, `first_fee`, `second_fee`) VALUES
+(5, 7, 7, '11-10-2023', '18:30', 500, 300),
+(6, 11, 6, '11-10-2023', '18:30', 1500, 1000),
+(7, 11, 5, '12-10-2023', '18:30', 1000, 800),
+(8, 11, 4, '13-10-2023', '18:30', 150, 100),
+(9, 11, 3, '14-10-2023', '18:30', 70, 50),
+(10, 7, 5, '15-10-2023', '18:30', 1000, 800),
+(11, 9, 7, '16-11-2023', '18:30', 500, 300),
+(12, 10, 5, '17-11-2023', '18:30', 1000, 800),
+(16, 2, 7, '16-11-2023', '11:00', 500,300),
+(17, 9, 3, '23-11-2023', '11:00', 70, 50),
+(18, 10, 4, '30-11-2023', '11:00', 150, 100),
+(20, 8, 4, '07-12-2023', '22:24', 150, 100),
+(22, 8, 3, '08-12-2023', '15:13', 70, 50),
+(23, 3, 3, '07-12-2023', '15:10', 70, 50),
+(24, 2, 3, '15-12-2023', '15:22', 70, 50),
+(25, 1, 3, '11-06-2024', '05:37', 70, 50),
+(26, 2, 3, '18-09-2024', '09:00', 70, 50),
+(97, 11, 8, '11-10-2024', '11:05', 550, 350),
+(98, 10, 14, '12-10-2024', '09:00', 400, 300),
+(99, 8, 11, '12-10-2024', '11:10', 800, 600),
+(100, 9, 12, '12-10-2024', '12:20', 70, 50),
+(101, 2, 10, '12-10-2024', '22:59', 450, 350),
+(102, 7, 4, '12-10-2024', '11:02', 150, 100),
+(103, 9, 11, '12-10-2024', '04:45', 800, 600),
+(104, 12, 15, '14-10-2024', '10:00', 800, 600);
 
 -- --------------------------------------------------------
 
@@ -391,13 +392,13 @@ INSERT INTO `users` (`id`, `email`, `password`) VALUES
 --
 ALTER TABLE `availability`
   ADD PRIMARY KEY (`id`),
-  ADD KEY `bus` (`bus`),
+  ADD KEY `event` (`event`),
   ADD KEY `route` (`route`);
 
 --
--- Indexes for table `bus`
+-- Indexes for table `event`
 --
-ALTER TABLE `bus`
+ALTER TABLE `event`
   ADD PRIMARY KEY (`id`);
 
 
@@ -449,7 +450,7 @@ ALTER TABLE `route`
 --
 ALTER TABLE `schedule`
   ADD PRIMARY KEY (`id`),
-  ADD KEY `bus_id` (`bus_id`),
+  ADD KEY `event_id` (`event_id`),
   ADD KEY `route_id` (`route_id`);
 
 
@@ -494,9 +495,9 @@ ALTER TABLE `route`
 ALTER TABLE `schedule`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=105;
 --
--- AUTO_INCREMENT for table `bus`
+-- AUTO_INCREMENT for table `event`
 --
-ALTER TABLE `bus`
+ALTER TABLE `event`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
 --
 -- AUTO_INCREMENT for table `users`
@@ -525,13 +526,13 @@ ALTER TABLE `payment`
 -- Indexes for table `seats`
 --
 ALTER TABLE `seats`
-  ADD PRIMARY KEY (`bus_no`);
+  ADD PRIMARY KEY (`event_no`);
 
 --
 -- Constraints for table `schedule`
 --
 ALTER TABLE `schedule`
-  ADD CONSTRAINT `schedule_ibfk_1` FOREIGN KEY (`bus_id`) REFERENCES `bus` (`id`),
+  ADD CONSTRAINT `schedule_ibfk_1` FOREIGN KEY (`event_id`) REFERENCES `event` (`id`),
   ADD CONSTRAINT `schedule_ibfk_2` FOREIGN KEY (`route_id`) REFERENCES `route` (`id`);
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
