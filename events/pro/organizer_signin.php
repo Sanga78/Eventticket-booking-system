@@ -1,11 +1,11 @@
 <?php
 session_start();
 require_once '../conn.php';
-$class = "signin";
+$class = "organizer_signin";
 
 ?>
 <?php
-$cur_page = 'signup';
+$cur_page = 'organizer_signup';
 include 'includes/inc-header.php';
 include 'includes/inc-nav.php';
 if (isset($_POST['email'])) {
@@ -40,7 +40,7 @@ window.location = "orgainizer_signin.php";
                 exit;
             }
             session_regenerate_id(true);
-            $_SESSION['user_id'] = $id;
+            $_SESSION['organizer_id'] = $id;
             $_SESSION['email'] = $email;
 
             ?>
