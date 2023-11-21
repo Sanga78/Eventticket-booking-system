@@ -131,4 +131,10 @@ body {
 }
 .logged-user {
     margin-left: 60px;
-  }
+}
+#error-msg{
+    color: #EA4335;
+}
+#valid-msg{
+  color: #17a589;
+}
