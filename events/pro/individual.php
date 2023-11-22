@@ -118,8 +118,8 @@ if (isset($_GET['error'])) {
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a href="individual.php?page=bus" class="nav-link      <?php
-                                                                                echo (@$_GET['page'] == 'bus') ? 'active' : '';
+                            <a href="individual.php?page=event" class="nav-link      <?php
+                                                                                echo (@$_GET['page'] == 'event') ? 'active' : '';
                                                                                 ?>">
                                 <i class="nav-icon fas fa-bus"></i>
                                 <p>
@@ -128,8 +128,8 @@ if (isset($_GET['error'])) {
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a href="individual.php?page=bus" class="nav-link      <?php
-                                                                                echo (@$_GET['page'] == 'bus') ? 'active' : '';
+                            <a href="individual.php?page=event" class="nav-link      <?php
+                                                                                echo (@$_GET['page'] == 'event') ? 'active' : '';
                                                                                 ?>">
                                 <i class="nav-icon fas fa-bus"></i>
                                 <p>
@@ -205,8 +205,8 @@ if (isset($_GET['error'])) {
                 include 'individual/dynamic_schedule.php';
 				  elseif ($_GET['page'] == 'route')
                 include 'individual/route.php';
-				elseif ($_GET['page'] == 'bus')
-                include 'individual/bus.php';
+				elseif ($_GET['page'] == 'event')
+                include 'individual/event.php';
 				elseif ($_GET['page'] == 'seat')
                 include 'individual/seat.php';
 				
