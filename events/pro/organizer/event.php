@@ -38,7 +38,8 @@ $me = "?page=$source";
                                 </thead>
                                 <tbody>
                                     <?php
-                                    $row = $conn->query("SELECT * FROM event");
+                                    // $row = $conn->query("SELECT * FROM event");
+                                    $row = $conn->query("SELECT * FROM event WHERE organizer_id = $organizer_id");
                                     if ($row->num_rows < 1) echo "No Records Yet";
                                     $sn = 0;
                                     while ($fetch = $row->fetch_assoc()) {
