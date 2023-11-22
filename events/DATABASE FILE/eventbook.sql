@@ -104,14 +104,14 @@ CREATE TABLE `event` (
 
 INSERT INTO `event` (`id`, `name`,`organizer_id`, `first_seat`, `second_seat`) VALUES
 (1, 'EGERTON DERA FEST',1, 30, 45),
-(2, 'EUSDA', 2, 30, 45),
+(2, 'EUSDA', 8, 30, 45),
 (3, 'EUNCCU', 4, 30, 45),
 (7, 'WORSHIP FEST', 3, 30, 45),
 (8, 'X-RAY PARTY', 1, 30, 40),
 (9, 'HUAWEI BOOTCAMP', 2, 20, 50),
 (10, 'TECH FEST', 1, 30, 45),
 (11, 'CHURCHIL SHOW', 4, 30, 40),
-(12, 'LEGACY DRAMA', 2, 25, 60),
+(12, 'LEGACY DRAMA', 8, 25, 60),
 (13, 'COMRADES PARTY', 1, 30, 50);
 
 -- --------------------------------------------------------
@@ -325,7 +325,7 @@ INSERT INTO `route` (`id`, `start`, `stop`) VALUES
 CREATE TABLE `schedule` (
   `id` int(11) NOT NULL,
   `event_id` int(11) NOT NULL,
-  `route_id` int(11) NOT NULL,
+  `organizer_id` int(11) NOT NULL,
   `date` varchar(30) NOT NULL,
   `time` varchar(10) NOT NULL,
   `first_fee` float NOT NULL,
@@ -336,7 +336,7 @@ CREATE TABLE `schedule` (
 -- Dumping data for table `schedule`
 --
 
-INSERT INTO `schedule` (`id`, `event_id`, `route_id`, `date`, `time`, `first_fee`, `second_fee`) VALUES
+INSERT INTO `schedule` (`id`, `event_id`, `organizer_id`, `date`, `time`, `first_fee`, `second_fee`) VALUES
 (5, 7, 7, '11-10-2023', '18:30', 500, 300),
 (6, 11, 6, '11-10-2023', '18:30', 1500, 1000),
 (7, 11, 5, '12-10-2023', '18:30', 1000, 800),
@@ -393,7 +393,7 @@ INSERT INTO `users` (`id`, `email`, `password`) VALUES
 ALTER TABLE `availability`
   ADD PRIMARY KEY (`id`),
   ADD KEY `event` (`event`),
-  ADD KEY `route` (`route`);
+  ADD KEY `organizer` (`organizer`);
 
 --
 -- Indexes for table `event`
@@ -451,7 +451,7 @@ ALTER TABLE `route`
 ALTER TABLE `schedule`
   ADD PRIMARY KEY (`id`),
   ADD KEY `event_id` (`event_id`),
-  ADD KEY `route_id` (`route_id`);
+  ADD KEY `organizer_id` (`organizer_id`);
 
 
 --
@@ -478,6 +478,12 @@ ALTER TABLE `feedback`
 -- AUTO_INCREMENT for table `customer`
 --
 ALTER TABLE `customer`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+--
+--
+-- AUTO_INCREMENT for table `customer`
+--
+ALTER TABLE `organizer`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 --
 -- AUTO_INCREMENT for table `payment`
@@ -533,7 +539,7 @@ ALTER TABLE `seats`
 --
 ALTER TABLE `schedule`
   ADD CONSTRAINT `schedule_ibfk_1` FOREIGN KEY (`event_id`) REFERENCES `event` (`id`),
-  ADD CONSTRAINT `schedule_ibfk_2` FOREIGN KEY (`route_id`) REFERENCES `route` (`id`);
+  ADD CONSTRAINT `schedule_ibfk_2` FOREIGN KEY (`organizer_id`) REFERENCES `organizer` (`id`);
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
