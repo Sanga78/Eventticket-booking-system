@@ -24,7 +24,7 @@ if (isset($_GET['status'], $_GET['id'])) {
                     <div class="card card-success">
                         <div class="card-header">
                             <h3 class="card-title">
-                                Registered Users</h3>
+                                Attendees</h3>
                         </div>
 
                         <div class="card-body">
