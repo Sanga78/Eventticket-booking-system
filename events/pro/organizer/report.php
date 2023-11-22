@@ -34,20 +34,20 @@ $me = "?page=$source"
                                     </thead>
                                     <tbody>
                                         <?php
-                                        $row = $conn->query("SELECT * FROM schedule ORDER BY id DESC");
+                                        $row = $conn->query("SELECT * FROM schedule WHERE organizer_id = $organizer_id ORDER BY id DESC");
                                         if ($row->num_rows < 1) echo "No Records Yet";
                                         $sn = 0;
                                         while ($fetch = $row->fetch_assoc()) {
                                             $id = $fetch['id']; ?><tr>
                                             <td><?php echo ++$sn; ?></td>
                                             <td><?php echo getEventName($fetch['event_id']); ?></td>
-                                            <td><?php echo getRoutePath($fetch['route_id']);
+                                            <td><?php echo getOrganizerName($fetch['organizer_id']);
                                                     $fullname = " Schedule" ?></td>
 
                                             <td><?php echo $fetch['date'], " / ", formatTime($fetch['time']); ?></td>
 
                                             <td>
-                                                <a href="admin.php?page=report&id=<?php echo $id; ?>">
+                                                <a href="organizer.php?page=report&id=<?php echo $id; ?>">
                                                     <button type="submit" class="btn btn-success">
                                                         View
                                                     </button></a>
