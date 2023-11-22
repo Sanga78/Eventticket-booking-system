@@ -44,7 +44,7 @@ $me = "?page=$source";
                                 </thead>
                                 <tbody>
                                     <?php
-                                    $row = $conn->query("SELECT * FROM schedule ORDER BY id DESC");
+                                    $row = $conn->query("SELECT * FROM schedule WHERE organizer_id = $organizer_id ORDER BY id DESC");
 
                                     if ($row->num_rows < 1) echo "No Records Yet";
                                     $sn = 0;
@@ -52,7 +52,7 @@ $me = "?page=$source";
                                         $id = $fetch['id']; ?><tr>
                                         <td><?php echo ++$sn; ?></td>
                                         <td><?php echo getEventName($fetch['event_id']); ?></td>
-                                        <td><?php echo getRoutePath($fetch['route_id']);
+                                        <td><?php echo getOrganizerName($fetch['organizer_id']);
                                                 $fullname = " Schedule" ?></td>
                                         <td>kes <?php echo ($fetch['first_fee']); ?></td>
                                         <td>kes<?php echo ($fetch['second_fee']); ?></td>
@@ -103,7 +103,7 @@ $me = "?page=$source";
                                                                 id="">
                                                                 <option value="">Select Event</option>
                                                                 <?php
-                                                                    $cons = connect()->query("SELECT * FROM event");
+                                                                    $cons = connect()->query("SELECT * FROM event WHERE organizer_id = $organizer_id");
                                                                     while ($t = $cons->fetch_assoc()) {
                                                                         echo "<option " . ($fetch['event_id'] == $t['id'] ? 'selected="selected"' : '') . " value='" . $t['id'] . "'>" . $t['name'] . "</option>";
                                                                     }
@@ -111,17 +111,17 @@ $me = "?page=$source";
                                                             </select>
                                                         </p>
 
-                                                        <p>Organizer : <select class="form-control" name="route_id" required
+                                                        <!-- <p>Organizer : <select class="form-control" name="route_id" required
                                                                 id="">
                                                                 <option value="">Select Route</option>
                                                                 <?php
-                                                                    $cond = connect()->query("SELECT * FROM route");
-                                                                    while ($r = $cond->fetch_assoc()) {
-                                                                        echo "<option  " . ($fetch['route_id'] == $r['id'] ? 'selected="selected"' : '') . " value='" . $r['id'] . "'>" . getRoutePath($r['id']) . "</option>";
-                                                                    }
+                                                                    // $cond = connect()->query("SELECT * FROM route");
+                                                                    // while ($r = $cond->fetch_assoc()) {
+                                                                    //     echo "<option  " . ($fetch['route_id'] == $r['id'] ? 'selected="selected"' : '') . " value='" . $r['id'] . "'>" . getRoutePath($r['id']) . "</option>";
+                                                                    // }
                                                                     ?>
                                                             </select>
-                                                        </p>
+                                                        </p> -->
                                                         <p>
                                                             First Class Charge : <input class="form-control"
                                                                 type="number" min="1"value="  min="1"<?php echo $fetch['first_fee'] ?>"
@@ -196,7 +196,7 @@ $me = "?page=$source";
                             Event : <select class="form-control" name="event_id" required id="">
                                 <option value="">Select Event</option>
                                 <?php
-                                $con = connect()->query("SELECT * FROM event");
+                                $con = connect()->query("SELECT * FROM event WHERE organizer_id = $organizer_id");
                                 while ($row = $con->fetch_assoc()) {
                                     echo "<option value='" . $row['id'] . "'>" . $row['name'] . "</option>";
                                 }
@@ -204,17 +204,17 @@ $me = "?page=$source";
                             </select>
 
                         </div>
-                        <div class="col-sm-6">
+                        <!-- <div class="col-sm-6">
                             Organizer : <select class="form-control" name="route_id" required id="">
                                 <option value="">Select Organizer</option>
                                 <?php
-                                $con = connect()->query("SELECT * FROM route");
-                                while ($row = $con->fetch_assoc()) {
-                                    echo "<option value='" . $row['id'] . "'>" . getRoutePath($row['id']) . "</option>";
-                                }
+                                // $con = connect()->query("SELECT * FROM route");
+                                // while ($row = $con->fetch_assoc()) {
+                                //     echo "<option value='" . $row['id'] . "'>" . getRoutePath($row['id']) . "</option>";
+                                // }
                                 ?>
                             </select>
-                        </div>
+                        </div> -->
                     </div>
                     <div class="row">
                         <div class="col-sm-6">
@@ -281,7 +281,7 @@ $me = "?page=$source";
                             Event : <select class="form-control" name="event_id" required id="">
                                 <option value="">Select Event</option>
                                 <?php
-                                $con = connect()->query("SELECT * FROM event");
+                                $con = connect()->query("SELECT * FROM event WHERE organizer_id = $organizer_id");
                                 while ($row = $con->fetch_assoc()) {
                                     echo "<option value='" . $row['id'] . "'>" . $row['name'] . "</option>";
                                 }
@@ -289,17 +289,17 @@ $me = "?page=$source";
                             </select>
 
                         </div>
-                        <div class="col-sm-6">
+                        <!-- <div class="col-sm-6">
                             Organizer : <select class="form-control" name="route_id" required id="">
                                 <option value="">Select Route</option>
                                 <?php
-                                $con = connect()->query("SELECT * FROM route");
-                                while ($row = $con->fetch_assoc()) {
-                                    echo "<option value='" . $row['id'] . "'>" . getRoutePath($row['id']) . "</option>";
-                                }
+                                // $con = connect()->query("SELECT * FROM route");
+                                // while ($row = $con->fetch_assoc()) {
+                                //     echo "<option value='" . $row['id'] . "'>" . getRoutePath($row['id']) . "</option>";
+                                // }
                                 ?>
                             </select>
-                        </div>
+                        </div> -->
                     </div>
                     <div class="row">
                         <div class="col-sm-6">
@@ -365,7 +365,7 @@ $me = "?page=$source";
 <?php
 
 if (isset($_POST['submit'])) {
-    $route_id = $_POST['route_id'];
+    $organizer_id = $organizer_id;
     $event_id = $_POST['event_id'];
     $first_fee = $_POST['first_fee'];
     $second_fee = $_POST['second_fee'];
@@ -374,12 +374,12 @@ if (isset($_POST['submit'])) {
     // die($date);
     // $endDate = date('Y-m-d' ,strtotime( $data['automatic_until'] ));
     $time = $_POST['time'];
-    if (!isset($route_id, $event_id, $first_fee, $second_fee, $date, $time)) {
+    if (!isset($organizer_id, $event_id, $first_fee, $second_fee, $date, $time)) {
         alert("Fill Form Properly!");
     } else {
         $conn = connect();
-        $ins = $conn->prepare("INSERT INTO `schedule`(`event_id`, `route_id`, `date`, `time`, `first_fee`, `second_fee`) VALUES (?,?,?,?,?,?)");
-        $ins->bind_param("iissii", $event_id, $route_id, $date, $time, $first_fee, $second_fee);
+        $ins = $conn->prepare("INSERT INTO `schedule`(`event_id`, `organizer_id`, `date`, `time`, `first_fee`, `second_fee`) VALUES (?,?,?,?,?,?)");
+        $ins->bind_param("iissii", $event_id, $organizer_id, $date, $time, $first_fee, $second_fee);
         $ins->execute();
         alert("Schedule Added!");
         load($_SERVER['PHP_SELF'] . "$me");
@@ -388,7 +388,7 @@ if (isset($_POST['submit'])) {
 
 
 if (isset($_POST['submit2'])) {
-    $route_id = $_POST['route_id'];
+    $organizer_id = $organizer_id;
     $event_id = $_POST['event_id'];
     $first_fee = $_POST['first_fee'];
     $second_fee = $_POST['second_fee'];
@@ -397,7 +397,7 @@ if (isset($_POST['submit2'])) {
     $every = $_POST['every'];
 
     $time = $_POST['time'];
-    if (!isset($route_id, $event_id, $first_fee, $second_fee, $date, $time)) {
+    if (!isset($organizer_id, $event_id, $first_fee, $second_fee, $date, $time)) {
         alert("Fill Form Properly!");
     } else {
 
@@ -410,16 +410,16 @@ if (isset($_POST['submit2'])) {
         if ($every == 'Day') {
             for ($i = strtotime($startDate); $i <= strtotime($endDate); $i = strtotime('+1 day', $i)) {
                 $date = date('d-m-Y', $i);
-                $ins = $conn->prepare("INSERT INTO `schedule`(`event_id`, `route_id`, `date`, `time`, `first_fee`, `second_fee`) VALUES (?,?,?,?,?,?)");
-                $ins->bind_param("iissii", $event_id, $route_id, $date, $time, $first_fee, $second_fee);
+                $ins = $conn->prepare("INSERT INTO `schedule`(`event_id`, `organizer_id`, `date`, `time`, `first_fee`, `second_fee`) VALUES (?,?,?,?,?,?)");
+                $ins->bind_param("iissii", $event_id, $organizer_id, $date, $time, $first_fee, $second_fee);
                 $ins->execute();
             }
         } else {
             for ($i = strtotime($every, strtotime($startDate)); $i <= strtotime($endDate); $i = strtotime('+1 week', $i)) {
                 $date = date('d-m-Y', $i);
 
-                $ins = $conn->prepare("INSERT INTO `schedule`(`event_id`, `route_id`, `date`, `time`, `first_fee`, `second_fee`) VALUES (?,?,?,?,?,?)");
-                $ins->bind_param("iissii", $event_id, $route_id, $date, $time, $first_fee, $second_fee);
+                $ins = $conn->prepare("INSERT INTO `schedule`(`event_id`, `organizer_id`, `date`, `time`, `first_fee`, `second_fee`) VALUES (?,?,?,?,?,?)");
+                $ins->bind_param("iissii", $event_id, $organizer_id, $date, $time, $first_fee, $second_fee);
                 $ins->execute();
             }
         }
@@ -432,7 +432,7 @@ if (isset($_POST['submit2'])) {
 
 
 if (isset($_POST['edit'])) {
-    $route_id = $_POST['route_id'];
+    $organizer_id = $organizer_id;
     $event_id = $_POST['event_id'];
     $first_fee = $_POST['first_fee'];
     $second_fee = $_POST['second_fee'];
@@ -440,12 +440,12 @@ if (isset($_POST['edit'])) {
     $date = formatDate($date);
     $time = $_POST['time'];
     $id = $_POST['id'];
-    if (!isset($route_id, $event_id, $first_fee, $second_fee, $date, $time)) {
+    if (!isset($organizer_id, $event_id, $first_fee, $second_fee, $date, $time)) {
         alert("Fill Form Properly!");
     } else {
         $conn = connect();
-        $ins = $conn->prepare("UPDATE `schedule` SET `event_id`=?,`route_id`=?,`date`=?,`time`=?,`first_fee`=?,`second_fee`=? WHERE id = ?");
-        $ins->bind_param("iissiii",$event_id, $route_id, $date, $time, $first_fee, $second_fee, $id);
+        $ins = $conn->prepare("UPDATE `schedule` SET `event_id`=?,`organizer_id`=?,`date`=?,`time`=?,`first_fee`=?,`second_fee`=? WHERE id = ?");
+        $ins->bind_param("iissiii",$event_id, $organizer_id, $date, $time, $first_fee, $second_fee, $id);
         $ins->execute();
         $msg = "Having considered user's satisfactions and every other things, we the management are so sorry to let inform you that there has been a change in the date and time of your trip. <hr/> New Date : $date. <br/> New Time : ".formatTime($time)." <hr/> Kindly disregard if the date/time still stays the same.";
         $e = $conn->query("SELECT customer.email FROM customer INNER JOIN booked ON booked.user_id = customer.id WHERE booked.schedule_id = '$id' ");
