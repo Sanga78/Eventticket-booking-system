@@ -45,7 +45,7 @@ if (isset($_GET['status'], $_GET['id'])) {
                                     </thead>
                                     <tbody>
                                         <?php
-                                        $row = connect()->query("SELECT * FROM passenger ORDER BY id DESC");
+                                        $row = connect()->query("SELECT * FROM customer ORDER BY id DESC");
                                         if ($row->num_rows < 1) echo "No Records Yet";
                                         $sn = 0;
                                         while ($fetch = $row->fetch_assoc()) {
