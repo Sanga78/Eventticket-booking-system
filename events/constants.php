@@ -442,7 +442,7 @@ function querySchedule($type)
 
 function getRouteFromSchedule($id)
 {
-    $q = connect()->query("SELECT route_id as id FROM schedule WHERE id = '$id'")->fetch_assoc();
+    $q = connect()->query("SELECT organizer_id as id FROM schedule WHERE id = '$id'")->fetch_assoc();
     return getRoutePath($q['id']);
 }
 
