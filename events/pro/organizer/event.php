@@ -90,17 +90,6 @@ $me = "?page=$source";
                                                         <p>	Event : <input type="strings" class="form-control"
                                                                 name="name" value="<?php echo $fetch['name'] ?>"
                                                                 required minlength="3" id=""></p>
-                                                        <p>Organizer : <select class="form-control" name="organizer_id" required
-                                                                id="">
-                                                                <option value="">Select Organizer</option>
-                                                                <?php
-                                                                    $cons = connect()->query("SELECT * FROM organizer");
-                                                                    while ($t = $cons->fetch_assoc()) {
-                                                                        echo "<option " . ($fetch['organizer_id'] == $t['id'] ? 'selected="selected"' : '') . " value='" . $t['id'] . "'>" . $t['name'] . "</option>";
-                                                                    }
-                                                                    ?>
-                                                            </select>
-                                                        </p>
                                                         <p>First Class Capacity : <input type="number" min='0'
                                                                 class="form-control"
                                                                 value="<?php echo $fetch['first_seat'] ?>"
@@ -165,18 +154,6 @@ $me = "?page=$source";
                             <td><input type="text" class="form-control" name="name" required minlength="3" id=""></td>
                         </tr>
                         <tr>
-                            <th>Organizer</th>
-                            <td><select class="form-control" name="organizer_id" required id="">
-                                <option value="">Select Organizer</option>
-                                <?php
-                                $con = connect()->query("SELECT * FROM organizer");
-                                while ($row = $con->fetch_assoc()) {
-                                    echo "<option value='" . $row['id'] . "'>" . $row['name'] . "</option>";
-                                }
-                                ?>
-                            </select>
-                        </tr>
-                        <tr>
                             <th>First Class Capacity</th>
                             <td><input type="number" min='0' class="form-control" name="first_seat" required id=""></td>
                         </tr>
@@ -208,7 +185,7 @@ $me = "?page=$source";
 
 if (isset($_POST['submit'])) {
     $name = $_POST['name'];
-    $organizer_id = $_POST['organizer_id'];
+    $organizer_id = $organizer_id;
     $first_seat = $_POST['first_seat'];
     $second_seat = $_POST['second_seat'];
     if (!isset($name, $organizer_id, $first_seat, $second_seat)) {
@@ -220,7 +197,7 @@ if (isset($_POST['submit'])) {
         if ($check) {
             alert("Event already exists");
         } else {
-            $ins = $conn->prepare("INSERT INTO event (name,organizer_id, first_seat, second_seat) VALUES (?,?,?)");
+            $ins = $conn->prepare("INSERT INTO event (name,organizer_id, first_seat, second_seat) VALUES (?,?,?,?)");
             $ins->bind_param("ssss", $name, $organizer_id, $first_seat, $second_seat);
             $ins->execute();
             alert("Event Added Successfully");
@@ -231,7 +208,7 @@ if (isset($_POST['submit'])) {
 
 if (isset($_POST['edit'])) {
     $name = $_POST['name'];
-    $organizer_id = $_POST['organizer_id'];
+    $organizer_id = $organizer_id;
     $first_seat = $_POST['first_seat'];
     $second_seat = $_POST['second_seat'];
     $id = $_POST['id'];
