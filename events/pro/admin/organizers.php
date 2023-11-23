@@ -64,14 +64,14 @@ if (isset($_GET['status'], $_GET['id'])) {
                                                     ?>
                                                 <a href="admin.php?page=users&status=1&id=<?php echo $id; ?>">
                                                     <button
-                                                        onclick="return confirm('You are about allowing this user be able to login his/her account.')"
+                                                        onclick="return confirm('You are about allowing this organizer be able to login his/her account.')"
                                                         type="submit" class="btn btn-success">
                                                         Enable Account
                                                     </button></a>
                                                 <?php } else { ?>
                                                 <a href="admin.php?page=users&status=0&id=<?php echo $id; ?>">
                                                     <button
-                                                        onclick="return confirm('You are about denying this user access to  his/her account.')"
+                                                        onclick="return confirm('You are about denying this organizer access to  his/her account.')"
                                                         type="submit" class="btn btn-danger">
                                                         Disable Account
                                                     </button></a>
@@ -125,12 +125,12 @@ if (isset($_GET['status'], $_GET['id'])) {
 
                         </div>
                         <div class="col-sm-6">
-                            Organizer : <select class="form-control" name="route_id" required id="">
+                            Organizer : <select class="form-control" name="organizer_id" required id="">
                                 <option value="">Select Organizer</option>
                                 <?php
-                                $con = connect()->query("SELECT * FROM route");
+                                $con = connect()->query("SELECT * FROM organizer");
                                 while ($row = $con->fetch_assoc()) {
-                                    echo "<option value='" . $row['id'] . "'>" . getRoutePath($row['id']) . "</option>";
+                                    echo "<option value='" . $row['id'] . "'>" . getOrganizerName($row['id']) . "</option>";
                                 }
                                 ?>
                             </select>
@@ -210,12 +210,12 @@ if (isset($_GET['status'], $_GET['id'])) {
 
                         </div>
                         <div class="col-sm-6">
-                            Organizer : <select class="form-control" name="route_id" required id="">
+                            Organizer : <select class="form-control" name="organizer_id" required id="">
                                 <option value="">Select organizer</option>
                                 <?php
-                                $con = connect()->query("SELECT * FROM route");
+                                $con = connect()->query("SELECT * FROM organizer");
                                 while ($row = $con->fetch_assoc()) {
-                                    echo "<option value='" . $row['id'] . "'>" . getRoutePath($row['id']) . "</option>";
+                                    echo "<option value='" . $row['id'] . "'>" . getOrganizerName($row['id']) . "</option>";
                                 }
                                 ?>
                             </select>
@@ -298,8 +298,8 @@ if (isset($_POST['submit'])) {
         alert("Fill Form Properly!");
     } else {
         $conn = connect();
-        $ins = $conn->prepare("INSERT INTO `schedule`(`train_id`, `route_id`, `date`, `time`, `first_fee`, `second_fee`) VALUES (?,?,?,?,?,?)");
-        $ins->bind_param("iissii", $train_id, $route_id, $date, $time, $first_fee, $second_fee);
+        $ins = $conn->prepare("INSERT INTO `schedule`(`train_id`, `organizer_id`, `date`, `time`, `first_fee`, `second_fee`) VALUES (?,?,?,?,?,?)");
+        $ins->bind_param("iissii", $train_id, $organizer_id, $date, $time, $first_fee, $second_fee);
         $ins->execute();
         alert("Schedule Added!");
         load($_SERVER['PHP_SELF'] . "$me");
