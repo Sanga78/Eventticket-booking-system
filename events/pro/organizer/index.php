@@ -53,7 +53,7 @@ if (!isset($file_access)) die("Direct File Access Denied");
                 <div class="info-box-content">
                     <span class="info-box-text">Schedules</span>
                     <span
-                        class="info-box-number"><?php echo connect()->query("SELECT * FROM schedule")->num_rows ?></span>
+                        class="info-box-number"><?php echo connect()->query("SELECT * FROM schedule WHERE organizer_id = $organizer_id")->num_rows ?></span>
 
                     <div class="progress">
                         <div class="progress-bar" style="width: 70%"></div>
