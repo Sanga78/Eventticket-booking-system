@@ -111,7 +111,7 @@ INSERT INTO `event` (`id`, `name`,`organizer_id`, `first_seat`, `second_seat`) V
 (9, 'HUAWEI BOOTCAMP', 2, 20, 50),
 (10, 'TECH FEST', 1, 30, 45),
 (11, 'CHURCHIL SHOW', 4, 30, 40),
-(12, 'LEGACY DRAMA', 8, 25, 60),
+(12, 'LEGACY DRAMA', 7, 25, 60),
 (13, 'COMRADES PARTY', 1, 30, 50);
 
 -- --------------------------------------------------------
@@ -240,7 +240,10 @@ INSERT INTO `organizer` (`id`, `name`, `email`, `password`, `phone`, `address`, 
 (7, 'Liam Moore', 'liamoore@gmail.com', '5f4dcc3b5aa765d61d8327deb882cf99', '7000000000', '7014 Allace Road', 'f3fc8566140434f0a3f47303c62d5146.jpg', 1),
 (8, 'Demo Account', 'demoaccount@mail.com', '5f4dcc3b5aa765d61d8327deb882cf99', '7800000000', '100 Demo Address', '404a6378027a553d980b99162a5b4ce8.png', 1);
 (9, 'Kipkosgei Kelvin', 'kelvinkipkosgeisanga@gmail.com', '1234', '0111823379', '00232 ruiru', '404a6378027a553d980b99162a5b4ce8.png', 1);
-
+(10, 'organizer Five', 'org5@mail.com', 'd780455a563c7c5dbfb74a51785ad949', '0000010020', 'Johannesburg', 'f3fc8566140434f0a3f47303c62d5146.jpg', 1),
+(11, 'Organizer six', 'orgs6@mail.com', 'abe1bcf64eb68c39847b962e8caadadf', '0000002000', 'Eldoret', 'f3fc8566140434f0a3f47303c62d5146.jpg', 1),
+(12, 'Kelly kipkoech', 'kelly@gmail.com', 'd780455a563c7c5dbfb74a51785ad949', '0000010020', 'Njoro', 'f3fc8566140434f0a3f47303c62d5146.jpg', 1),
+(13, 'Millicent', 'milly@mail.com', 'abe1bcf64eb68c39847b962e8caadadf', '0000002000', 'Egerton', 'f3fc8566140434f0a3f47303c62d5146.jpg', 1),
 -- --------------------------------------------------------
 
 --
@@ -337,7 +340,7 @@ CREATE TABLE `schedule` (
 --
 
 INSERT INTO `schedule` (`id`, `event_id`, `organizer_id`, `date`, `time`, `first_fee`, `second_fee`) VALUES
-(5, 7, 7, '11-10-2023', '18:30', 500, 300),
+(5, 9, 7, '11-10-2023', '18:30', 500, 300),
 (6, 11, 6, '11-10-2023', '18:30', 1500, 1000),
 (7, 11, 5, '12-10-2023', '18:30', 1000, 800),
 (8, 11, 4, '13-10-2023', '18:30', 150, 100),
@@ -355,13 +358,13 @@ INSERT INTO `schedule` (`id`, `event_id`, `organizer_id`, `date`, `time`, `first
 (25, 1, 3, '11-06-2024', '05:37', 70, 50),
 (26, 2, 3, '18-09-2024', '09:00', 70, 50),
 (97, 11, 8, '11-10-2024', '11:05', 550, 350),
-(98, 10, 14, '12-10-2024', '09:00', 400, 300),
+(98, 10, 12, '12-10-2024', '09:00', 400, 300),
 (99, 8, 11, '12-10-2024', '11:10', 800, 600),
 (100, 9, 12, '12-10-2024', '12:20', 70, 50),
 (101, 2, 10, '12-10-2024', '22:59', 450, 350),
 (102, 7, 4, '12-10-2024', '11:02', 150, 100),
 (103, 9, 11, '12-10-2024', '04:45', 800, 600),
-(104, 12, 15, '14-10-2024', '10:00', 800, 600);
+(104, 12, 10, '14-10-2024', '10:00', 800, 600);
 
 -- --------------------------------------------------------
 
