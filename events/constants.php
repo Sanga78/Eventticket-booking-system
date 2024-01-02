@@ -440,10 +440,10 @@ function querySchedule($type)
     return $row;
 }
 
-function getRouteFromSchedule($id)
+function getEventFromSchedule($id)
 {
-    $q = connect()->query("SELECT organizer_id as id FROM schedule WHERE id = '$id'")->fetch_assoc();
-    return getRoutePath($q['id']);
+    $q = connect()->query("SELECT event_id as id FROM schedule WHERE id = '$id'")->fetch_assoc();
+    return getEventName($q['id']);
 }
 
 function getFee($id, $type = 'second')
@@ -528,10 +528,10 @@ function printClearance($id)
     $date = $row['date'];
     $time = formatTime($row['time']);
     $uniqueCode = $row['code'];
-    $route = getRouteFromSchedule($row['schedule_id']);
+    $event = getEventFromSchedule($row['schedule_id']);
     $date = date("D d, M Y", strtotime($date));
 
-    $barcode = "$fullname Ticket For $route - $date by $time. Ticket ID : $uniqueCode";
+    $barcode = "$fullname Ticket For $event - $date by $time. Ticket ID : $uniqueCode";
     $barcodeOutput = generateQR($id, $barcode);
     $loc = $row['loc'];
     $seat = $row['seat'];
