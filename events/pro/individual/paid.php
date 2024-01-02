@@ -43,7 +43,7 @@ if (isset($_GET['now'])) {
                                 $conn = connect()->query("SELECT *, booked.id as id, payment.date as pd FROM `booked` INNER JOIN payment ON booked.payment_id = payment.id INNER JOIN schedule ON schedule.id = booked.schedule_id  WHERE payment.customer_id = '$user_id' ORDER BY booked.id DESC");
                                 $sn = 0;
                                 while ($row = $conn->fetch_assoc()) {
-                                    $fullname = getRouteFromSchedule($row['schedule_id']);
+                                    $fullname = getEventFromSchedule($row['schedule_id']);
                                     $id = $row['id'];
                                     $sn++;
                                     echo "<tr>
@@ -79,7 +79,7 @@ if (isset($_GET['now'])) {
                                                         ?>
                                                 </p>
                                                 <p><b>Event Name :</b>
-                                                    <?php echo getTrainName($row['train_id']);
+                                                    <?php echo getEventName($row['event_id']);
                                                         ?>
                                                 </p>
                                                 <p><b>Payment Date :</b>
