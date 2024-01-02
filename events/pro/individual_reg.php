@@ -85,22 +85,18 @@ alert("We could not register you!.");
             <span id="error-msg" class="hide"></span>
             </p>
             <input type="file" name='file' placeholder="Select Picture"/>
-             <input type='text' name="address" required placeholder="Address"/>>
+            <input type='text' name="address" required placeholder="Address"/>>
             <input type="password" id="password" name="password" id="password" placeholder="set a password" />
             <input type="password" name="cpassword" id="cpassword" placeholder="confirm password" />
             <i class="fas fa-eye" onclick="show()"></i>
             <br>
             <br>
-          </form>
-
-          <form class="login-form">
-            <button type="button" id="btn-signup">
+            <button type="submit" id="btn-signup">
               SIGN UP
             </button>
             <p class="message">
                 <a href="#">.</a><br>
             </p>
-          </form>
         </div>
     </div>
 </div>
