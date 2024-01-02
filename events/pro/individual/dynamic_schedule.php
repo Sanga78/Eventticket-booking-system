@@ -44,7 +44,7 @@ $me = "?page=$source";
                                         $id = $fetch['id']; ?><tr>
                                         <td><?php echo ++$sn; ?></td>
                                         <td><?php echo getEventName($fetch['event_id']); ?></td>
-                                        <td><?php echo getRoutePath($fetch['route_id']);
+                                        <td><?php echo getOrganizerName($fetch['organizer_id']);
                                                 $fullname = " Schedule" ?></td>
                                         <td>kes <?php echo ($fetch['first_fee']); ?></td>
                                         <td>kes<?php echo ($fetch['second_fee']); ?></td>
@@ -94,9 +94,9 @@ $me = "?page=$source";
                                                                 id="">
                                                                 <option value="">Select Organizer</option>
                                                                 <?php
-                                                                    $cond = connect()->query("SELECT * FROM route");
+                                                                    $cond = connect()->query("SELECT * FROM organizer");
                                                                     while ($r = $cond->fetch_assoc()) {
-                                                                        echo "<option  " . ($fetch['route_id'] == $r['id'] ? 'selected="selected"' : '') . " value='" . $r['id'] . "'>" . getRoutePath($r['id']) . "</option>";
+                                                                        echo "<option  " . ($fetch['organizer_id'] == $r['id'] ? 'selected="selected"' : '') . " value='" . $r['id'] . "'>" . getOrganizerName($r['id']) . "</option>";
                                                                     }
                                                                     ?>
                                                             </select>
@@ -227,7 +227,7 @@ if (isset($_POST['submit2'])) {
 
 
 if (isset($_POST['edit'])) {
-    $route_id = $_POST['route_id'];
+    $organizer_id = $_POST['organizer_id'];
     $event_id = $_POST['event_id'];
     $first_fee = $_POST['first_fee'];
     $second_fee = $_POST['second_fee'];
@@ -235,17 +235,17 @@ if (isset($_POST['edit'])) {
     $date = formatDate($date);
     $time = $_POST['time'];
     $id = $_POST['id'];
-    if (!isset($route_id, $event_id, $first_fee, $second_fee, $date, $time)) {
+    if (!isset($organizer_id, $event_id, $first_fee, $second_fee, $date, $time)) {
         alert("Fill Form Properly!");
     } else {
         $conn = connect();
-        $ins = $conn->prepare("UPDATE `schedule` SET `event_id`=?,`route_id`=?,`date`=?,`time`=?,`first_fee`=?,`second_fee`=? WHERE id = ?");
-        $ins->bind_param("iissiii", $event_id, $route_id, $date, $time, $first_fee, $second_fee, $id);
+        $ins = $conn->prepare("UPDATE `schedule` SET `event_id`=?,`organizer_id`=?,`date`=?,`time`=?,`first_fee`=?,`second_fee`=? WHERE id = ?");
+        $ins->bind_param("iissiii", $event_id, $organizer_id, $date, $time, $first_fee, $second_fee, $id);
         $ins->execute();
-        $msg = "Having considered user's satisfactions and every other things, we the management are so sorry to let inform you that there has been a change in the date and time of your trip. <hr/> New Date : $date. <br/> New Time : ".formatTime($time)." <hr/> Kindly disregard if the date/time still stays the same.";
+        $msg = "Having considered user's satisfactions and every other things, we the management are so sorry to let inform you that there has been a change in the date and time of your event. <hr/> New Date : $date. <br/> New Time : ".formatTime($time)." <hr/> Kindly disregard if the date/time still stays the same.";
         $e = $conn->query("SELECT customer.email FROM customer INNER JOIN booked ON booked.user_id = customer.id WHERE booked.schedule_id = '$id' ");
         while($getter = $e->fetch_assoc()){
-            @sendMail($getter['email'], "Change In Trip Date/Time", $msg);
+            @sendMail($getter['email'], "Change In Event Date/Time", $msg);
         }
         alert("Schedule Modified!");
         load($_SERVER['PHP_SELF'] . "$me");
@@ -256,7 +256,7 @@ if (isset($_POST['del_event'])) {
     $con = connect();
     $conn = $con->query("DELETE FROM schedule WHERE id = '" . $_POST['del_event'] . "'");
     if ($con->affected_rows < 1) {
-        alert("Schedule Could Not Be Deleted. This Route Has Been Tied To Another Data!");
+        alert("Schedule Could Not Be Deleted. This event Has Been Tied To Another Data!");
         load($_SERVER['PHP_SELF'] . "$me");
     } else {
         alert("Schedule Deleted!");
