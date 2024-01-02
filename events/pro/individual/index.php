@@ -52,8 +52,8 @@ if (!isset($file_access)) die("Direct File Access Denied");
                 <span class="info-box-icon"><i class="fa fa-route"></i></span>
 
                 <div class="info-box-content">
-                    <span class="info-box-text">Organizer</span>
-                    <span class="info-box-number"><?php echo connect()->query("SELECT * FROM route")->num_rows ?></span>
+                    <span class="info-box-text">Organizers</span>
+                    <span class="info-box-number"><?php echo connect()->query("SELECT * FROM organizer")->num_rows ?></span>
 
                     <div class="progress"><div></div>
                         <div class="progress-bar" style="width: 50%"></div>
@@ -90,7 +90,7 @@ if (!isset($file_access)) die("Direct File Access Denied");
                         <br />You can see list of schedules by clicking on "New Booking". The system will display list
                         of available schedules for you which you can view and make bookings from. <br>Before your
                         bookings are saved, you are redirected to make payment. <br>After a successful payment, system
-                        generates your ticket ID for you which you are required to bring to the station. <br>You are
+                        generates your ticket ID for you which you are required to bring to the event. <br>You are
                         allowed to view all your booking history by clicking on "View Bookings".
                     </div>
                 </div>
@@ -113,7 +113,7 @@ if (!isset($file_access)) die("Direct File Access Denied");
                             <div class="callout callout-info">
                                 <h5><i class="fas fa-info"></i> <?php echo ucwords($class), " Class" ?>:</h5>
                                 You are about to book
-                                <?php echo $number, " Ticket", $number > 1 ? 's' : '', ' for ', getRouteFromSchedule($schedule_id); ?>
+                                <?php echo $number, " Ticket", $number > 1 ? 's' : '', ' for ', getEventFromSchedule($schedule_id); ?>
                                 <br />
 
                                 <?php
