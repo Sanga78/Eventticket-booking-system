@@ -7,7 +7,7 @@ $class = "reg";
 <?php
 $cur_page = 'organizer_signup';
 include 'includes/inc-header.php';
-include 'includes/inc-nav.php';
+include 'includes/org-nav.php';
 if (isset($_POST['name'])) {
     $name = $_POST['name'];
     $phone = $_POST['phone'];
@@ -80,23 +80,30 @@ alert("We could not register you!.");
             <!-- json response will be here -->
             <input type="text" required minlength="10" name="name" placeholder="Full name" />
             <input type="email" required name="email" placeholder="email address" />
-            <input type="text" minlength="11" pattern="[0-9]{10}" required name="phone" placeholder="Phone Number"/>
+            <input type="tel" minlength="10" pattern="[0-9]{10}" required name="phone" placeholder="Phone Number"/>
             <input type="file" name='file' placeholder="Select Picture"/>
+            <input type='text' name="address" required placeholder="Address"/>
             <input type="password" id="password" name="password" id="password" placeholder="set a password" />
             <input type="password" name="cpassword" id="cpassword" placeholder="confirm password" />
             <i class="fas fa-eye" onclick="show()"></i>
             <br>
             <br>
-          </form>
-
-          <form class="login-form">
-            <button type="button" id="btn-signup">
+            <button type="submit" id="btn-signup">
               SIGN UP
             </button>
             <p class="message">
                 <a href="#">.</a><br>
             </p>
           </form>
+
+          <!-- <form class="login-form">
+            <button type="button" id="btn-signup">
+              SIGN UP
+            </button>
+            <p class="message">
+                <a href="#">.</a><br>
+            </p>
+          </form> -->
         </div>
     </div>
 </div>
