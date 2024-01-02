@@ -7,7 +7,7 @@ $class = "organizer_signin";
 <?php
 $cur_page = 'organizer_signup';
 include 'includes/inc-header.php';
-include 'includes/inc-nav.php';
+include 'includes/org-nav.php';
 if (isset($_POST['email'])) {
     $email = $_POST['email'];
     $password = $_POST['password'];
