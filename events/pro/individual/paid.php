@@ -116,7 +116,7 @@ if (isset($_GET['now'])) {
             continue;
         }
     }
-    $fullname =  getRoutePath($fetch['route_id']);
+    $fullname =  getEventName($fetch['event_id']);
     $datetime = $fetch['date']. " / ". formatTime($fetch['time']);
     $output .= "<option value='$fetch[id]'>$fullname - $datetime</option>";
                             }
