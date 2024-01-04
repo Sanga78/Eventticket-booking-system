@@ -10,7 +10,7 @@ if (isset($_GET['status'], $_GET['id'])) {
     } else {
         $status = 1;
     }
-    $conn = connect()->query("UPDATE passenger SET status = '$status' WHERE id = '$id'");
+    $conn = connect()->query("UPDATE customer SET status = '$status' WHERE id = '$id'");
     echo "<script>alert('Action completed!');window.location='admin.php$me';</script>";
 }
 ?>
@@ -113,10 +113,10 @@ if (isset($_GET['status'], $_GET['id'])) {
                 <form action="" method="post">
                     <div class="row">
                         <div class="col-sm-6">
-                           Event: <select class="form-control" name="train_id" required id="">
+                           Event: <select class="form-control" name="event_id" required id="">
                                 <option value="">Select Event</option>
                                 <?php
-                                $con = connect()->query("SELECT * FROM train");
+                                $con = connect()->query("SELECT * FROM event");
                                 while ($row = $con->fetch_assoc()) {
                                     echo "<option value='" . $row['id'] . "'>" . $row['name'] . "</option>";
                                 }
@@ -210,12 +210,12 @@ if (isset($_GET['status'], $_GET['id'])) {
 
                         </div>
                         <div class="col-sm-6">
-                            Organizer : <select class="form-control" name="route_id" required id="">
-                                <option value="">Select Route</option>
+                            Organizer : <select class="form-control" name="organizer_id" required id="">
+                                <option value="">Select Organizer</option>
                                 <?php
-                                $con = connect()->query("SELECT * FROM route");
+                                $con = connect()->query("SELECT * FROM organizer");
                                 while ($row = $con->fetch_assoc()) {
-                                    echo "<option value='" . $row['id'] . "'>" . getRoutePath($row['id']) . "</option>";
+                                    echo "<option value='" . $row['id'] . "'>" . getOrganizerName($row['id']) . "</option>";
                                 }
                                 ?>
                             </select>
