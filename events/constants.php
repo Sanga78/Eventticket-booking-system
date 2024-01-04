@@ -15,7 +15,7 @@ require_once 'PHPMailer/src/SMTP.php';
 include_once 'config.php';
 
 define("SITE_NAME", $title);
-date_default_timezone_set("Africa/Lagos");
+date_default_timezone_set("Africa/Nairobi");
 $date = date('D, d-M-Y h:i:s A');;
 $date_small = date('d-M-Y');;
 //INSERT YOUR OWN PAYSTACK API KEYS
@@ -444,6 +444,11 @@ function getEventFromSchedule($id)
 {
     $q = connect()->query("SELECT event_id as id FROM schedule WHERE id = '$id'")->fetch_assoc();
     return getEventName($q['id']);
+}
+function getOrganizerFromSchedule($id)
+{
+    $q = connect()->query("SELECT organizer_id as id FROM schedule WHERE id = '$id'")->fetch_assoc();
+    return getOrganizerName($q['id']);
 }
 
 function getFee($id, $type = 'second')
