@@ -128,9 +128,9 @@ if (isset($_GET['status'], $_GET['id'])) {
                             Organizer : <select class="form-control" name="route_id" required id="">
                                 <option value="">Select organizer</option>
                                 <?php
-                                $con = connect()->query("SELECT * FROM route");
+                                $con = connect()->query("SELECT * FROM organizer");
                                 while ($row = $con->fetch_assoc()) {
-                                    echo "<option value='" . $row['id'] . "'>" . getRoutePath($row['id']) . "</option>";
+                                    echo "<option value='" . $row['id'] . "'>" . getOrganizerName($row['id']) . "</option>";
                                 }
                                 ?>
                             </select>
