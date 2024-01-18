@@ -127,23 +127,23 @@ if (isset($_GET['error'])) {
                                 </p>
                             </a>
                         </li>
-                        <li class="nav-item">
-                            <a href="individual.php?page=event" class="nav-link      <?php
-                                                                                echo (@$_GET['page'] == 'event') ? 'active' : '';
+                        <!-- <li class="nav-item">
+                            <a href="individual.php?page=organizer" class="nav-link      <?php
+                                                                                echo (@$_GET['page'] == 'organizer') ? 'active' : '';
                                                                                 ?>">
                                 <i class="nav-icon fas fa-bus"></i>
                                 <p>
                                     Organizer
                                 </p>
                             </a>
-                        </li>
+                        </li> -->
                         <li class="nav-item">
-                            <a href="individual.php?page=route" class="nav-link      <?php
-                                                                                echo (@$_GET['page'] == 'route') ? 'active' : '';
+                            <a href="individual.php?page=venue" class="nav-link      <?php
+                                                                                echo (@$_GET['page'] == 'venue') ? 'active' : '';
                                                                                 ?>">
                                 <i class="nav-icon fas fa-route"></i>
                                 <p>
-                                    Time
+                                    venue and links
                                 </p>
                             </a>
                         </li>
@@ -203,8 +203,8 @@ if (isset($_GET['error'])) {
                 include 'individual/status.php';
 				elseif ($_GET['page'] == 'dynamic')
                 include 'individual/dynamic_schedule.php';
-				  elseif ($_GET['page'] == 'route')
-                include 'individual/route.php';
+				  elseif ($_GET['page'] == 'venue')
+                include 'individual/venue.php';
 				elseif ($_GET['page'] == 'event')
                 include 'individual/event.php';
 				elseif ($_GET['page'] == 'seat')
