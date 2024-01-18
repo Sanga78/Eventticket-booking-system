@@ -35,7 +35,7 @@ SET time_zone = "+00:00";
 CREATE TABLE `availability` (
   `id` int(10) UNSIGNED NOT NULL,
   `event` int(10) UNSIGNED DEFAULT NULL,
-  `route` int(10) UNSIGNED DEFAULT NULL,
+  `organizer` int(10) UNSIGNED DEFAULT NULL,
   `date` date DEFAULT NULL,
   `time` time DEFAULT NULL,
   `amount` varchar(40) DEFAULT NULL,
@@ -46,7 +46,7 @@ CREATE TABLE `availability` (
 -- Dumping data for table `availability`
 --
 
-INSERT INTO `availability` (`id`, `event`, `route`, `date`, `time`, `amount`, `status`) VALUES
+INSERT INTO `availability` (`id`, `event`, `organizer`, `date`, `time`, `amount`, `status`) VALUES
 (1, 1, 1, '2023-10-20', '13:00:00', '1', 'available'),
 (2, 1, 2, '2023-10-22', '20:00:00', '2', 'not available'),
 (3, 2, 1, '2023-11-05', '13:00:00', '1', 'available');
@@ -287,20 +287,20 @@ INSERT INTO `payment` (`id`, `customer_id`, `schedule_id`, `amount`, `ref`, `dat
 -- --------------------------------------------------------
 
 --
--- Table structure for table `route`
+-- Table structure for table `meeting`
 --
 
-CREATE TABLE `route` (
+CREATE TABLE `meeting` (
   `id` int(11) NOT NULL,
-  `start` varchar(100) NOT NULL,
-  `stop` varchar(100) NOT NULL
+  `venue` varchar(100) NOT NULL,
+  `link` varchar(100) NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data for table `route`
+-- Dumping data for table `meeting`
 --
 
-INSERT INTO `route` (`id`, `start`, `stop`) VALUES
+INSERT INTO `meeting` (`id`, `venue`, `link`) VALUES
 (3, 'EGERTON', 'NJORO'),
 (4, 'EGERTON', 'NAKURU'),
 (5, 'EGERTON', 'NAIROBI'),
@@ -443,9 +443,9 @@ ALTER TABLE `payment`
   ADD KEY `schedule_id` (`schedule_id`);
 
 --
--- Indexes for table `route`
+-- Indexes for table `meeting`
 --
-ALTER TABLE `route`
+ALTER TABLE `meeting`
   ADD PRIMARY KEY (`id`);
 
 --
@@ -494,9 +494,9 @@ ALTER TABLE `organizer`
 ALTER TABLE `payment`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=46;
 --
--- AUTO_INCREMENT for table `route`
+-- AUTO_INCREMENT for table `meeting`
 --
-ALTER TABLE `route`
+ALTER TABLE `meeting`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
 --
 -- AUTO_INCREMENT for table `schedule`
