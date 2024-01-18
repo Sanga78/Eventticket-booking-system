@@ -93,7 +93,7 @@ if (!isset($file_access)) die("Direct File Access Denied");
 
                
     </div>
-                 <div class="col-md-3 col-sm-6 col-12">
+        <div class="col-md-3 col-sm-6 col-12">
             <div class="info-box bg-success">
                 <span class="info-box-icon"><i class="fa fa-dollar-sign"></i></span>
 
@@ -122,8 +122,8 @@ if (!isset($file_access)) die("Direct File Access Denied");
                 <span class="info-box-icon"><i class="fa fa-route"></i></span>
 
                 <div class="info-box-content">
-                    <span class="info-box-text">Organizers</span>
-                    <span class="info-box-number"><?php echo connect()->query("SELECT * FROM route")->num_rows ?></span>
+                    <span class="info-box-text">Venue and meeting links</span>
+                    <span class="info-box-number"><?php echo connect()->query("SELECT * FROM meeting")->num_rows ?></span>
 
                     <div class="progress">
                         <div class="progress-bar" style="width: 50%"></div>
