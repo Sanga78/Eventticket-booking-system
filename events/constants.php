@@ -400,10 +400,10 @@ function formatDate($date)
     return date('d-m-Y', strtotime($date));
 }
 
-function getRoutePath($id)
+function getVenue($id)
 {
-    $val = connect()->query("SELECT * FROM route WHERE id = '$id'")->fetch_assoc();
-    return $val['start'] . " to " . $val['stop'];
+    $val = connect()->query("SELECT * FROM meeting WHERE id = '$id'")->fetch_assoc();
+    return $val['venue'] . " or " . $val['link'];
 }
 
 function formatTime($time)
@@ -639,14 +639,14 @@ function printClearance($id)
 <style>
 table th{font-weight:italic}
 </style>
-<h1 style="text-align:center"><img src="images/trainlg.png" width="100" height="100"/><br/>EGERTON TICKET RESERVATION SYSTEM<br/> Bus TICKET</h1> <div style="text-align:right; font-family:courier;font-weight:bold"><font size="+6">Ticket N<u>o</u>: $uniqueCode </font></div>
+<h1 style="text-align:center"><img src="images/trainlg.png" width="100" height="100"/><br/>EGERTON TICKET RESERVATION SYSTEM<br/> Event TICKET</h1> <div style="text-align:right; font-family:courier;font-weight:bold"><font size="+6">Ticket N<u>o</u>: $uniqueCode </font></div>
 <table width="100%" border="1">
 <tr><th colspan="2" style="text-align:center"><b>Personal Data</b></th></tr>
 <tr><th><b>Full Name:</b></th><td>$fullname</td></tr>
 <tr><th><b>Email:</b></th><td>$email</td></tr>
 <tr><th><b>Contact:</b></th><td>$phone</td></tr>
 <tr><td colspan="2" style="text-align:center"><b>Trip Detail</b></td></tr>
-<tr><th><b>Route:</b></th><td>$route</td></tr>
+<tr><th><b>Organizer name:</b></th><td>$organizer</td></tr>
 <tr><th><b>Event:</b></th><td>$event</td></tr>
 <tr><th><b>Class:</b></th><td>$class Class</td></tr>
 <tr><th><b>Seat Number:</b></th><td>$seat</td></tr>
@@ -755,7 +755,7 @@ function printReport($id)
 {
     ob_start();
     $con = connect();
-    $getCount = (connect()->query("SELECT schedule.date as date, schedule.time as time, schedule.event_id as event, schedule.route_id as route, booked.seat as seat, customer.name as fullname, booked.code as code, booked.class as class FROM booked INNER JOIN schedule ON schedule.id = booked.schedule_id INNER JOIN customer ON customer.id = booked.user_id WHERE booked.schedule_id = '$id' ORDER BY class "));
+    $getCount = (connect()->query("SELECT schedule.date as date, schedule.time as time, schedule.event_id as event, schedule.organizer_id as organizer, booked.seat as seat, customer.name as fullname, booked.code as code, booked.class as class FROM booked INNER JOIN schedule ON schedule.id = booked.schedule_id INNER JOIN customer ON customer.id = booked.user_id WHERE booked.schedule_id = '$id' ORDER BY class "));
 
     $output = "<style>
     .a {
@@ -794,7 +794,7 @@ function printReport($id)
  
     </style>";
     $sn = 0;
-    $schedule = getRouteFromSchedule($id);
+    $schedule = getEventFromSchedule($id);
     if ($getCount->num_rows < 1) {
         echo "<script>alert('No customer yet for this schedule!');window.location='admin.php?page=report'</script>";
         exit;
@@ -803,7 +803,7 @@ function printReport($id)
         $date = $row['date'];
         $time = $row['time'];
         $event = getEventName($row['event']);
-        $route = getRouteFromSchedule($id);
+        $organizer = getOrganizerFromSchedule($id);
         $time = formatTime($time);
         $sn++;
         $output .= '<tr><td class="a">' . $sn . '</td><td class="c">' . substr(ucwords(strtolower($row['fullname'])), 0, 15) . '</td><td class="shrink">' . $row['code'] . ' (' . ucwords(strtolower($row['class'])) . ')</td><td class="b">' . (strtoupper($row['seat'])) . '</td></tr>';
