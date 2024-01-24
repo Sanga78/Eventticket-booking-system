@@ -33,7 +33,7 @@ if (isset($_GET['now'])) {
                                 <tr>
                                     <th>#</th>
                                     <th>Ticket Number</th>
-                                    <th>Trip Date</th>
+                                    <th>Event Date</th>
                                     <th>Status</th>
                                     <th>Action</th>
                                 </tr>
