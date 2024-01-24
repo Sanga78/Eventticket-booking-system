@@ -405,7 +405,11 @@ function getVenue($id)
     $val = connect()->query("SELECT * FROM meeting WHERE id = '$id'")->fetch_assoc();
     return $val['venue'] . " or " . $val['link'];
 }
-
+function getVenueFromEvent($id)
+{
+    $q = connect()->query("SELECT meeting_id as id FROM event WHERE id = '$id'")->fetch_assoc();
+    return getVenue($q['id']);
+}
 function formatTime($time)
 {
     $time = explode(":", $time);
