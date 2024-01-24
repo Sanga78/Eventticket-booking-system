@@ -121,7 +121,7 @@ if (isset($_GET['error'])) {
                             <a href="individual.php?page=event" class="nav-link      <?php
                                                                                 echo (@$_GET['page'] == 'event') ? 'active' : '';
                                                                                 ?>">
-                                <i class="nav-icon fas fa-event"></i>
+                                <i class="nav-icon fas fa-bell"></i>
                                 <p>
                                     Event
                                 </p>
