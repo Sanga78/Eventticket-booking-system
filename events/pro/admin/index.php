@@ -50,7 +50,7 @@ if (!isset($file_access)) die("Direct File Access Denied");
 
         <div class="col-md-3 col-sm-6 col-12">
             <div class="info-box bg-info">
-                <span class="info-box-icon"><i class="fa fa-bus"></i></span>
+                <span class="info-box-icon"><i class="fa fa-event"></i></span>
 
                 <div class="info-box-content">
                     <span class="info-box-text">Events</span>
@@ -119,7 +119,7 @@ if (!isset($file_access)) die("Direct File Access Denied");
     <div class="row">
         <div class="col-md-3 col-sm-6 col-12">
             <div class="info-box bg-primary">
-                <span class="info-box-icon"><i class="fa fa-route"></i></span>
+                <span class="info-box-icon"><i class="fa fa-link"></i></span>
 
                 <div class="info-box-content">
                     <span class="info-box-text">Venue and meeting links</span>
