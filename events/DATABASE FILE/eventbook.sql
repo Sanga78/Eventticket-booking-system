@@ -94,6 +94,7 @@ CREATE TABLE `event` (
   `id` int(11) NOT NULL,
   `name` varchar(80) NOT NULL,
   `organizer_id` int(11) NOT NULL,
+  `meeting_id` int(11) NOT NULL,
   `first_seat` int(11) NOT NULL,
   `second_seat` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
@@ -102,17 +103,17 @@ CREATE TABLE `event` (
 -- Dumping data for table `event`
 --
 
-INSERT INTO `event` (`id`, `name`,`organizer_id`, `first_seat`, `second_seat`) VALUES
-(1, 'EGERTON DERA FEST',1, 30, 45),
-(2, 'EUSDA', 8, 30, 45),
-(3, 'EUNCCU', 4, 30, 45),
-(7, 'WORSHIP FEST', 3, 30, 45),
-(8, 'X-RAY PARTY', 1, 30, 40),
-(9, 'HUAWEI BOOTCAMP', 2, 20, 50),
-(10, 'TECH FEST', 1, 30, 45),
-(11, 'CHURCHIL SHOW', 4, 30, 40),
-(12, 'LEGACY DRAMA', 7, 25, 60),
-(13, 'COMRADES PARTY', 1, 30, 50);
+INSERT INTO `event` (`id`, `name`,`organizer_id`,`meeting_id`, `first_seat`, `second_seat`) VALUES
+(1, 'EGERTON DERA FEST',1, 3, 30, 45),
+(2, 'EUSDA', 8, 5, 30, 45),
+(3, 'EUNCCU', 4, 4, 30, 45),
+(7, 'WORSHIP FEST', 3, 6, 30, 45),
+(8, 'X-RAY PARTY', 1, 7, 30, 40),
+(9, 'HUAWEI BOOTCAMP', 2, 8, 20, 50),
+(10, 'TECH FEST', 1, 9, 30, 45),
+(11, 'CHURCHIL SHOW', 4, 10, 30, 40),
+(12, 'LEGACY DRAMA', 7, 11, 25, 60),
+(13, 'COMRADES PARTY', 1, 12, 30, 50);
 
 -- --------------------------------------------------------
 
