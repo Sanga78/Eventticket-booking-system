@@ -27,7 +27,7 @@ $me = $_SESSION['user_id'];
                         <thead>
                             <tr>
                                 <th>#</th>
-                                <th>Organizer</th>
+                                <th>Event</th>
                                 <th>Status</th>
                                 <th>Date/Time</th>
                                 <th>Actions</th>
@@ -54,7 +54,7 @@ $me = $_SESSION['user_id'];
                                 }
                                 $id = $fetch['id']; ?><tr>
                                 <td><?php echo ++$sn; ?></td>
-                                <td><?php echo $fullname =  getOrganizerName($fetch['organizer_id']);
+                                <td><?php echo $fullname =  getEventName($fetch['event_id']);
                                         ?></td>
                                 <td><?php $array = getTotalBookByType($id);
                                         echo ($max_first = ($array['first'] - $array['first_booked'])), " Seat(s) Available for First Class" . "<hr/>" . ($max_second = ($array['second'] - $array['second_booked'])) . " Seat(s) Available for Second Class";
