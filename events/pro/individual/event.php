@@ -27,7 +27,7 @@ $me = "?page=$source";
                                     <tr>
                                         <th>#</th>
                                         <th>Event</th>
-                                        <!-- <th>Organizer</th> -->
+                                        <th>venue/link</th>
                                         <th>First Class Seat</th>
                                         <th>Second Class Seat</th>
                                         
