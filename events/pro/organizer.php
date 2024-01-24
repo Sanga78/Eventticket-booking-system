@@ -121,7 +121,7 @@ $fullname =  getOrganizerName($_SESSION['organizer_id'], $conn);
                             <a href="organizer.php?page=event" class="nav-link      <?php
                                                                                 echo (@$_GET['page'] == 'event') ? 'active' : '';
                                                                                 ?>">
-                                <i class="nav-icon fas fa-bus"></i>
+                                <i class="nav-icon fas fa-bell"></i>
                                 <p>
                                     Events 
                                 </p>
