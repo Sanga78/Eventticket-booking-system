@@ -282,7 +282,7 @@ Book event tickets from anywhere using the robust ticketing platform exclusively
 
                         <div class="margin-bottom">
 
-                            <i class="fa fa-diamond"></i>
+                            <i class="fa fa-event"></i>
 
                             <h4>Event Ticketing related information at your fingertips</h4>
 
@@ -327,7 +327,7 @@ Book event tickets from anywhere using the robust ticketing platform exclusively
 
                     <div class="col-md-4">
 
-                        <p class="footer-links"><a href="#">Terms of Use</a> <a href="#">Privacy Policy copyright@2023</a></p>
+                        <p class="footer-links"><a href="#">Terms of Use</a> <a href="#">Privacy Policy copyright@2024</a></p>
 
                     </div>
 
