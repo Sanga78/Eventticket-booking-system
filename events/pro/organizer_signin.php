@@ -14,7 +14,7 @@ if (isset($_POST['email'])) {
     if (!isset($email, $password)) {
 ?>
 <script>
-alert("Ensure you fill the form properly.");
+alert("Please fill the form properly.");
 </script>
 <?php
     } else {
