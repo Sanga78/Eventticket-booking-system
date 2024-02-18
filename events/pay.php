@@ -13,7 +13,7 @@
   $email = $_SESSION['email'];
   $amount = $_SESSION['amount'] . "00";
   // die($amount);
-  //the amount in kobo. This value is actually NGN 5000
+  
   curl_setopt_array($pay, array(
     CURLOPT_URL => "https://api.paystack.co/transaction/initialize",
     CURLOPT_RETURNTRANSFER => true,
@@ -25,7 +25,7 @@
       'email' => $email,
     ]),
     CURLOPT_HTTPHEADER => [
-      "authorization: Bearer $paystack", //replace this with your own test key
+      "authorization: Bearer $paystack",
       "content-type: application/json",
       "cache-control: no-cache"
     ],
@@ -45,5 +45,4 @@
   }
 
   // redirect to page so User can pay
-  // uncomment this line to allow the user redirect to the payment page
   header('Location: ' . $tranx->data->authorization_url);
