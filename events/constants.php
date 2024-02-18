@@ -18,8 +18,8 @@ define("SITE_NAME", $title);
 date_default_timezone_set("Africa/Nairobi");
 $date = date('D, d-M-Y h:i:s A');;
 $date_small = date('d-M-Y');;
-//INSERT YOUR OWN PAYSTACK API KEYS
-$paystack = "#YOUR_API_KEY"; //Do not change this! Redirect URL http://localhost/bus/pro/verify.php
+
+$paystack = "#YOUR_API_KEY";
 if (!function_exists('connect')) {
 
     function connect()
@@ -31,243 +31,243 @@ if (!function_exists('connect')) {
 }
 
 
-function sendMail($to, $subject, $msg)
-{ //error_reporting(E_ALL);
-    global $title;
-    //die("<script>alert('".$_SERVER['PHP_SELF']."')</script>");
-    // require 'vendor/autoload.php';
-    $mail = new PHPMailer(true);
+// function sendMail($to, $subject, $msg)
+// { //error_reporting(E_ALL);
+//     global $title;
+//     //die("<script>alert('".$_SERVER['PHP_SELF']."')</script>");
+//     // require 'vendor/autoload.php';
+//     $mail = new PHPMailer(true);
 
-    try {
-        //Server settings
-        $mail->SMTPDebug = 0; // Enable verbose debug output
-        $mail->isSMTP(); // Set mailer to use SMTP
-        $mail->Host = 'smtp.gmail.com'; // Specify main and backup SMTP servers
-        $mail->SMTPAuth = true; // Enable SMTP authentication
-        $mail->Username = "fromcodemail@mail.com"; // SMTP username
-        $mail->Password = "0000001XYZZ"; // SMTP password
-        $mail->SMTPSecure = 'ssl'; // Enable TLS encryption, `ssl` also accepted
-        $mail->Port = 465; // TCP port to connect to
-        //Recipients
-        $from_name = 'E-TICKET SYSTEM ';
-        $mail->setFrom($mail->Username, $from_name);
-        $mail->addAddress($to); // Name is optional
-        $mail->addReplyTo("simbi@mail.com", "Name Name");
-        // $mail->addCC('cc@example.com');
-        // $mail->addBCC('bcc@example.com');
+//     try {
+//         //Server settings
+//         $mail->SMTPDebug = 0; // Enable verbose debug output
+//         $mail->isSMTP(); // Set mailer to use SMTP
+//         $mail->Host = 'smtp.gmail.com'; // Specify main and backup SMTP servers
+//         $mail->SMTPAuth = true; // Enable SMTP authentication
+//         $mail->Username = ""; // SMTP username
+//         $mail->Password = ""; // SMTP password
+//         $mail->SMTPSecure = 'ssl'; // Enable TLS encryption, `ssl` also accepted
+//         $mail->Port = 465; // TCP port to connect to
+//         //Recipients
+//         $from_name = 'E-TICKET SYSTEM ';
+//         $mail->setFrom($mail->Username, $from_name);
+//         $mail->addAddress($to); // Name is optional
+//         $mail->addReplyTo("simbi@mail.com", "Name Name");
+//         // $mail->addCC('cc@example.com');
+//         // $mail->addBCC('bcc@example.com');
 
-        // Attachments
-        // $mail->addAttachment('/var/tmp/file.tar.gz');         // Add attachments
-        // $mail->addAttachment('/tmp/image.jpg', 'new.jpg');    // Optional name
-        // Content
-        $mail->isHTML(true); // Set email format to HTML
-        $mail->Subject = $subject;
-        $mail->Body = '<!DOCTYPE html>
-    <html lang="en">
+//         // Attachments
+//         // $mail->addAttachment('/var/tmp/file.tar.gz');         // Add attachments
+//         // $mail->addAttachment('/tmp/image.jpg', 'new.jpg');    // Optional name
+//         // Content
+//         $mail->isHTML(true); // Set email format to HTML
+//         $mail->Subject = $subject;
+//         $mail->Body = '<!DOCTYPE html>
+//     <html lang="en">
 
-    <head>
-      <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-      <title>Our Response</title>
-      <style type="text/css">
-      body {margin: 0; padding: 0; min-width: 100%!important;}
-      img {height: auto;}
-      .content {width: 100%; max-width: 600px;}
-      .header {padding: 40px 30px 20px 30px;}
-      .innerpadding {padding: 30px 30px 30px 30px;}
-      .borderbottom {border-bottom: 1px solid #f2eeed;}
-      .subhead {font-size: 15px; color: #ffffff; font-family: sans-serif; letter-spacing: 10px;}
-      .h1, .h2, .bodycopy {color: #153643; font-family: sans-serif;}
-      .h1 {font-size: 33px; line-height: 38px; font-weight: bold;}
-      .h2 {padding: 0 0 15px 0; font-size: 24px; line-height: 28px; font-weight: bold;}
-      .bodycopy {font-size: 16px; line-height: 22px;}
-      .button {text-align: center; font-size: 18px; font-family: sans-serif; font-weight: bold; padding: 0 30px 0 30px;}
-      .button a {color: #ffffff; text-decoration: none;}
-      .footer {padding: 20px 30px 15px 30px;}
-      .footercopy {font-family: sans-serif; font-size: 14px; color: #ffffff;}
-      .footercopy a {color: #ffffff; text-decoration: underline;}
+//     <head>
+//       <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+//       <title>Our Response</title>
+//       <style type="text/css">
+//       body {margin: 0; padding: 0; min-width: 100%!important;}
+//       img {height: auto;}
+//       .content {width: 100%; max-width: 600px;}
+//       .header {padding: 40px 30px 20px 30px;}
+//       .innerpadding {padding: 30px 30px 30px 30px;}
+//       .borderbottom {border-bottom: 1px solid #f2eeed;}
+//       .subhead {font-size: 15px; color: #ffffff; font-family: sans-serif; letter-spacing: 10px;}
+//       .h1, .h2, .bodycopy {color: #153643; font-family: sans-serif;}
+//       .h1 {font-size: 33px; line-height: 38px; font-weight: bold;}
+//       .h2 {padding: 0 0 15px 0; font-size: 24px; line-height: 28px; font-weight: bold;}
+//       .bodycopy {font-size: 16px; line-height: 22px;}
+//       .button {text-align: center; font-size: 18px; font-family: sans-serif; font-weight: bold; padding: 0 30px 0 30px;}
+//       .button a {color: #ffffff; text-decoration: none;}
+//       .footer {padding: 20px 30px 15px 30px;}
+//       .footercopy {font-family: sans-serif; font-size: 14px; color: #ffffff;}
+//       .footercopy a {color: #ffffff; text-decoration: underline;}
 
-      @media only screen and (max-width: 550px), screen and (max-device-width: 550px) {
-      body[yahoo] .hide {display: none!important;}
-      body[yahoo] .buttonwrapper {background-color: transparent!important;}
-      body[yahoo] .button {padding: 0px!important;}
-      body[yahoo] .button a {background-color: #e05443; padding: 15px 15px 13px!important;}
-      body[yahoo] .unsubscribe {display: block; margin-top: 20px; padding: 10px 50px; background: #2f3942; border-radius: 5px; text-decoration: none!important; font-weight: bold;}
-      }
+//       @media only screen and (max-width: 550px), screen and (max-device-width: 550px) {
+//       body[yahoo] .hide {display: none!important;}
+//       body[yahoo] .buttonwrapper {background-color: transparent!important;}
+//       body[yahoo] .button {padding: 0px!important;}
+//       body[yahoo] .button a {background-color: #e05443; padding: 15px 15px 13px!important;}
+//       body[yahoo] .unsubscribe {display: block; margin-top: 20px; padding: 10px 50px; background: #2f3942; border-radius: 5px; text-decoration: none!important; font-weight: bold;}
+//       }
 
-      /*@media only screen and (min-device-width: 601px) {
-        .content {width: 600px !important;}
-        .col425 {width: 425px!important;}
-        .col380 {width: 380px!important;}
-        }*/
+//       /*@media only screen and (min-device-width: 601px) {
+//         .content {width: 600px !important;}
+//         .col425 {width: 425px!important;}
+//         .col380 {width: 380px!important;}
+//         }*/
 
-      </style>
-    </head>
+//       </style>
+//     </head>
 
-    <body yahoo bgcolor="#f6f8f1">
-    <table width="100%" bgcolor="#f6f8f1" border="0" cellpadding="0" cellspacing="0">
-    <tr>
-      <td>
-        <!--[if (gte mso 9)|(IE)]>
-          <table width="600" align="center" cellpadding="0" cellspacing="0" border="0">
-            <tr>
-              <td>
-        <![endif]-->
-        <table bgcolor="#ffffff" class="content" align="center" cellpadding="0" cellspacing="0" border="0">
-          <tr>
-            <td bgcolor="#c7d8a7" class="header">
-              <table width="70" align="left" border="0" cellpadding="0" cellspacing="0">
-                <tr>
-                  <td height="70" style="padding: 0 20px 20px 0;">
-                    <img class="fix" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQaLaZeHpWXMfJd9YmNyfcugjsjCUiyh_-PpQ&usqp=CAU" width="70" height="90" border="0" alt="" />
-                  </td>
-                </tr>
-              </table>
-              <!--[if (gte mso 9)|(IE)]>
-                <table width="425" align="left" cellpadding="0" cellspacing="0" border="0">
-                  <tr>
-                    <td>
-              <![endif]-->
-              <table class="col425" align="left" border="0" cellpadding="0" cellspacing="0" style="width: 100%; max-width: 425px;">
-                <tr>
-                  <td height="70">
-                    <table width="100%" border="0" cellspacing="0" cellpadding="0">
-                      <tr>
-                        <td class="h2" style="padding: 0 0 0 3px;">
-                          E-TICKET SYSTEM
-                        </td>
-                      </tr>
-                      <tr>
-                        <td class="h3" style="padding: 5px 0 0 0;">
-                          URGENT NOTIFICATION
-                        </td>
-                      </tr>
-                    </table>
-                  </td>
-                </tr>
-              </table>
-              <!--[if (gte mso 9)|(IE)]>
-                    </td>
-                  </tr>
-              </table>
-              <![endif]-->
-            </td>
-          </tr>
-          <tr>
-            <td class="innerpadding borderbottom">
-              <table width="100%" border="0" cellspacing="0" cellpadding="0">
-                <tr>
-                  <td class="h2">
-                   Howdy, How are you doing?
-                  </td>
-                </tr>
-                <tr>
-                  <td class="bodycopy">
-                    You have an urgent message</td>
-                </tr>
-              </table>
-            </td>
-          </tr>
-          <tr>
-            <td class="innerpadding borderbottom">
-              <table width="115" align="left" border="0" cellpadding="0" cellspacing="0">
-                <tr>
-                  <td height="115" style="padding: 0 20px 20px 0;">
-                    <img class="fix" src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/210284/article1.png" width="60" height="60" border="0" alt="" />
-                  </td>
-                </tr>
-              </table>
-              <!--[if (gte mso 9)|(IE)]>
-                <table width="380" align="left" cellpadding="0" cellspacing="0" border="0">
-                  <tr>
-                    <td>
-              <![endif]-->
-              <table class="col380" align="left" border="0" cellpadding="0" cellspacing="0" style="width: 100%; max-width: 380px;">
-                <tr>
-                  <td>
-                    <table width="100%" border="0" cellspacing="0" cellpadding="0">
-                      <tr>
-                        <td class="bodycopy" align="justify">
-                          ' . $msg . '
-                        </td>
-                      </tr>
-                      <tr>
-                        <td style="padding: 20px 0 0 0;">
-                          <table class="buttonwrapper" bgcolor="#e05443" border="0" cellspacing="0" cellpadding="0">
-                            <tr>
-                              <td class="button" height="45">
-                                <a href="' . $_SERVER["HTTP_HOST"] . '">Visit Us!</a>
-                              </td>
-                            </tr>
-                          </table>
-                        </td>
-                      </tr>
-                    </table>
-                  </td>
-                </tr>
-              </table>
-              <!--[if (gte mso 9)|(IE)]>
-                    </td>
-                  </tr>
-              </table>
-              <![endif]-->
-            </td>
-          </tr>
+//     <body yahoo bgcolor="#f6f8f1">
+//     <table width="100%" bgcolor="#f6f8f1" border="0" cellpadding="0" cellspacing="0">
+//     <tr>
+//       <td>
+//         <!--[if (gte mso 9)|(IE)]>
+//           <table width="600" align="center" cellpadding="0" cellspacing="0" border="0">
+//             <tr>
+//               <td>
+//         <![endif]-->
+//         <table bgcolor="#ffffff" class="content" align="center" cellpadding="0" cellspacing="0" border="0">
+//           <tr>
+//             <td bgcolor="#c7d8a7" class="header">
+//               <table width="70" align="left" border="0" cellpadding="0" cellspacing="0">
+//                 <tr>
+//                   <td height="70" style="padding: 0 20px 20px 0;">
+//                     <img class="fix" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQaLaZeHpWXMfJd9YmNyfcugjsjCUiyh_-PpQ&usqp=CAU" width="70" height="90" border="0" alt="" />
+//                   </td>
+//                 </tr>
+//               </table>
+//               <!--[if (gte mso 9)|(IE)]>
+//                 <table width="425" align="left" cellpadding="0" cellspacing="0" border="0">
+//                   <tr>
+//                     <td>
+//               <![endif]-->
+//               <table class="col425" align="left" border="0" cellpadding="0" cellspacing="0" style="width: 100%; max-width: 425px;">
+//                 <tr>
+//                   <td height="70">
+//                     <table width="100%" border="0" cellspacing="0" cellpadding="0">
+//                       <tr>
+//                         <td class="h2" style="padding: 0 0 0 3px;">
+//                           E-TICKET SYSTEM
+//                         </td>
+//                       </tr>
+//                       <tr>
+//                         <td class="h3" style="padding: 5px 0 0 0;">
+//                           URGENT NOTIFICATION
+//                         </td>
+//                       </tr>
+//                     </table>
+//                   </td>
+//                 </tr>
+//               </table>
+//               <!--[if (gte mso 9)|(IE)]>
+//                     </td>
+//                   </tr>
+//               </table>
+//               <![endif]-->
+//             </td>
+//           </tr>
+//           <tr>
+//             <td class="innerpadding borderbottom">
+//               <table width="100%" border="0" cellspacing="0" cellpadding="0">
+//                 <tr>
+//                   <td class="h2">
+//                    Howdy, How are you doing?
+//                   </td>
+//                 </tr>
+//                 <tr>
+//                   <td class="bodycopy">
+//                     You have an urgent message</td>
+//                 </tr>
+//               </table>
+//             </td>
+//           </tr>
+//           <tr>
+//             <td class="innerpadding borderbottom">
+//               <table width="115" align="left" border="0" cellpadding="0" cellspacing="0">
+//                 <tr>
+//                   <td height="115" style="padding: 0 20px 20px 0;">
+//                     <img class="fix" src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/210284/article1.png" width="60" height="60" border="0" alt="" />
+//                   </td>
+//                 </tr>
+//               </table>
+//               <!--[if (gte mso 9)|(IE)]>
+//                 <table width="380" align="left" cellpadding="0" cellspacing="0" border="0">
+//                   <tr>
+//                     <td>
+//               <![endif]-->
+//               <table class="col380" align="left" border="0" cellpadding="0" cellspacing="0" style="width: 100%; max-width: 380px;">
+//                 <tr>
+//                   <td>
+//                     <table width="100%" border="0" cellspacing="0" cellpadding="0">
+//                       <tr>
+//                         <td class="bodycopy" align="justify">
+//                           ' . $msg . '
+//                         </td>
+//                       </tr>
+//                       <tr>
+//                         <td style="padding: 20px 0 0 0;">
+//                           <table class="buttonwrapper" bgcolor="#e05443" border="0" cellspacing="0" cellpadding="0">
+//                             <tr>
+//                               <td class="button" height="45">
+//                                 <a href="' . $_SERVER["HTTP_HOST"] . '">Visit Us!</a>
+//                               </td>
+//                             </tr>
+//                           </table>
+//                         </td>
+//                       </tr>
+//                     </table>
+//                   </td>
+//                 </tr>
+//               </table>
+//               <!--[if (gte mso 9)|(IE)]>
+//                     </td>
+//                   </tr>
+//               </table>
+//               <![endif]-->
+//             </td>
+//           </tr>
 
-          <tr>
-            <td class="innerpadding bodycopy">
-            If you would like to reach out to us, talk to us any time via the feedback in your account.<br/>Thank You!
-            </td>
-          </tr>
-          <tr>
-            <td class="footer" bgcolor="#44525f">
-              <table width="100%" border="0" cellspacing="0" cellpadding="0">
-                <tr>
-                  <td align="center" class="footercopy">
-                  '.$title.'<br/>
+//           <tr>
+//             <td class="innerpadding bodycopy">
+//             If you would like to reach out to us, talk to us any time via the feedback in your account.<br/>Thank You!
+//             </td>
+//           </tr>
+//           <tr>
+//             <td class="footer" bgcolor="#44525f">
+//               <table width="100%" border="0" cellspacing="0" cellpadding="0">
+//                 <tr>
+//                   <td align="center" class="footercopy">
+//                   '.$title.'<br/>
 
-                  </td>
-                </tr>
-                <tr>
-                  <td align="center" style="padding: 20px 0 0 0;">
+//                   </td>
+//                 </tr>
+//                 <tr>
+//                   <td align="center" style="padding: 20px 0 0 0;">
 
-                  </td>
-                </tr>
-              </table>
-            </td>
-          </tr>
-        </table>
-        <!--[if (gte mso 9)|(IE)]>
-              </td>
-            </tr>
-        </table>
-        <![endif]-->
-        </td>
-      </tr>
-    </table>
-    </body>
-    </html>
+//                   </td>
+//                 </tr>
+//               </table>
+//             </td>
+//           </tr>
+//         </table>
+//         <!--[if (gte mso 9)|(IE)]>
+//               </td>
+//             </tr>
+//         </table>
+//         <![endif]-->
+//         </td>
+//       </tr>
+//     </table>
+//     </body>
+//     </html>
 
-    ';
-    $mail->SMTPOptions = array(
-        'ssl' => array(
-            'verify_peer' => false,
-            'verify_peer_name' => false,
-            'allow_self_signed' => true
-        )
-    );
-        $mail->AltBody = $msg;
+//     ';
+//     $mail->SMTPOptions = array(
+//         'ssl' => array(
+//             'verify_peer' => false,
+//             'verify_peer_name' => false,
+//             'allow_self_signed' => true
+//         )
+//     );
+//         $mail->AltBody = $msg;
 
-        $mail->send();
-        return 1;
-    } catch (Exception $e) {
-        // var_dump($e);
-        // exit;
-        // return 0;
-        // echo "Message could not be sent. Mailer Error: {$mail->ErrorInfo}";
-        return 0;
-    }
-    return 0;
-}
+//         $mail->send();
+//         return 1;
+//     } catch (Exception $e) {
+//         // var_dump($e);
+//         // exit;
+//         // return 0;
+//         // echo "Message could not be sent. Mailer Error: {$mail->ErrorInfo}";
+//         return 0;
+//     }
+//     return 0;
+// }
 
 
 
