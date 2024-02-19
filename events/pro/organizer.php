@@ -219,7 +219,7 @@ $fullname =  getOrganizerName($_SESSION['organizer_id'], $conn);
                 echo "<script>alert('You are being logged out'); window.location='../';</script>";
                 exit;
             } elseif ($_GET['page'] == 'payment')
-                include 'organizer/sales.php';
+                include 'organizer/index.php';
 
             elseif ($_GET['page'] == 'feedback')
                 include 'organizer/feedback.php';
