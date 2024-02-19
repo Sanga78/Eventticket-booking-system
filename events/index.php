@@ -180,7 +180,7 @@ include 'constants.php';
 
                             <div class="btn-bar">
 
-                                <a href="pro/signin.php" class="btn btn-custom theme_background_color">Make Reservations Now</a>
+                                <a href="pro/signin.php" class="btn btn-custom theme_background_color">Book your tickets Now</a>
 
                             </div>
 
