@@ -14,7 +14,7 @@
                     <a href="organizer_signin.php">Sign In</a>
 
                 <li>
-                    <a href="../">Go Back</a>
+                    <a href="../">Home</a>
                 </li>
             </ul>
         </div>
