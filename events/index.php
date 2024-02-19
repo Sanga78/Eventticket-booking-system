@@ -208,7 +208,7 @@ include 'constants.php';
                             <h1 class="main-heading-title">EGERTON EVENTS Co. Contact List</h1>
 
                             <p class="main-heading-text">Get your event Tickets from the comfort of your home.<br>
-Book event tickets from anywhere using the robust ticketing platform exclusively built to provide the passengers with pleasant ticketing experience.
+Book event tickets from anywhere using the robust ticketing platform exclusively built to provide the customers with pleasant ticketing experience.
                                 
                             </p>
 
