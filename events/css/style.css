@@ -1,45 +1,6 @@
-/*
-++++++++++++++++++++++++++++++++++++++++++++++++++++++
-AUTHOR : Vijayan PP
-PROJECT : Nim-MUTLIT PURPOSE LANDING PAGE TEMPLATE
-VERSION : 1.1
-++++++++++++++++++++++++++++++++++++++++++++++++++++++
-*/
-
-/*++++++++++++++++++++++++++++++++++++++++++++++++++++++
-	INDEX
-++++++++++++++++++++++++++++++++++++++++++++++++++++++
-	1> IMPORT FONTS
-	2> RESET
-	3> GENERAL
-        4> TYPOGRAPHY
-        5> BUTTON
-        6> PRELOADER
-	7> NAVIGATION
-        8> MAIN HEADER
-        9> ABOUT US
-       10> OUR WORKS
-       11> OUR TEAM
-       12> INSPIRATION
-       13> TESTIMONIAL
-       14> OUR STATS      
-       15> SERVICES
-       16> CONTACT US
-       17> SITE-FOOTER
-       18> ANIMATION
-
-       
--------------------------------------------------------*/
-
-/*++++++++++++++++++++++++++++++++++++++++++++++++++++++
-	IMPORT FONTS
-++++++++++++++++++++++++++++++++++++++++++++++++++++++*/
 @import url("http://fonts.googleapis.com/css?family=Roboto:400,900italic,900,700italic,700,500italic,500,400italic,300italic,300,100italic,100");
 @import url("http://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800");
 
-/*++++++++++++++++++++++++++++++++++++++++++++++++++++++
-	RESET
-++++++++++++++++++++++++++++++++++++++++++++++++++++++*/
 
 * {
   padding: 0;
@@ -77,9 +38,6 @@ td {
   padding: 0;
 }
 
-/*++++++++++++++++++++++++++++++++++++++++++++++++++++++
-	GENERAL
-++++++++++++++++++++++++++++++++++++++++++++++++++++++*/
 body {
   color: #fff;
   font: normal 16px "Roboto", "Helvetica Neue", Helvetica, Arial, sans-serif;
@@ -383,7 +341,7 @@ div.preloader {
   color: #fafafa;
   letter-spacing: 1px;
   font-size: 0.73em;
-  //text-shadow:1px 0px rgba(0,0,0,0.5);
+  text-shadow:1px 0px rgba(0,0,0,0.5);
 }
 
 .navbar-default .navbar-nav > .active > a,
@@ -471,7 +429,7 @@ div.preloader {
     rgba(0, 0, 0, 0.4) 100%
   ); /* W3C */
   filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#cc000000', endColorstr='#66000000',GradientType=0 ); /* IE6-9 */
-  //background-attachment: fixed;
+  background-attachment: fixed;
   height: auto;
   height: 100%;
   position: relative;
