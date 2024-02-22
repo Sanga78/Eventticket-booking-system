@@ -133,9 +133,7 @@ if (!isset($file_access)) die("Direct File Access Denied");
                                     $_SESSION['class'] =  $class;
                                     ?>
                             </div>
-                            <a href="https://tujenge.io/payments-page/8a102b70-0740-11ed-8180-630be1e24dd7"><button
-                                    onclick="return confirm('You will be directed to make your payment.\nPayment finalizes your booking!')"
-                                    class="btn btn-primary">Pay Now</button></a>
+                            <a href="#">Pay Now</button></a>
                         </div>
                     </div>
                 </div>
