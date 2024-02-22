@@ -1,0 +1,137 @@
+/* navbar styling*/
+.navbar img{
+    width: 250px;
+    height: 50px;
+    margin-left: 22px;
+}
+.navbar{
+    background-color: rgba(41, 103, 185, 0.76);;
+    position: fixed;
+    width: 100%;
+    z-index: 3;
+}
+.navbar ul{
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    overflow: hidden;
+    text-align: center;
+    border-radius: 4px;
+}
+
+.navbar ul a{
+    color: #f9f9f9;
+    display: block;
+    padding: 10px;
+    font-size: 18px;
+    font-weight: bold;
+    text-transform: uppercase;
+    border-radius: 4px;
+    transition: .5s;
+	text-decoration: none;
+}
+.navbar ul a:hover{
+    color:lightgreen;
+    transition: .5s;
+    font-size: 22px;
+    font-weight: normal;
+}
+
+.navbar .menu{
+    clear: both;
+    max-height: 0;
+    transition: max-height ,2s ease-out;
+}
+.navbar .menu-icon{
+    padding: 28px 20px;
+    position: relative;
+    float: right;
+    cursor: pointer;
+}
+.navbar .menu-icon .nav-icon{
+    background: white;
+    display: block;
+    height: 2px;
+    width: 18px;
+    position: relative;
+    transition: background .2s ease-out;
+}
+.navbar .menu-icon .nav-icon:before{
+    background: white;
+    content: "";
+    display: block;
+     height: 100%;
+     width: 100%;
+     position: absolute;
+     transition: all .2s ease-out;
+     top: 5px;
+}
+.navbar .menu-icon .nav-icon:after{
+    background: white;
+    content: "";
+    display: block;
+     height: 100%;
+     width: 100%;
+     position: absolute;
+     transition: all .2s ease-out;
+     top: -5px;
+}
+.navbar .menu-btn{
+    display: none;
+}
+.navbar .menu-btn:checked ~ .menu{
+    max-height: 400px;
+}
+.navbar .menu-btn:checked ~ .menu-icon .nav-icon{
+    background: transparent;
+}
+.navbar .menu-btn:checked ~ .menu-icon .nav-icon:before{
+    transform: rotate(-45deg);
+    top: 0;
+}
+.navbar .menu-btn:checked ~ .menu-icon .nav-icon:after{
+    transform: rotate(45deg);
+    top: 0;
+}
+  /* Style the dropdown menu */
+  ul.menu ul {
+    display: none;
+    font-size: 1rem;
+    position: absolute;
+    background-color: #f9f9f9;
+    min-width: 160px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    z-index: 1;
+  }
+
+  /* Style the dropdown menu items */
+  ul.menu ul li {
+    display: block;
+    min-width: 100px;
+  }
+
+  /* Show the dropdown menu on click */
+  ul.menu > li.active > ul {
+    display: block;
+  }
+@media (min-width:40em){
+    .navbar li{
+        float:left;
+    }
+    .navbar li a{
+        padding: 20px 30px;
+    }
+    .navbar .menu{
+        clear: none;
+        float: right;
+        max-height: none;
+    }
+    .navbar .menu-icon{
+        display: none;
+    }
+}
+
+nav ul li img.icon{
+    height: 15px;
+    width: 20px;
+}
