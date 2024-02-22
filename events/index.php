@@ -47,6 +47,7 @@ include 'constants.php';
 =========================================================================================================================-->
 
     <link rel="stylesheet" type="text/css" href="css/style.css">
+    <link rel="stylesheet" type="text/css" href="css/nav.css">
 
     <link rel="stylesheet" type="text/css" href="css/responsive.css">
 
@@ -95,18 +96,25 @@ include 'constants.php';
 
                 <div class="navbar-header">
 
-                    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse"
-                        data-target="#bs-example-navbar-collapse-1">
-
-                        <span class="sr-only">Egerton E-ticketing</span>
-
-                        <span class="icon-bar"></span>
-
-                        <span class="icon-bar"></span>
-
-                        <span class="icon-bar"></span>
-
-                    </button>
+                <nav class="navbar">
+                    <!-- <img class="logo" id="logo" src="" alt="Event Management system"> -->
+                    <input class="menu-btn" type="checkbox" id="menu-btn" />
+                    <label class="menu-icon" for="menu-btn"><span class="nav-icon"></span></label>
+                    <!-- Menu-->
+                    <ul class="menu">
+                        <li><a href="#home">Home</a></li>
+                        <li><a href="#two">About us</a></li>
+                        <li><a href="">Contact</a></li>
+                        <li class="has-dropdown">
+                            <a onclick="toggleDropdown(this)">Login/Sign Up</a>
+                            <ul>
+                                <li><a href="pro/adminsignin.php">Admin</a></li>
+                                <li><a href="pro/organizer_signin.php">Event Organizer</a></li>
+                                <li><a href="pro/signin.php">Customer</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                </nav>
 
                     <a class="navbar-brand" href="index.php"><?php echo $title[0]; ?><span class="themecolor">
                             <?php echo $title[1]; ?></span><?php for ($i = 2; $i < strlen($title); $i++) echo $title[$i]; ?></a>
@@ -115,32 +123,12 @@ include 'constants.php';
 
 
                 <!-- Collect the nav links, forms, and other content for toggling -->
+                
+                
 
                 <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-
-                    <ul class="nav navbar-nav navbar-right">
-
-                        <li><a href="#home" class="page-scroll">
-                                <h3>Home</h3>
-                            </a></li>
-
-                        <li><a href="#two" class="page-scroll">
-                                <h3>About</h3>
-                            </a></li>
-
-                        <li><a href="pro/signin.php" class="page-scroll">
-                                <h3>Customer Portal</h3>
-                            </a></li>
-
-                        <li><a href="pro/organizer_signin.php" class="page-scroll">
-                                <h3>Event Organizer</h3>
-                            </a></li>
-
-                        <li><a href="pro/adminsignin.php" class="page-scroll">
-                                <h3>Admin</h3>
-                            </a></li>
-                    </ul>
-
+                <!-- nav/menu -->
+               
                 </div>
                 <!-- /.navbar-collapse -->
 
@@ -286,7 +274,7 @@ Book event tickets from anywhere using the robust ticketing platform exclusively
 
                             <h4>Event Ticketing related information at your fingertips</h4>
 
-                            <p class="black">Checkout available seats, venue information, cost information on real time
+                            <p class="black">Checkout available events, venue information, cost information on real time
                                 basis with Egerton e-ticketing.</p>
 
                         </div> <!-- / margin -->
@@ -328,25 +316,6 @@ Book event tickets from anywhere using the robust ticketing platform exclusively
                     <div class="col-md-4">
 
                         <p class="footer-links"><a href="#">Terms of Use</a> <a href="#">Privacy Policy copyright@2024</a></p>
-
-                    </div>
-
-                        <!--social-->
-
-                        <!-- 
-            <ul class="social">
-
-              <li><a href="https://twitter.com/" target="_blank"><i class="fa fa-twitter "></i></a></li>
-
-              <li><a href="https://www.facebook.com/" target="_blank"><i class="fa fa-facebook"></i></a></li>
-
-              <li><a href="https://www.youtube.com/" target="_blank"><i class="fa fa-youtube-play"></i></a></li>
-
-            </ul> -->
-
-
-                        <!--social end-->
-
 
                     </div>
 
@@ -411,7 +380,44 @@ Book event tickets from anywhere using the robust ticketing platform exclusively
 
     <!-- [ COMMON SCRIPT ] -->
     <script src="js/common.js"></script>
+    <!-- <script>
+        /* When the user clicks on the button, 
+        toggle between hiding and showing the dropdown content */
+        function myFunction() {
+        document.getElementById("myDropdown").classList.toggle("show");
+        }
 
+        // Close the dropdown if the user clicks outside of it
+        window.onclick = function(e) {
+        if (!e.target.matches('.dropbtn')) {
+        var myDropdown = document.getElementById("myDropdown");
+            if (myDropdown.classList.contains('show')) {
+            myDropdown.classList.remove('show');
+            }
+        }
+        }
+    </script> -->
+    <script>
+    function toggleDropdown(link) {
+      var dropdown = link.parentNode;
+      // Toggle the active state of the dropdown
+      dropdown.classList.toggle('active');
+
+      // Close the dropdown when clicking outside
+      if (!dropdown.classList.contains('active')) {
+        document.removeEventListener('click', closeDropdown);
+      } else {
+        document.addEventListener('click', closeDropdown);
+      }
+
+      function closeDropdown(event) {
+        if (!dropdown.contains(event.target)) {
+          dropdown.classList.remove('active');
+          document.removeEventListener('click', closeDropdown);
+        }
+      }
+    }
+  </script>
 </body>
 
 
