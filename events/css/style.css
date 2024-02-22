@@ -315,10 +315,9 @@ div.preloader {
   right: 0;
 }
 
-/*	RAMSH-STYLE STARTS HERE
-------------------------------*/
 
 /* Navigation */
+/*
 .nim-menu {
   padding: 10px;
   transition: all 0.8s;
@@ -344,7 +343,7 @@ div.preloader {
   text-shadow:1px 0px rgba(0,0,0,0.5);
 }
 
-.navbar-default .navbar-nav > .active > a,
+ .navbar-default .navbar-nav > .active > a,
 .navbar-default .navbar-nav > .active > a:hover,
 .navbar-default .navbar-nav > .active > a:focus {
   background-color: transparent;
@@ -364,13 +363,12 @@ div.preloader {
 }
 .navbar-default .navbar-toggle:hover > .icon-bar {
   background-color: #fff;
-}
+} */
 
 /*	MAIN HEADING
 ------------------------------*/
 
 .main-heading {
-  background: url(../images/bus.jpg) center center no-repeat;
   background-size: cover;
   background-attachment: fixed;
   color: #cfcfcf;
