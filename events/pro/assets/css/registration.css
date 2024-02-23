@@ -1,23 +1,20 @@
 @import url(https://fonts.googleapis.com/css?family=Roboto:300);
 
-/* .body{
-  background-image: url('https://ordinaryfaith.net/wp-content/uploads/2016/03/Gray-plain-website-background.jpg');
-  background-repeat: no-repeat;
-  background-size: cover;
-} */
-
+.body{
+ background-color: whitesmoke;
+ padding: 0;
+ margin: 0;
+}
 
 .login-page {
   width: 360px;
-  padding: 8% 0 0;
   margin: auto;
-
 }
 .form {
   position: relative;
   z-index: 1;
   background: #48c9b0;
-  max-width: 360px;
+  max-width: 30vw;
   margin: 0 auto 100px;
   padding: 45px;
   text-align: center;
@@ -34,7 +31,7 @@
   padding: 15px;
   box-sizing: border-box;
   font-size: 14px;
-border-radius:10px;
+  border-radius:10px;
   
 }
 .form button {
@@ -55,10 +52,11 @@ border-radius:30px;
   cursor: pointer;
   transition: all 0.2s;
 
+
 }
 .form button:hover,.form button:focus {
   background: #148f77;
-   box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
   transform: translateY(-4px);
 }
 .form button:active {
@@ -119,22 +117,38 @@ border-radius:30px;
 .container .info span .fa {
   color: #EF3B3A;
 }
-body {
-  background: #e2e6e0; /* fallback for old browsers */
-  background: -webkit-linear-gradient(right, #cfe9c1, #cfe9c1);
-  background: -moz-linear-gradient(right, #cfe9c1, #cfe9c1);
-  background: -o-linear-gradient(right, #cfe9c1, #cfe9c1);
-  background: linear-gradient(to left, #cfe9c1, #cfe9c1);
-  font-family: "Roboto", sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;  
-}
 .logged-user {
-    margin-left: 60px;
+  margin-left: 60px;
 }
 #error-msg{
-    color: #EA4335;
+  color: #EA4335;
 }
 #valid-msg{
-  color: #17a589;
+color: #17a589;
+}
+
+   
+@media only screen and (max-width: 900px){
+  body{
+    padding: 0;
+    margin: 0;
+  }
+  .login-page{
+    width: 100%;
+    padding: 3rem 0;
+  }
+  .form {
+    border-radius: .5rem;
+    max-width: 90vw;
+    padding: 3.5rem 2rem; 
+  }
+  
+.form input {
+  padding: 1rem;
+  font-size: 14px;  
+}
+.form button {
+  margin: 0px 0px 5px;
+  padding: 15px;
+ }
 }
