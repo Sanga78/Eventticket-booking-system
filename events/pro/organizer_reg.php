@@ -73,28 +73,30 @@ alert("We could not register you!.");
 <div class="login-page">
         <center><h2> Register Organizer below</h2></center>
         <div class="form">
-          <form class="login-form" method="post" role="form" enctype="multipart/form-data" id="signup-form"
-            autocomplete="off">
-            <!-- json response will be here -->
-            <div id="errorDiv"></div>
-            <!-- json response will be here -->
-            <input type="text" required minlength="10" name="name" placeholder="Full name" />
-            <input type="email" required name="email" placeholder="email address" />
-            <input type="tel" minlength="10" pattern="[0-9]{10}" required name="phone" placeholder="Phone Number"/>
-            <input type="file" name='file' placeholder="Select Picture"/>
-            <input type='text' name="address" required placeholder="Address"/>
-            <input type="password" id="password" name="password" id="password" placeholder="set a password" />
-            <input type="password" name="cpassword" id="cpassword" placeholder="confirm password" />
-            <i class="fas fa-eye" onclick="show()"></i>
-            <br>
-            <br>
-            <button type="submit" id="btn-signup">
-              SIGN UP
-            </button>
-            <p class="message">
-                <a href="#">.</a><br>
-            </p>
-          </form>
+        <form class="login-form" method="post" role="form" enctype="multipart/form-data" id="signup-form" autocomplete="off">
+                <!-- json response will be here -->
+                <div id="errorDiv"></div>
+                <!-- json response will be here -->
+                <input type="text" required minlength="10" name="name" placeholder="Full name" />
+                <input type="email" required name="email" placeholder="Email address" />
+                <p>Enter phone number: <input type="tel" id="phone" name="phone" required />
+                <span id="valid-msg" class="hide">✓ Valid</span>
+                <span id="error-msg" class="hide"></span>
+                </p>
+                <input type="file" name='file' placeholder="Select Picture"/>
+                <input type='text' name="address" required placeholder="Address"/>
+                <input type="password" id="password" name="password" id="password" placeholder="set a password" />
+                <input type="password" name="cpassword" id="cpassword" placeholder="confirm password" />
+                <i class="fas fa-eye" onclick="show()"></i>
+                <br>
+                <br>
+                <button type="submit" id="btn-signup">
+                SIGN UP
+                </button>
+                <p class="message">
+                    <a href="#">.</a><br>
+                </p>
+            </form>
 
           <!-- <form class="login-form">
             <button type="button" id="btn-signup">
@@ -120,7 +122,55 @@ alert("We could not register you!.");
     }
   </script>
 <!-- <script src="assets/js/jquery-1.12.4-jquery.min.js"></script> -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="./assets/js/intlTelInput.js"></script>
+    <script src="./assets/js/intlTelInput-jquery.min.js"></script>
+    <script src="./assets/js/intlTelInput-jquery.js"></script>
+    <script>
+        var input = document.querySelector('#phone')
+            errorMsg = document.querySelector("#error-msg"),
+            validMsg = document.querySelector("#valid-msg");
 
+        // Error messages based on the code returned from getValidationError
+        var errorMap = [ "Invalid number", "Invalid country code", "Too short", "Too long", "Invalid number"];
+        
+        var intl = window.intlTelInput(input,{
+            // initialCountry: "auto",
+            // geoIpLookup: function(success,failure){
+            //     $.get("https://ipinfo.io", function() {},"jsonp").always(function(resp) {
+            //         var countryCode = (resp && resp.country) ? resp.country : "";
+            //         success(countryCode);
+            //     });
+            // },
+            utilsScript: "./assets/js/utils.js"
+        });
+
+        var reset = function() {
+            input.classList.remove("error");
+            errorMsg.innerHTML = "";
+            errorMsg.classList.add("hide");
+            validMsg.classList.add("hide");
+        };
+
+        // Validate on blur event
+        input.addEventListener('blur', function() {
+            reset();
+            if(input.value.trim()){
+                if(intl.isValidNumber()){
+                    validMsg.classList.remove("hide");
+                }else{
+                    input.classList.add("error");
+                    var errorCode = intl.getValidationError();
+                    errorMsg.innerHTML = errorMap[errorCode];
+                    errorMsg.classList.remove("hide");
+                }
+            }
+        });
+        
+        // Reset on keyup/change event
+        input.addEventListener('change', reset);
+        input.addEventListener('keyup', reset);
+    </script>
 </body>
 
 </html>
