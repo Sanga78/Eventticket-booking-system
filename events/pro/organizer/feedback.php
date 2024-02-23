@@ -1,7 +1,5 @@
 <?php
 if (!isset($file_access)) die("Direct File Access Denied");
-$source = 'train';
-$me = "?page=$source";
 ?>
 
 <div class="content">
@@ -122,9 +120,9 @@ if (isset($_POST['send_reply'])) {
     $reply = $_POST['reply'];
     $id = $_POST['id'];
     if (replyTo($id, $reply)) {
-        echo "<script>alert('Reply sent!');window.location='admin.php'</script>";
+        echo "<script>alert('Reply sent!');window.location='organizer.php'</script>";
     } else {
-        echo "<script>alert('Reply could not be sent!');window.location='admin.php'</script>";
+        echo "<script>alert('Reply could not be sent!');window.location='organizer.php'</script>";
     }
 }
 
