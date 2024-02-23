@@ -136,7 +136,14 @@ function genRand()
 function getImage($id, $conn)
 {
     $row = $conn->query("SELECT loc FROM customer WHERE id = '$id'")->fetch_assoc();
-    if (strlen($row['loc']) < 10) return "images/trainlg.png";
+    if (strlen($row['loc']) < 10) return "images/profile.png";
+    else return "uploads/" . $row['loc'];
+}
+
+function getOrgImage($id, $conn)
+{
+    $row = $conn->query("SELECT loc FROM organizer WHERE id = '$id'")->fetch_assoc();
+    if (strlen($row['loc']) < 10) return "images/profile.png";
     else return "uploads/" . $row['loc'];
 }
 
