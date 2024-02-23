@@ -1,5 +1,5 @@
    
-@media only screen and (max-width: 900px){
+@media only screen and (max-width: 450px){
     .ramsh-menu ul li:last-child::after{
         display:none;
     }

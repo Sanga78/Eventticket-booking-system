@@ -251,7 +251,6 @@ h2 {
 
 #explore {
   background-color: #C34C39;
-  background-image: url("../images/event-bg.jpg");
   background-position: center bottom;
   background-size: contain;
   background-repeat:no-repeat;
@@ -388,7 +387,6 @@ h2 {
 **************************/
 #event {
   background-color: #33888F;
-  background-image: url("../images/bus.jpg");
   background-position: 50% 0;
   background-size: contain;
   position: relative;
@@ -579,7 +577,6 @@ h2 {
 
 #sponsor {
   background-color: #1881a2;
-  background-image: url("../images/bus.jpg");
   background-position:50% 0;
   background-size: cover;
   background-repeat:no-repeat;

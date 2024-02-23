@@ -368,7 +368,7 @@ div.preloader {
 /*	MAIN HEADING
 ------------------------------*/
 
-.main-heading {
+/* .main-heading {
   background-size: cover;
   background-attachment: fixed;
   color: #cfcfcf;
@@ -383,7 +383,7 @@ div.preloader {
     rgba(0, 0, 0, 0.66) 35%,
     rgba(0, 0, 0, 0.55) 62%,
     rgba(0, 0, 0, 0.4) 100%
-  ); /* FF3.6+ */
+  ); /* FF3.6+ 
   background: -webkit-gradient(
     linear,
     left top,
@@ -393,7 +393,7 @@ div.preloader {
     color-stop(35%, rgba(0, 0, 0, 0.66)),
     color-stop(62%, rgba(0, 0, 0, 0.55)),
     color-stop(100%, rgba(0, 0, 0, 0.4))
-  ); /* Chrome,Safari4+ */
+  ); /* Chrome,Safari4+ 
   background: -webkit-linear-gradient(
     top,
     rgba(0, 0, 0, 0.8) 0%,
@@ -401,7 +401,7 @@ div.preloader {
     rgba(0, 0, 0, 0.66) 35%,
     rgba(0, 0, 0, 0.55) 62%,
     rgba(0, 0, 0, 0.4) 100%
-  ); /* Chrome10+,Safari5.1+ */
+  ); /* Chrome10+,Safari5.1+
   background: -o-linear-gradient(
     top,
     rgba(0, 0, 0, 0.8) 0%,
@@ -409,7 +409,7 @@ div.preloader {
     rgba(0, 0, 0, 0.66) 35%,
     rgba(0, 0, 0, 0.55) 62%,
     rgba(0, 0, 0, 0.4) 100%
-  ); /* Opera 11.10+ */
+  ); /* Opera 11.10+ 
   background: -ms-linear-gradient(
     top,
     rgba(0, 0, 0, 0.8) 0%,
@@ -417,7 +417,7 @@ div.preloader {
     rgba(0, 0, 0, 0.66) 35%,
     rgba(0, 0, 0, 0.55) 62%,
     rgba(0, 0, 0, 0.4) 100%
-  ); /* IE10+ */
+  ); /* IE10+ 
   background: linear-gradient(
     to bottom,
     rgba(0, 0, 0, 0.8) 0%,
@@ -425,8 +425,8 @@ div.preloader {
     rgba(0, 0, 0, 0.66) 35%,
     rgba(0, 0, 0, 0.55) 62%,
     rgba(0, 0, 0, 0.4) 100%
-  ); /* W3C */
-  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#cc000000', endColorstr='#66000000',GradientType=0 ); /* IE6-9 */
+  ); /* W3C 
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#cc000000', endColorstr='#66000000',GradientType=0 ); /* IE6-9 
   background-attachment: fixed;
   height: auto;
   height: 100%;
@@ -480,7 +480,7 @@ p.lead {
   -ms-animation: blink 0.6s infinite;
   -o-animation: blink 0.6s infinite;
   animation: blink 0.6s infinite;
-}
+} */
 
 /*----------------ABOUT US
 

@@ -1,11 +1,11 @@
 /* navbar styling*/
 .navbar img{
-    width: 250px;
-    height: 50px;
+    width: 200px;
+    height: 68px;
     margin-left: 22px;
 }
 .navbar{
-    background-color: rgba(41, 103, 185, 0.76);;
+    background-color: rgba(8, 209, 122, 0.936);;
     position: fixed;
     width: 100%;
     z-index: 3;
@@ -31,7 +31,7 @@
 	text-decoration: none;
 }
 .navbar ul a:hover{
-    color:lightgreen;
+    color:rgb(16, 125, 209);
     transition: .5s;
     font-size: 22px;
     font-weight: normal;
@@ -134,4 +134,19 @@
 nav ul li img.icon{
     height: 15px;
     width: 20px;
+}
+
+@media (max-width: 575px) {
+    .navbar img{
+        width: 120px;
+        height: 55px;
+        margin-left: 5px;
+    }
+}
+.navbar > .active > a,
+.navbar > .active > a:hover,
+.navbar > .active > a:focus {
+  color: white; 
+  background-color: gray;
+  border-bottom: 5px solid #fff;
 }
