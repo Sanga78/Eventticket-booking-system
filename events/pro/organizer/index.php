@@ -69,7 +69,7 @@ if (!isset($file_access)) die("Direct File Access Denied");
         
 
                
-    </div>
+    
         <!-- <div class="col-md-3 col-sm-6 col-12">
             <div class="info-box bg-success">
                 <span class="info-box-icon"><i class="fa fa-dollar-sign"></i></span>
@@ -86,14 +86,13 @@ if (!isset($file_access)) die("Direct File Access Denied");
                     </div>
 
                 </div>
-                <!-- /.info-box-content -->
+                 /.info-box-content 
             </div>
-            <!-- /.info-box -->
-        </div> -->
+             /.info-box
+        </div> 
 
-        <!-- /.col-md-6 -->
-    </div>
-    <div class="row">
+         /.col-md-6 -->
+    
         <div class="col-md-3 col-sm-6 col-12">
             <div class="info-box bg-warning">
                 <span class="info-box-icon"><i class="fa fa-comment-dots"></i></span>
