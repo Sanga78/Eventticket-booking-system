@@ -1,5 +1,6 @@
 <body>
     <nav class="navbar">
+    <img class="logo" id="logo" src="assets/img/logo.jpg" alt="Logo">
         <input class="menu-btn" type="checkbox" id="menu-btn" />
             <label class="menu-icon" for="menu-btn"><span class="nav-icon"></span></label>
             <!-- Menu-->
