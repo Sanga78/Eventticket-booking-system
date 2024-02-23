@@ -71,32 +71,32 @@ alert("We could not register you!.");
 ?>
 <div class="signup-page">
 <div class="login-page">
-        <center><h2>Sign Up below</h2></center>
+        <center><h2>CUSTOMER REGISTER</h2></center>
         <div class="form">
-          <form class="login-form" method="post" role="form" enctype="multipart/form-data" id="signup-form"
-            autocomplete="off">
-            <!-- json response will be here -->
-            <div id="errorDiv"></div>
-            <!-- json response will be here -->
-            <input type="text" required minlength="10" name="name" placeholder="Full name" />
-            <input type="email" required name="email" placeholder="Email address" />
-            <p>Enter phone number: <input type="tel" id="phone" name="phone" required />
-            <span id="valid-msg" class="hide">✓ Valid</span>
-            <span id="error-msg" class="hide"></span>
-            </p>
-            <input type="file" name='file' placeholder="Select Picture"/>
-            <input type='text' name="address" required placeholder="Address"/>>
-            <input type="password" id="password" name="password" id="password" placeholder="set a password" />
-            <input type="password" name="cpassword" id="cpassword" placeholder="confirm password" />
-            <i class="fas fa-eye" onclick="show()"></i>
-            <br>
-            <br>
-            <button type="submit" id="btn-signup">
-              SIGN UP
-            </button>
-            <p class="message">
-                <a href="#">.</a><br>
-            </p>
+          <form class="login-form" method="post" role="form" enctype="multipart/form-data" id="signup-form" autocomplete="off">
+                <!-- json response will be here -->
+                <div id="errorDiv"></div>
+                <!-- json response will be here -->
+                <input type="text" required minlength="10" name="name" placeholder="Full name" />
+                <input type="email" required name="email" placeholder="Email address" />
+                <p>Enter phone number: <input type="tel" id="phone" name="phone" required />
+                <span id="valid-msg" class="hide">✓ Valid</span>
+                <span id="error-msg" class="hide"></span>
+                </p>
+                <input type="file" name='file' placeholder="Select Picture"/>
+                <input type='text' name="address" required placeholder="Address"/>>
+                <input type="password" id="password" name="password" id="password" placeholder="set a password" />
+                <input type="password" name="cpassword" id="cpassword" placeholder="confirm password" />
+                <i class="fas fa-eye" onclick="show()"></i>
+                <br>
+                <br>
+                <button type="submit" id="btn-signup">
+                SIGN UP
+                </button>
+                <p class="message">
+                    <a href="#">.</a><br>
+                </p>
+            </form>
         </div>
     </div>
 </div>
