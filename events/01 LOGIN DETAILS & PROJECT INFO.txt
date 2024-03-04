@@ -9,5 +9,11 @@ Password: Password@123
 Email   : demoaccount@mail.com
 Password: password
 
+
+**Organizer Login Details**
+
+Email   : demoaccount@mail.com
+Password: password
+
 OR sign up with your own details!!
 
