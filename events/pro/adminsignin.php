@@ -48,6 +48,9 @@ alert("Access Denied.");
     }
 }
 ?>
+ <br>
+        <br>
+        <br>
 <div class="signup-page">
     <div class="form">
         <h2>Admin Sign In</h2>
