@@ -13,7 +13,6 @@
   $email = $_SESSION['email'];
   $amount = $_SESSION['amount'] . "00";
   // die($amount);
-  //the amount in kobo. This value is actually NGN 5000
   curl_setopt_array($pay, array(
     CURLOPT_URL => "https://api.paystack.co/transaction/initialize",
     CURLOPT_RETURNTRANSFER => true,
