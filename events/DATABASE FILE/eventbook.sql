@@ -35,7 +35,7 @@ CREATE TABLE `event` (
   `id` int(11) NOT NULL,
   `name` varchar(80) NOT NULL,
   `organizer_id` int(11) NOT NULL,
-  `meeting_id` int(11) NOT NULL,
+  `venue` varchar(80) NOT NULL,
   `first_seat` int(11) NOT NULL,
   `second_seat` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
@@ -113,19 +113,6 @@ CREATE TABLE `payment` (
   `amount` varchar(255) NOT NULL,
   `ref` varchar(100) NOT NULL,
   `date` varchar(40) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
-
--- -- --------------------------------------------------------
-
---
--- Table structure for table `meeting`
---
-
-CREATE TABLE `meeting` (
-  `id` int(11) NOT NULL,
-  `venue` varchar(100) NOT NULL,
-  `link` varchar(100) NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 
@@ -218,12 +205,6 @@ ALTER TABLE `payment`
   ADD KEY `schedule_id` (`schedule_id`);
 
 --
--- Indexes for table `meeting`
---
-ALTER TABLE `meeting`
-  ADD PRIMARY KEY (`id`);
-
---
 -- Indexes for table `schedule`
 --
 ALTER TABLE `schedule`
@@ -268,11 +249,6 @@ ALTER TABLE `organizer`
 --
 ALTER TABLE `payment`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=46;
---
--- AUTO_INCREMENT for table `meeting`
---
-ALTER TABLE `meeting`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
 --
 -- AUTO_INCREMENT for table `schedule`
 --
