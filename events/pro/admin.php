@@ -68,7 +68,7 @@ $fullname =  "System Administrator";
                 <!-- Sidebar user panel (optional) -->
                 <div class="user-panel mt-3 pb-3 mb-3 d-flex">
                     <div class="image">
-                        <img src="images/trainlg.png" class="img-circle elevation-2" alt="User Image">
+                        <img src="assets/img/user-profile-min.png" class="img-circle elevation-2" alt="User Image">
                     </div>
                     <div class="info">
                         <a href="#" class="d-block">Admin</a>
@@ -128,16 +128,6 @@ $fullname =  "System Administrator";
                                 <i class="nav-icon fas fa-calendar-day"></i>
                                 <p>
                                     Schedules
-                                </p>
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="admin.php?page=venue" class="nav-link      <?php
-                                                                                echo (@$_GET['page'] == 'venue') ? 'active' : '';
-                                                                                ?>">
-                                <i class="nav-icon fas fa-link"></i>
-                                <p>
-                                    Venue
                                 </p>
                             </a>
                         </li>
@@ -239,8 +229,6 @@ $fullname =  "System Administrator";
                 include 'admin/users.php';
             elseif ($_GET['page'] == 'organizers')
                 include 'admin/organizers.php';
-            elseif ($_GET['page'] == 'venue')
-                include 'admin/venue.php';
             elseif ($_GET['page'] == 'logout') {
                 @session_destroy();
                 echo "<script>alert('You are being logged out'); window.location='../';</script>";
