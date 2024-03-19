@@ -72,9 +72,13 @@ if (isset($_GET['now'])) {
                                                 </button>
                                             </div>
                                             <div class="modal-body">
-
+                    
                                                 <p><b>Event Name :</b>
                                                     <?php echo getEventName($row['event_id']);
+                                                        ?>
+                                                </p>
+                                                <p><b>Seat Number :</b>
+                                                    <?php echo $row['seat'];
                                                         ?>
                                                 </p>
                                                 <p><b>Payment Date :</b>
