@@ -154,12 +154,12 @@ function formatDate($date)
 
 function getVenue($id)
 {
-    $val = connect()->query("SELECT * FROM meeting WHERE id = '$id'")->fetch_assoc();
-    return $val['venue'] . " or " . $val['link'];
+    $val = connect()->query("SELECT * FROM venue WHERE id = '$id'")->fetch_assoc();
+    return $val['venue'];
 }
 function getVenueFromEvent($id)
 {
-    $q = connect()->query("SELECT meeting_id as id FROM event WHERE id = '$id'")->fetch_assoc();
+    $q = connect()->query("SELECT venue_id as id FROM event WHERE id = '$id'")->fetch_assoc();
     return getVenue($q['id']);
 }
 function formatTime($time)
@@ -294,4 +294,10 @@ function replyTo($id, $reply)
     $sql = $con->query("UPDATE feedback SET response = '$reply' WHERE id = '$id' ");
     if ($sql) return 1;
     return 0;
+}
+
+
+function printReport($id)
+{
+  echo "report not available"; 
 }
