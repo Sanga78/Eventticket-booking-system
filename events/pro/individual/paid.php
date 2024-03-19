@@ -65,7 +65,7 @@ if (isset($_GET['now'])) {
                                         <div class="modal-content">
                                             <div class="modal-header">
                                                 <h4 class="modal-title">Details For - <?php echo $fullname;?> 
-                                                <span class="">&#128669;</span></h4>
+                                                <span class="">&#x1F3AB;</span></h4>
                                                 <button type="button" class="close" data-dismiss="modal"
                                                     aria-label="Close">
                                                     <span aria-hidden="true">&times;</span>
@@ -73,11 +73,6 @@ if (isset($_GET['now'])) {
                                             </div>
                                             <div class="modal-body">
 
-
-                                                <p><b>Seat Number :</b>
-                                                    <?php echo $row['seat'];
-                                                        ?>
-                                                </p>
                                                 <p><b>Event Name :</b>
                                                     <?php echo getEventName($row['event_id']);
                                                         ?>
