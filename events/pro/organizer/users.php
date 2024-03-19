@@ -2,17 +2,6 @@
 if (!isset($file_access)) die("Direct File Access Denied");
 $source = 'users';
 $me = "?page=$source";
-if (isset($_GET['status'], $_GET['id'])) {
-    $id = $_GET['id'];
-    $status = $_GET['status'];
-    if ($status == 0) {
-        $status = 0;
-    } else {
-        $status = 1;
-    }
-    $conn = connect()->query("UPDATE customer SET status = '$status' WHERE id = '$id'");
-    echo "<script>alert('Action completed!');window.location='admin.php$me';</script>";
-}
 ?>
 
 <div class="content">
@@ -40,7 +29,6 @@ if (isset($_GET['status'], $_GET['id'])) {
                                             <th>Email</th>
                                             <th>Contact</th>
                                             <th>Image</th>
-                                            <th>Action</th>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -59,24 +47,6 @@ if (isset($_GET['status'], $_GET['id'])) {
 
 
                                             <td>
-                                                <?php
-                                                    if ($fetch['status'] == 0) {
-                                                    ?>
-                                                <a href="admin.php?page=users&status=1&id=<?php echo $id; ?>">
-                                                    <button
-                                                        onclick="return confirm('You are about allowing this user be able to login his/her account.')"
-                                                        type="submit" class="btn btn-success">
-                                                        Enable Account
-                                                    </button></a>
-                                                <?php } else { ?>
-                                                <a href="admin.php?page=users&status=0&id=<?php echo $id; ?>">
-                                                    <button
-                                                        onclick="return confirm('You are about denying this user access to  his/her account.')"
-                                                        type="submit" class="btn btn-danger">
-                                                        Disable Account
-                                                    </button></a>
-                                                <?php } ?>
-                                            </td>
                                         </tr>
                                         <?php
                                         }
