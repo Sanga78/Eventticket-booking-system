@@ -15,5 +15,5 @@ Password: Password@123
 Email   : demoorganizer@gmail.com
 Password: Password@123
 
-OR sign up with your own details!!
+
 
