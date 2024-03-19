@@ -76,7 +76,7 @@ $me = $_SESSION['user_id'];
                                             <h4 class="modal-title">Book For <?php echo $fullname;
 
 
-                                                                                    ?> &#128642;</h4>
+                                                                                    ?> &#x1F3AB;</h4>
                                             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                                 <span aria-hidden="true">&times;</span>
                                             </button>
