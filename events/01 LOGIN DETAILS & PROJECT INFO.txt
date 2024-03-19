@@ -7,13 +7,13 @@ Password: Password@123
 **Customer Login Details**
 
 Email   : demoaccount@mail.com
-Password: password
+Password: Password@123
 
 
 **Organizer Login Details**
 
-Email   : demoaccount@mail.com
-Password: password
+Email   : demoorganizer@gmail.com
+Password: Password@123
 
 OR sign up with your own details!!
 
