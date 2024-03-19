@@ -54,8 +54,8 @@ $me = "?page=$source";
                                         <td><?php echo getEventName($fetch['event_id']); ?></td>
                                         <td><?php echo getOrganizerName($fetch['organizer_id']);
                                                 $fullname = " Schedule" ?></td>
-                                        <td>kes <?php echo ($fetch['first_fee']); ?></td>
-                                        <td>kes<?php echo ($fetch['second_fee']); ?></td>
+                                        <td>ksh <?php echo ($fetch['first_fee']); ?></td>
+                                        <td>ksh<?php echo ($fetch['second_fee']); ?></td>
                                         <td><?php $array = getTotalBookByType($id);
                                                 echo (($array['first'] - $array['first_booked'])), " Seat(s) Available for First Class" . "<hr/>" . ($array['second'] - $array['second_booked']) . " Seat(s) Available for Second Class";
                                                 ?></td>
@@ -111,13 +111,13 @@ $me = "?page=$source";
                                                             </select>
                                                         </p>
 
-                                                        <!-- <p>Organizer : <select class="form-control" name="route_id" required
+                                                        <!-- <p>Organizer : <select class="form-control" name="venue_id" required
                                                                 id="">
-                                                                <option value="">Select Route</option>
+                                                                <option value="">Select Venue</option>
                                                                 <?php
-                                                                    // $cond = connect()->query("SELECT * FROM route");
+                                                                    // $cond = connect()->query("SELECT * FROM venue");
                                                                     // while ($r = $cond->fetch_assoc()) {
-                                                                    //     echo "<option  " . ($fetch['route_id'] == $r['id'] ? 'selected="selected"' : '') . " value='" . $r['id'] . "'>" . getRoutePath($r['id']) . "</option>";
+                                                                    //     echo "<option  " . ($fetch['venue_id'] == $r['id'] ? 'selected="selected"' : '') . " value='" . $r['id'] . "'>" . getVenue($r['id']) . "</option>";
                                                                     // }
                                                                     ?>
                                                             </select>
