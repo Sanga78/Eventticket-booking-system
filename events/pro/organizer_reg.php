@@ -16,6 +16,7 @@ if (isset($_POST['name'])) {
     $address = $_POST['address'];
     $cpassword = $_POST['cpassword'];
     $password = $_POST['password'];
+    $pattern = '/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[\W_]).{8,}$/'; 
     if (!isset($name, $address, $phone, $email, $password, $cpassword) || ($password != $cpassword)) { ?>
 <script>
 alert("Ensure you fill the form properly.");
@@ -30,16 +31,22 @@ alert("Ensure you fill the form properly.");
         $res = $check_email->num_rows();
         if ($res) {
         ?>
-<script>
-alert("Email already exists!");
-</script>
-<?php
+        <script>
+        alert("Email already exists!");
+        </script>
+        <?php
 
         } elseif ($cpassword != $password) { ?>
-<script>
-alert("Password does not match.");
-</script>
-<?php
+        <script>
+        alert("Password does not match.");
+        </script>
+        <?php 
+        }elseif (!preg_match($pattern, $password)) { ?>
+        <script>
+        alert("Invlaid Password.");
+        </script>
+
+        <?php
         } else {
             //Insert
             $password = md5($password);
@@ -53,17 +60,17 @@ alert("Password does not match.");
             $stmt->bind_param("ssssss", $name, $email, $password, $phone, $address, $loc);
             if ($stmt->execute()) {
             ?>
-<script>
-alert("Congratulations.\nYou are now registered.");
-window.location = 'organizer_signin.php';
-</script>
-<?php
+        <script>
+        alert("Congratulations.\nYou are now registered.");
+        window.location = 'organizer_signin.php';
+        </script>
+        <?php
             } else {
             ?>
-<script>
-alert("We could not register you!.");
-</script>
-<?php
+        <script>
+        alert("We could not register you!.");
+        </script>
+        <?php
             }
         }
     }
@@ -85,8 +92,8 @@ alert("We could not register you!.");
                 </p>
                 <input type="file" name='file' placeholder="Select Picture"/>
                 <input type='text' name="address" required placeholder="Address"/>
-                <input type="password" id="password" name="password" id="password" placeholder="set a password" />
-                <input type="password" name="cpassword" id="cpassword" placeholder="confirm password" />
+                <input type="password" id="password" name="password" id="password" placeholder="set a password" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" title=" Password must contain at least one number and one uppercase and lowercase letter, and at least 8 or more characters" required/>
+                <input type="password" name="cpassword" id="cpassword" placeholder="confirm password" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" title="Password must contain at least one number and one uppercase and lowercase letter, and at least 8 or more characters" required/>
                 <i class="fas fa-eye" onclick="show()"></i>
                 <br>
                 <br>
@@ -98,14 +105,6 @@ alert("We could not register you!.");
                 </p>
             </form>
 
-          <!-- <form class="login-form">
-            <button type="button" id="btn-signup">
-              SIGN UP
-            </button>
-            <p class="message">
-                <a href="#">.</a><br>
-            </p>
-          </form> -->
         </div>
     </div>
 </div>
