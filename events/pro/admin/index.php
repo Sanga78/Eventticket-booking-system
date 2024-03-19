@@ -25,28 +25,24 @@ if (!isset($file_access)) die("Direct File Access Denied");
             <!-- /.info-box -->
         </div>
         <!-- /.col -->
-
         <div class="col-md-3 col-sm-6 col-12">
-            <div class="info-box bg-danger">
+            <div class="info-box bg-primary">
                 <span class="info-box-icon"><i class="fa fa-users"></i></span>
 
                 <div class="info-box-content">
-                    <span class="info-box-text">Orgs</span>
-                    <span class="info-box-number"><?php
-                                                    echo $reg =  $conn->query("SELECT * FROM organizer")->num_rows;
-                                                    ?></span>
+                    <span class="info-box-text">Organizers</span>
+                    <span class="info-box-number"><?php echo $reg =  $conn->query("SELECT * FROM organizer")->num_rows;?></span>
 
                     <div class="progress">
-                        <div class="progress-bar" style="width: 70%"></div>
+                        <div class="progress-bar" style="width: 50%"></div>
                     </div>
-                    <?php //readonly  
-                    ?>
+
                 </div>
                 <!-- /.info-box-content -->
             </div>
             <!-- /.info-box -->
         </div>
-        <!-- /.col -->
+
 
         <div class="col-md-3 col-sm-6 col-12">
             <div class="info-box bg-info">
@@ -117,24 +113,6 @@ if (!isset($file_access)) die("Direct File Access Denied");
         <!-- /.col-md-6 -->
     </div>
     <div class="row">
-        <div class="col-md-3 col-sm-6 col-12">
-            <div class="info-box bg-primary">
-                <span class="info-box-icon"><i class="fa fa-link"></i></span>
-
-                <div class="info-box-content">
-                    <span class="info-box-text">Venue and meeting links</span>
-                    <span class="info-box-number"><?php echo connect()->query("SELECT * FROM meeting")->num_rows ?></span>
-
-                    <div class="progress">
-                        <div class="progress-bar" style="width: 50%"></div>
-                    </div>
-
-                </div>
-                <!-- /.info-box-content -->
-            </div>
-            <!-- /.info-box -->
-        </div>
-
         <div class="col-md-3 col-sm-6 col-12">
             <div class="info-box bg-warning">
                 <span class="info-box-icon"><i class="fa fa-comment-dots"></i></span>
