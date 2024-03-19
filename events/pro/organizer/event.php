@@ -31,6 +31,7 @@ $me = "?page=$source";
                                         <th>#</th>
                                         <th>Event</th>
                                         <th>Organizer</th>
+                                        <th>Venue</th>
                                         <th>First Class Seat</th>
                                         <th>Second Class Seat</th>
                                         <th style="width: 30%;">Action</th>
@@ -50,6 +51,7 @@ $me = "?page=$source";
                                         <td><?php echo ++$sn; ?></td>
                                         <td><?php echo $fullname = $fetch['name']; ?></td>
                                         <td><?php echo getOrganizerName($fetch['organizer_id']); ?></td>
+                                        <td><?php echo $fetch['venue']; ?></td>
                                         <td><?php echo $fetch['first_seat']; ?></td>
                                         <td><?php echo $fetch['second_seat']; ?></td>
                                         <td>
@@ -90,6 +92,10 @@ $me = "?page=$source";
                                                         <p>	Event : <input type="strings" class="form-control"
                                                                 name="name" value="<?php echo $fetch['name'] ?>"
                                                                 required minlength="3" id=""></p>
+                                                        <p>Venue : <input type="text"
+                                                                class="form-control"
+                                                                value="<?php echo $fetch['venue'] ?>"
+                                                                minlength="3"name="venue" required id=""></p>
                                                         <p>First Class Capacity : <input type="number" min='0'
                                                                 class="form-control"
                                                                 value="<?php echo $fetch['first_seat'] ?>"
@@ -154,6 +160,10 @@ $me = "?page=$source";
                             <td><input type="text" class="form-control" name="name" required minlength="3" id=""></td>
                         </tr>
                         <tr>
+                            <th>Venue</th>
+                            <td><input type="text" class="form-control" name="venue" required minlength="3" id=""></td>
+                        </tr>
+                        <tr>
                             <th>First Class Capacity</th>
                             <td><input type="number" min='0' class="form-control" name="first_seat" required id=""></td>
                         </tr>
@@ -186,9 +196,10 @@ $me = "?page=$source";
 if (isset($_POST['submit'])) {
     $name = $_POST['name'];
     $organizer_id = $organizer_id;
+    $venue = $_POST['venue'];
     $first_seat = $_POST['first_seat'];
     $second_seat = $_POST['second_seat'];
-    if (!isset($name, $organizer_id, $first_seat, $second_seat)) {
+    if (!isset($name, $organizer_id, $venue, $first_seat, $second_seat)) {
         alert("Fill Form Properly!");
     } else {
         $conn = connect();
@@ -197,8 +208,8 @@ if (isset($_POST['submit'])) {
         if ($check) {
             alert("Event already exists");
         } else {
-            $ins = $conn->prepare("INSERT INTO event (name,organizer_id, first_seat, second_seat) VALUES (?,?,?,?)");
-            $ins->bind_param("ssss", $name, $organizer_id, $first_seat, $second_seat);
+            $ins = $conn->prepare("INSERT INTO event (name,organizer_id, venue, first_seat, second_seat) VALUES (?,?,?,?,?)");
+            $ins->bind_param("sssss", $name, $organizer_id, $venue, $first_seat, $second_seat);
             $ins->execute();
             alert("Event Added Successfully");
             load($_SERVER['PHP_SELF'] . "$me");
@@ -209,10 +220,11 @@ if (isset($_POST['submit'])) {
 if (isset($_POST['edit'])) {
     $name = $_POST['name'];
     $organizer_id = $organizer_id;
+    $venue = $_POST['venue'];
     $first_seat = $_POST['first_seat'];
     $second_seat = $_POST['second_seat'];
     $id = $_POST['id'];
-    if (!isset($name, $organizer_id, $first_seat, $second_seat)) {
+    if (!isset($name, $organizer_id, $venue, $first_seat, $second_seat)) {
         alert("Fill Form Properly!");
     } else {
         $conn = connect();
@@ -221,8 +233,8 @@ if (isset($_POST['edit'])) {
         if ($check == 2) {
             alert("Event exists");
         } else {
-            $ins = $conn->prepare("UPDATE event SET name = ?, organizer_id = ?, first_seat = ?, second_seat = ? WHERE id = ?");
-            $ins->bind_param("ssssi", $name, $organizer_id, $first_seat, $second_seat, $id);
+            $ins = $conn->prepare("UPDATE event SET name = ?, organizer_id = ?, venue = ?, first_seat = ?, second_seat = ? WHERE id = ?");
+            $ins->bind_param("sssssi", $name, $organizer_id, $venue, $first_seat, $second_seat, $id);
             $ins->execute();
             alert("Event Modified!");
             load($_SERVER['PHP_SELF'] . "$me");
