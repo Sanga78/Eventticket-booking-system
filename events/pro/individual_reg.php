@@ -84,9 +84,9 @@ alert("We could not register you!.");
                 <span id="error-msg" class="hide"></span>
                 </p>
                 <input type="file" name='file' placeholder="Select Picture"/>
-                <input type='text' name="address" required placeholder="Address"/>>
-                <input type="password" id="password" name="password" id="password" placeholder="set a password" />
-                <input type="password" name="cpassword" id="cpassword" placeholder="confirm password" />
+                <input type='text' name="address" required placeholder="Address"/>
+                <input type="password" id="password" name="password" id="password" placeholder="set a password"  pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" title=" Password must contain at least one number and one uppercase and lowercase letter, and at least 8 or more characters" required/>
+                <input type="password" name="cpassword" id="cpassword" placeholder="confirm password"  pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" title=" Password must contain at least one number and one uppercase and lowercase letter, and at least 8 or more characters" required/>
                 <i class="fas fa-eye" onclick="show()"></i>
                 <br>
                 <br>
