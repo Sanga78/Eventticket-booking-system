@@ -154,6 +154,18 @@ INSERT INTO `users` (`id`, `email`, `password`) VALUES
 --
 -- Indexes for dumped tables
 --
+--
+-- Table structure for table `userlog`
+--
+
+CREATE TABLE `userlog` (
+  `id` int(11) NOT NULL,
+  `userId` int(11) NOT NULL,
+  `username` varchar(255) NOT NULL,
+  `userEmail` varchar(255) NOT NULL,
+  `userIp` varbinary(16) NOT NULL,
+  `loginTime` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Indexes for table `availability`
