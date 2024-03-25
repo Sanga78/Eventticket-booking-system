@@ -1,6 +1,6 @@
 <?php
 if (!isset($file_access)) die("Direct File Access Denied");
-$source = 'train';
+$source = 'event';
 $me = "?page=$source";
 ?>
 
