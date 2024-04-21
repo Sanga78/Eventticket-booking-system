@@ -7,15 +7,11 @@ if (!isset($file_access)) die("Direct File Access Denied");
         <div class="col-md-3 col-sm-6 col-12">
             <div class="info-box bg-info">
                 <span class="info-box-icon"><i class="fa fa-bell"></i></span>
-
                 <div class="info-box-content">
                     <span class="info-box-text">Events</span>
-                    <span class="info-box-number"><?php
-                                                    echo $comp = $conn->query("SELECT * FROM event")->num_rows;
-                                                    ?></span>
-
+                    <span class="info-box-number"><?php echo $comp = $conn->query("SELECT * FROM event")->num_rows;?></span>
                     <div class="progress">
-                        <div class="progress-bar" style="width: 70%"></div>
+                    <div class="progress-bar" style="width: 70%"></div>
                     </div>
                     <?php //readonly  
                     ?>
@@ -67,11 +63,8 @@ if (!isset($file_access)) die("Direct File Access Denied");
 		<div>
 		</div>
 
-        
-                
-			<?php
-if (!isset($file_access)) die("Direct File Access Denied");
-?>
+
+<?php if (!isset($file_access)) die("Direct File Access Denied");?>
 
 <div class="content">
     <div class="container-fluid">
@@ -117,7 +110,6 @@ if (!isset($file_access)) die("Direct File Access Denied");
                                 <br />
 
                                 <?php
-
                                     $fee = ($_SESSION['amount'] = getFee($schedule_id, $class));
                                     echo $number, " x kes", $fee, " = kes", ($fee * $number), "<hr/>";
                                     $fee = $fee * $number;
@@ -133,7 +125,11 @@ if (!isset($file_access)) die("Direct File Access Denied");
                                     $_SESSION['class'] =  $class;
                                     ?>
                             </div>
-                            <a href="#">Pay Now</button></a>
+                            <form method="post" action="../MPESA/checkout.php">
+                                <input type="hidden" value="$total" name="amount">
+                                <input type="hidden" value="$schedule" name="event">
+                                <button type="submit" name="pay_now" class="btn btn-primary">Pay Now</button>
+                            </form>
                         </div>
                     </div>
                 </div>

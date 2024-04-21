@@ -73,17 +73,12 @@ $me = $_SESSION['user_id'];
                                 <div class="modal-dialog modal-lg">
                                     <div class="modal-content">
                                         <div class="modal-header">
-                                            <h4 class="modal-title">Book For <?php echo $fullname;
-
-
-                                                                                    ?> &#x1F3AB;</h4>
+                                            <h4 class="modal-title">Book For <?php echo $fullname;?> &#x1F3AB;</h4>
                                             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                                 <span aria-hidden="true">&times;</span>
                                             </button>
                                         </div>
                                         <div class="modal-body">
-
-
                                             <form action="<?php echo $_SERVER['PHP_SELF'] . "?loc=$id" ?>"
                                                 method="post">
                                                 <input type="hidden" class="form-control" name="id"
@@ -97,17 +92,15 @@ $me = $_SESSION['user_id'];
                                                 <p>
                                                     Class : <select name="class" required class="form-control" id="">
                                                         <option value="">-- Select Class --</option>
-                                                        <option value="first">First Class (kes
+                                                        <option value="first">First Class (ksh
                                                             <?php echo ($fetch['first_fee']); ?>)</option>
-                                                        <option value="second">Second Class (kes
+                                                        <option value="second">Second Class (ksh
                                                             <?php echo ($fetch['second_fee']); ?>)</option>
                                                     </select>
                                                 </p>
                                                 <input type="submit" name="submit" class="btn btn-success"
                                                     value="Proceed">
-
                                             </form>
-
                                         </div>
                                         <!-- /.modal-content -->
                                     </div>

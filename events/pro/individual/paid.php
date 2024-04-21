@@ -10,8 +10,6 @@ if (isset($_GET['now'])) {
 
 ?>
 <!-- Content Header (Page header) -->
-
-
 <section class="content">
     <div class="container-fluid">
         <div class="row">
@@ -20,9 +18,6 @@ if (isset($_GET['now'])) {
                     <h5><i class="fas fa-info"></i> Info:</h5>
                     Payment History and Print Tickets
                 </div>
-
-
-
                 <div class="card">
                     <div class="card-header alert-success">
                         <h5 class="m-0">Bookings - Purchased Tickets</h5>
@@ -103,22 +98,22 @@ if (isset($_GET['now'])) {
                                                      $msg = "";
                                                      $output = "<option value=''>Choose One Or Skip To Leave As It Is</option>";
                                                      if ($fet->num_rows < 1) $msg = "<span class='text-danger'>No Upcoming Schedules Yet</span>";
-                            while ($fetch = $fet->fetch_assoc()) {
-    //Check if the current date is same with Database scheduled date
-    $db_date = $fetch['date'];
-    if ($db_date == date('d-m-Y')) {
-        //Oh yes, so what should happen?
-        //Check for the time. If there is still about an hour left, proceed else, skip this data
-        $db_time = $fetch['time'];
-        $current_time = date('H:i');
-        if ($current_time >= $db_time) {
-            continue;
-        }
-    }
-    $fullname =  getEventName($fetch['event_id']);
-    $datetime = $fetch['date']. " / ". formatTime($fetch['time']);
-    $output .= "<option value='$fetch[id]'>$fullname - $datetime</option>";
-                            }
+                                                        while ($fetch = $fet->fetch_assoc()) {
+                                                        //Check if the current date is same with Database scheduled date
+                                                        $db_date = $fetch['date'];
+                                                        if ($db_date == date('d-m-Y')) {
+                                                            //Oh yes, so what should happen?
+                                                            //Check for the time. If there is still about an hour left, proceed else, skip this data
+                                                            $db_time = $fetch['time'];
+                                                            $current_time = date('H:i');
+                                                            if ($current_time >= $db_time) {
+                                                                continue;
+                                                            }
+                                                        }
+                                                        $fullname =  getEventName($fetch['event_id']);
+                                                        $datetime = $fetch['date']. " / ". formatTime($fetch['time']);
+                                                        $output .= "<option value='$fetch[id]'>$fullname - $datetime</option>";
+                                                     }
                                                     if (isScheduleActive($row['schedule_id'])) echo '<div x-data="{ open: false }"><button @click="open = true" class="btn btn-dark float-right">Modify</button>
                                                     <p x-show="open" @click.away="open = false">
                                                     <form method="POST" >
@@ -132,11 +127,6 @@ if (isset($_GET['now'])) {
                                                     </p>
                                                 </div>';
                                                    ?>
-
-<!-- Start -->
-
-    
-<!-- End -->
                                   </div>
                                             <!-- /.modal-content -->
                                         </div>
