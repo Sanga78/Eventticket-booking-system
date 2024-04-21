@@ -271,6 +271,16 @@ function load($link)
 {
     echo "<script>window.location = ('$link')</script>";
 }
+function sum($id, $type = null)
+{
+    $conn = connect();
+    if ($type == null) {
+        $row = $conn->query("SELECT SUM(amount) as amount FROM `payment` INNER JOIN booked ON booked.payment_id = payment.id AND booked.schedule_id = payment.schedule_id WHERE payment.schedule_id = '$id'")->fetch_assoc();
+    } else {
+        $row = $conn->query("SELECT SUM(amount) as amount FROM `payment` INNER JOIN booked ON booked.payment_id = payment.id AND booked.schedule_id = payment.schedule_id WHERE payment.schedule_id = '$id' AND booked.class = '$type'")->fetch_assoc();
+    }
+    return $row['amount'] == null ? 0 : $row['amount'];
+}
 
 function sendFeedback($msg)
 {
