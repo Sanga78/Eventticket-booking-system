@@ -93,17 +93,11 @@ if (!isset($file_access)) die("Direct File Access Denied");
                                 Type Message : <textarea name="message" required minlength="10" id="" cols="30"
                                     rows="10" class="form-control"></textarea>
                             </div>
-
                         </div>
-
-
                         <hr>
                         <input type="submit" name="sendFeedback" class="btn btn-success" value="Send"></p>
                 </form>
-
-
             </div>
-
         </div>
         <!-- /.modal-content -->
     </div>

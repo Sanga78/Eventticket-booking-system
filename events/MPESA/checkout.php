@@ -1,5 +1,9 @@
 <?php
+  include('pro/individual/index.php');
   include('express-stk.php');
+?>
+<?php
+ $total = $_SESSION['amount'];
 ?>
 <!DOCTYPE html>
 <html>
@@ -92,7 +96,7 @@ font-size:16px; }
    <div class="container">
     <form action='<?php echo $_SERVER['PHP_SELF'] ?>' method='POST'>
     <div class="price">
-        <h1>Awesome, that's KES 100</h1>
+        <h1>Awesome, that's <?php echo $total ?></h1>
     </div>
     <div class="card__container">
         <div class="card">
@@ -117,7 +121,6 @@ font-size:16px; }
         <button type="submit"><i class="ion-locked"></i> Confirm and Pay</button>
     </div>
     </form>
-    <p style="color:#8F92C3;line-height:1.7;margin-top:5rem;">Copyright 2022 | All Rights Reserved | Made by MediaForce</p>
 </div>
    </body>
 </html>

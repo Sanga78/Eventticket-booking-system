@@ -126,8 +126,6 @@ if (!isset($file_access)) die("Direct File Access Denied");
                                     ?>
                             </div>
                             <form method="post" action="../MPESA/checkout.php">
-                                <input type="hidden" value="$total" name="amount">
-                                <input type="hidden" value="$schedule" name="event">
                                 <button type="submit" name="pay_now" class="btn btn-primary">Pay Now</button>
                             </form>
                         </div>
