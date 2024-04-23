@@ -44,7 +44,7 @@ $me = "?page=$source";
         <tr><th>Class</th><td>$row[class]</td></tr>
         <tr><th>Seat</th><td>$row[seat]</td></tr>
         <tr><th>Trip Date/TIme</th><td>" . date("D d, M Y", strtotime($row['date'])) . " / $row[time]</td></tr>
-        <tr><th>Amount Paid</th><td>$ $row[amount]</td></tr>
+        <tr><th>Amount Paid</th><td>ksh $row[amount]</td></tr>
         <tr><th>Payment Date</th><td>$row[payment_date]</td></tr>
         <tr><th>Payment Ref</th><td>$row[ref]</td></tr>
         <tr><th>Organizer</th><td>" . getOrganizerFromSchedule($row['schedule_id']) . "</td></tr>

@@ -268,7 +268,7 @@ $fullname =  "System Administrator";
                 <?php echo SITE_NAME; ?>
             </div>
             <!-- Default to the left -->
-            <strong><?php echo date("Y"); ?> - All Rights Reserved</strong>
+            <strong><?php echo date("Y"); ?> - contact kelvinkipkosgei@gmail.com</strong>
         </footer>
     </div>
     <!-- ./wrapper -->

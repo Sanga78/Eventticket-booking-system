@@ -39,6 +39,12 @@ CREATE TABLE `event` (
   `first_seat` int(11) NOT NULL,
   `second_seat` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+-- Insert data into the event table
+INSERT INTO `event` (`id`, `name`, `organizer_id`, `venue`, `first_seat`, `second_seat`) VALUES
+(1, 'Concert', 1, 'Safari Park Hotel, Thika Road', 100, 200),
+(2, 'Conference', 2, 'Kenyatta International Convention Centre, Harambee Avenue', 150, 300),
+(3, 'Workshop', 1, 'Strathmore University, Ole Sangale Road', 50, 100);
+
 
 -- --------------------------------------------------------
 
@@ -85,7 +91,18 @@ CREATE TABLE `customer` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
-
+-- Insert data into the customer table
+INSERT INTO `customer` (`id`, `name`, `email`, `d00f5d5217896fb7fd601412cb890830`, `phone`, `address`, `loc`, `status`) VALUES
+(1, 'John Doe', 'john@gmail.com', 'd00f5d5217896fb7fd601412cb890830', '0712345678', '1234 Valley Rd, Nairobi', 'Nairobi', 1),
+(2, 'Jane Smith', 'jane@gmail.com', 'd00f5d5217896fb7fd601412cb890830', '0723456789', '5678 Beach Rd, Mombasa', 'Mombasa', 1),
+(3, 'Alice Wangari', 'alice@gmail.com', 'password', '0734567890', '910 Hill St, Kisumu', 'Kisumu', 1),
+(4, 'David Kamau', 'david@gmail.com', 'd00f5d5217896fb7fd601412cb890830', '0745678901', '1112 River Rd, Nakuru', 'Nakuru', 1),
+(5, 'Mary Njeri', 'mary@gmail.d00f5d5217896fb7fd601412cb890830', '0756789012', '1314 Forest St, Eldoret', 'Eldoret', 1),
+(6, 'Peter Gitonga', 'peter@gmail.com', 'd00f5d5217896fb7fd601412cb890830', '0767890123', '1516 Sunset St, Thika', 'Thika', 1),
+(7, 'Grace Nyambura', 'grace@gmail.com', 'd00f5d5217896fb7fd601412cb890830', '0778901234', '1718 Sunrise St, Machakos', 'Machakos', 1),
+(8, 'Michael Waweru', 'michael@gmail.com', 'd00f5d5217896fb7fd601412cb890830', '0789012345', '1920 Moon St, Nyeri', 'Nyeri', 1),
+(9, 'Lucy Auma', 'lucy@gmail.com', 'd00f5d5217896fb7fd601412cb890830', '0790123456', '2122 Lake St, Kitale', 'Kitale', 1),
+(10, 'Daniel Otieno', 'daniel@gmail.com', 'd00f5d5217896fb7fd601412cb890830', '0711223344', '2324 Ocean St, Kisii', 'Kisii', 1);
 
 --
 -- Table structure for table `organizer`
@@ -101,6 +118,10 @@ CREATE TABLE `organizer` (
   `status` int(11) NOT NULL DEFAULT '1'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
+-- Insert data into the organizer table
+INSERT INTO `organizer` (`id`, `name`, `email`, `password`, `phone`, `address`, `loc`, `status`) VALUES
+(1, 'Churchil show', 'churchil@gmail.com', 'd8b59dd06f67c2769140a475a5b89b65d7e06f4822a8a6c50979a495e7879ae2', '1234567890', '123 Main St, Nairobi', 'Nairobi', 1),
+(2, 'Mc jessy', 'jessy@gmail.com.com', 'd8b59dd06f67c2769140a475a5b89b65d7e06f4822a8a6c50979a495e7879ae2', '9876543210', '456 Elm St, Mombasa', 'Mombasa', 1);
 
 --
 -- Table structure for table `payment`

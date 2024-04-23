@@ -90,7 +90,7 @@ if (isset($_GET['now'])) {
                                                 </p>
 
                                                 <?php
-                                                    if (isScheduleActive($row['schedule_id'])) echo '<a href="individual.php?page=print&print=' . $id . '"><button  class="btn btn-success">Print Ticket</button></a>';
+                                                    if (isScheduleActive($row['schedule_id'])) echo '<button  id="printpagebutton" class="btn btn-success" onClick="printpage()">Print Ticket</button>';
                                                     else echo '<button disabled="disabled" class="btn btn-danger">Ticket Has Been Expired</button>'; ?>
                                                     
                                                     <?php
@@ -170,3 +170,18 @@ if (isset($_POST['modify'])){
 }
 
 ?>
+<script>
+	 function printpage()
+	 {
+        //Get the print button and put it into a variable
+        var printButton = document.getElementById("printpagebutton");
+        //Set the print button visibility to 'hidden' 
+        printButton.style.visibility = 'hidden';
+        //Print the page content
+        window.print()
+        //Set the print button to 'visible' again 
+        //[Delete this line if you want it to stay hidden after printing]
+        printButton.style.visibility = 'visible';
+		window.print();
+    }
+</script>

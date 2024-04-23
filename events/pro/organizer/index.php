@@ -70,7 +70,7 @@ if (!isset($file_access)) die("Direct File Access Denied");
 
                
     
-        <!-- <div class="col-md-3 col-sm-6 col-12">
+        <div class="col-md-3 col-sm-6 col-12">
             <div class="info-box bg-success">
                 <span class="info-box-icon"><i class="fa fa-dollar-sign"></i></span>
 
@@ -85,31 +85,9 @@ if (!isset($file_access)) die("Direct File Access Denied");
                         <div class="progress-bar" style="width: 70%"></div>
                     </div>
 
-                </div>
-                 /.info-box-content 
+</div>
             </div>
-             /.info-box
         </div> 
-
-         /.col-md-6 -->
-    
-        <div class="col-md-3 col-sm-6 col-12">
-            <div class="info-box bg-warning">
-                <span class="info-box-icon"><i class="fa fa-comment-dots"></i></span>
-
-                <div class="info-box-content">
-                    <span class="info-box-text">Feedbacks Received</span>
-                    <span class="info-box-number"><?php echo connect()->query("SELECT * FROM feedback")->num_rows ?></span>
-
-                    <div class="progress">
-                        <div class="progress-bar" style="width: 50%"></div>
-                    </div>
-
-                </div>
-                <!-- /.info-box-content -->
-            </div>
-            <!-- /.info-box -->
-        </div>
     </div>
     <!-- /.row -->
 </div>

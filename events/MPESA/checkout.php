@@ -1,9 +1,9 @@
 <?php
-  include('pro/individual/index.php');
   include('express-stk.php');
 ?>
 <?php
  $total = $_SESSION['amount'];
+ $schedule_id = $_SESSION['schedule'];
 ?>
 <!DOCTYPE html>
 <html>
@@ -96,7 +96,7 @@ font-size:16px; }
    <div class="container">
     <form action='<?php echo $_SERVER['PHP_SELF'] ?>' method='POST'>
     <div class="price">
-        <h1>Awesome, that's <?php echo $total ?></h1>
+        <h1>Pay Ksh<?php echo $total ?></h1>
     </div>
     <div class="card__container">
         <div class="card">
@@ -110,9 +110,9 @@ font-size:16px; }
             <div class="row number">
                 <div class="info">
                     
-                    <input type="hidden" name="orderNo" value="#O2JDI2I3R" />
+                    <input type="hidden" name="schedule_id" value="<?php echo $schedule_id ?>" />
                     <label for="cardnumber">Phone number</label>
-                    <input id="cardnumber" type="text" name="phone_number" maxlength="10" placeholder="0700000000"/>
+                    <input id="cardnumber" type="text" name="phone_number" maxlength="10" placeholder="0712345678"/>
                 </div>
             </div>
         </div>

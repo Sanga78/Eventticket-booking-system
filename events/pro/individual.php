@@ -89,7 +89,16 @@ if (isset($_GET['error'])) {
                             </a>
 
                         </li>
-                        
+                        <li class="nav-item">
+                            <a href="individual.php?page=search" class="nav-link      <?php
+                                                                                    echo (@$_GET['page'] == 'search') ? 'active' : '';
+                                                                                    ?>">
+                                <i class="nav-icon fas fa-search"></i>
+                                <p>
+                                    Search
+                                </p>
+                            </a>
+                        </li>
 
                         <li class="nav-item">
                             <a href="individual.php?page=reg" class="nav-link <?php echo (@$_GET['page'] == 'reg') ? 'active' : '';?>">
@@ -187,6 +196,8 @@ if (isset($_GET['error'])) {
                 include 'individual/make_payment.php';
             elseif ($_GET['page'] == 'paid')
                 include 'individual/paid.php';
+            elseif ($_GET['page'] == 'search')
+                include 'individual/search.php'; 
             elseif ($_GET['page'] == 'upload')
                 include 'individual/upload.php';
             elseif ($_GET['page'] == 'status')
@@ -202,7 +213,8 @@ if (isset($_GET['error'])) {
                 @session_destroy();
                 echo "<script>alert('You are being logged out'); window.location='../';</script>";
                 exit;
-            } elseif ($_GET['page'] == 'print') {
+            }
+            elseif ($_GET['page'] == 'print') {
                 printClearance($user_id);
                 include 'individual/status.php';
             } else {
@@ -232,7 +244,7 @@ if (isset($_GET['error'])) {
                 <?php echo SITE_NAME; ?>
             </div>
             <!-- Default to the left -->
-            <strong><?php echo date("Y"); ?> - All Rights Reserved</strong>
+            <strong><?php echo date("Y"); ?> - contact kelvinkipkosgesanga@gmail.com</strong>
         </footer>
     </div>
     <!-- ./wrapper -->

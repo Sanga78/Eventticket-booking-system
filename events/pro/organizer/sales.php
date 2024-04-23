@@ -39,7 +39,7 @@ $source = 'payment';
                                     // echo (($array['first'] - $array['first_booked'])), " Seat(s) Available for First Class" . "<hr/>" . ($array['second'] - $array['second_booked']) . " Seat(s) Available for Second Class";
                                     $sn++;
                                     echo "<tr>
-                                      <td>" . getRoutePath($val['route_id']) . "</td>
+                                      <td>" . getOrganizerName($organizer_id) . "</td>
                                       <td>" . $val['date'] . " - " . formatTime($val['time']) . "</td>
                                       <td>kes " . sum($val['id'], 'first') . "</td>
                                       <td>kes " . sum($val['id'], 'second') . "</td>

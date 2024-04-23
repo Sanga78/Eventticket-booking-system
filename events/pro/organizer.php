@@ -101,7 +101,7 @@ $fullname =  getOrganizerName($_SESSION['organizer_id'], $conn);
                             ">
                                 <i class="nav-icon fas fa-users"></i>
                                 <p>
-                                    Users
+                                    Atendees
                                 </p>
                             </a>
                         </li>
@@ -148,27 +148,6 @@ $fullname =  getOrganizerName($_SESSION['organizer_id'], $conn);
                                 <i class="nav-icon fas fa-dollar-sign"></i>
                                 <p>
                                     Payments
-                                </p>
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="organizer.php?page=feedback" class="nav-link      <?php
-                                                                                    echo (@$_GET['page'] == 'feedback') ? 'active' : '';
-                                                                                    ?>">
-                                <i class="nav-icon fas fa-mail-bulk"></i>
-                                <p>
-                                    Feedbacks
-                                </p>
-                            </a>
-                        </li>
-
-                        <li class="nav-item">
-                            <a href="organizer.php?page=search" class="nav-link      <?php
-                                                                                    echo (@$_GET['page'] == 'search') ? 'active' : '';
-                                                                                    ?>">
-                                <i class="nav-icon fas fa-search"></i>
-                                <p>
-                                    Search
                                 </p>
                             </a>
                         </li>
@@ -221,14 +200,7 @@ $fullname =  getOrganizerName($_SESSION['organizer_id'], $conn);
                 echo "<script>alert('You are being logged out'); window.location='../';</script>";
                 exit;
             } elseif ($_GET['page'] == 'payment')
-                include 'organizer/index.php';
-
-            elseif ($_GET['page'] == 'feedback')
-                include 'organizer/feedback.php';
-
-            elseif ($_GET['page'] == 'search')
-                include 'organizer/search.php';
-
+                include 'organizer/sales.php';
             else {
                 include 'organizer/index.php';
             }
@@ -255,7 +227,7 @@ $fullname =  getOrganizerName($_SESSION['organizer_id'], $conn);
                 <?php echo SITE_NAME; ?>
             </div>
             <!-- Default to the left -->
-            <strong><?php echo date("Y"); ?> - All Rights Reserved</strong>
+            <strong><?php echo date("Y"); ?> - contact kelvinkipkosgeisanga@gmail.com</strong>
         </footer>
     </div>
     <!-- ./wrapper -->

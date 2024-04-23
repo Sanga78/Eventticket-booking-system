@@ -2,6 +2,10 @@
   session_start();
   include('status.php');
 ?>
+<?php
+ $total = $_SESSION['amount'];
+ $schedule_id = $_SESSION['schedule'];
+?>
 <!DOCTYPE html>
 <html>
     <head>
@@ -93,7 +97,7 @@ font-size:16px; }
    <div class="container">
     <form action='' method='POST'>
     <div class="price">
-        <h1>Awesome, that's KES 100</h1>
+    <h1>Pay Ksh<?php echo $total ?></h1>
     </div>
     <div class="card__container">
         <div class="card">
@@ -103,9 +107,9 @@ font-size:16px; }
             </div>
             <div class="row number">
                 <div class="info">
-                     <p style="color:#8F92C3;line-height:1.7;">3. After recieving the payment confirmation message, press "Confirm Payment" to finish making your order</p>
+                     <p style="color:#8F92C3;line-height:1.7;">After recieving the payment confirmation message, press "Confirm Payment" to book ticket</p>
                      <input type="hidden" name="phone_number" value=<?php $_SESSION["phone"] ?> />
-                     <input type="hidden" name="orderNo" value=<?php $_SESSION["MerchantRequestID"] ?> />
+                     <input type="hidden" name="schedule_id" value=<?php $_SESSION["MerchantRequestID"] ?> />
                 </div>
             </div>
         </div>
@@ -114,7 +118,6 @@ font-size:16px; }
         <button type="submit"><i class="ion-locked"></i> Confirm Payment</button>
     </div>
     </form>
-    <p style="color:#8F92C3;line-height:1.7;margin-top:5rem;">Copyright 2022 | All Rights Reserved | Made by MediaForce</p>
 </div>
    </body>
 </html>

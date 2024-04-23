@@ -1,6 +1,6 @@
 <?php 
 session_start();
-
+include '../conn.php';
 $errors  = array();
 $errmsg  = '';
 
@@ -13,8 +13,8 @@ $config = array(
     "TransactionType"  => "CustomerPayBillOnline",
     "passkey"          => "bfb279f9aa9bdbcf158e97dd71a467cd2e0c893059b10f78e6b72ada1ed2c919", //Enter your passkey here
     "CallBackURL"      => "https://f899-41-90-64-220.ngrok.io/mpesa/callback.php", //When using Localhost, Use Ngrok to forward the response to your Localhost
-    "AccountReference" => "CompanyXLTD",
-    "TransactionDesc"  => "Payment of Event" ,
+    "AccountReference" => "Event Ticket system",
+    "TransactionDesc"  => "Payment for Event Ticket" ,
 );
 
 
@@ -22,7 +22,7 @@ $config = array(
 if (isset($_POST['phone_number'])) {
 
     $phone = $_POST['phone_number'];
-    $orderNo = $_POST['orderNo'];
+    $schedule_id = $_POST['schedule_id'];
     $amount = 1;
 
     $phone = (substr($phone, 0, 1) == "+") ? str_replace("+", "", $phone) : $phone;
@@ -85,16 +85,14 @@ if (isset($_POST['phone_number'])) {
         
         $MerchantRequestID = $result['MerchantRequestID'];
         $CheckoutRequestID = $result['CheckoutRequestID'];
-
-        $conn = mysqli_connect("localhost","root","","mpesa");
        
-        $sql = "INSERT INTO `orders`(`ID`, `OrderNo`, `Amount`, `Phone`, `CheckoutRequestID`, `MerchantRequestID`) VALUES ('','".$orderNo."','".$amount."','".$phone."','".$CheckoutRequestID."','".$MerchantRequestID."');";
+        $sql = "INSERT INTO `pays`(`ID`, `schedule_id`, `Amount`, `Phone`, `CheckoutRequestID`, `MerchantRequestID`) VALUES ('','".$orderNo."','".$amount."','".$phone."','".$CheckoutRequestID."','".$MerchantRequestID."');";
         
         if ($conn->query($sql) === TRUE){
             $_SESSION["MerchantRequestID"] = $MerchantRequestID;
             $_SESSION["CheckoutRequestID"] = $CheckoutRequestID;
             $_SESSION["phone"] = $phone;
-            $_SESSION["orderNo"] = $orderNo;
+            $_SESSION["schedule_id"] = $schedule_id;
 
             header('location: confirm-payment.php');
         }else{
