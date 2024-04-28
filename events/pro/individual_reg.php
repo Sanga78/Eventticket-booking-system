@@ -78,7 +78,7 @@ alert("We could not register you!.");
                 <div id="errorDiv"></div>
                 <!-- json response will be here -->
                 <input type="text" required minlength="10" name="name" placeholder="Full name" />
-                <input type="email" required name="email" placeholder="Email address" />
+                <input type="email" required name="email" placeholder="Email address" pattern="[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}"required/>
                 <p>Enter phone number: <input type="tel" id="phone" name="phone" required />
                 <span id="valid-msg" class="hide">✓ Valid</span>
                 <span id="error-msg" class="hide"></span>

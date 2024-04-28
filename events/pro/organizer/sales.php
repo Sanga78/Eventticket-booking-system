@@ -30,7 +30,10 @@ $source = 'payment';
                             </thead>
                             <tbody>
                                 <?php
-                                $pay = $conn->query("SELECT *, schedule.id as id, schedule.date as date, schedule.time as time FROM schedule INNER JOIN payment ON schedule.id = payment.schedule_id");
+                                $pay = $conn->query("SELECT *, schedule.id as id, schedule.date as date, schedule.time as time 
+                                                     FROM schedule 
+                                                     INNER JOIN payment ON schedule.id = payment.schedule_id
+                                                     WHERE schedule.organizer_id = '$organizer_id'");
                                 $sn = 0;
 
                                 while ($val = $pay->fetch_assoc()) {

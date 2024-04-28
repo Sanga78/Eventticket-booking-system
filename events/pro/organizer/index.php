@@ -76,10 +76,13 @@ if (!isset($file_access)) die("Direct File Access Denied");
 
                 <div class="info-box-content">
                     <span class="info-box-text">Payments</span>
-                    <span class="info-box-number"> kes <?php
-                                                            $row = connect()->query("SELECT SUM(amount) AS amount FROM payment")->fetch_assoc();
+                    <span class="info-box-number"> ksh <?php
+                                                            $row = connect()->query("SELECT SUM(amount) AS amount 
+                                                            FROM payment 
+                                                            INNER JOIN schedule ON payment.schedule_id = schedule.id 
+                                                            WHERE schedule.organizer_id = '$organizer_id'")->fetch_assoc();
                                                             echo $row['amount'] == null ? '0' : $row['amount'];
-                                                            ?></span>
+                                                        ?></span>
 
                     <div class="progress">
                         <div class="progress-bar" style="width: 70%"></div>

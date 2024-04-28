@@ -9,7 +9,7 @@ if (!isset($file_access)) die("Direct File Access Denied");
                 <span class="info-box-icon"><i class="fa fa-users"></i></span>
 
                 <div class="info-box-content">
-                    <span class="info-box-text">Attendees</span>
+                    <span class="info-box-text">Customers</span>
                     <span class="info-box-number"><?php
                                                     echo $reg =  $conn->query("SELECT * FROM customer")->num_rows;
                                                     ?></span>

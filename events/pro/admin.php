@@ -99,7 +99,7 @@ $fullname =  "System Administrator";
                             ">
                                 <i class="nav-icon fas fa-users"></i>
                                 <p>
-                                    Users
+                                    Customers
                                 </p>
                             </a>
                         </li>
