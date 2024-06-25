@@ -143,7 +143,7 @@ function getImage($id, $conn)
 function getOrgImage($id, $conn)
 {
     $row = $conn->query("SELECT loc FROM organizer WHERE id = '$id'")->fetch_assoc();
-    if (strlen($row['loc']) < 10) return "/images/profile.png";
+    if (strlen($row['loc']) < 10) return "images/profile.png";
     else return "uploads/" . $row['loc'];
 }
 

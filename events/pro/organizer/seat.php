@@ -1,5 +1,5 @@
 <!-- Show these admin pages only when the admin is logged in -->
-<?php  require '..bus/pro/assets/partials/_admin-check.php';   ?>
+<?php  require '..events/pro/assets/partials/_admin-check.php';   ?>
 
 
 <!DOCTYPE html>
